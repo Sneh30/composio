@@ -100,7 +100,7 @@ Apps sampled across all 10 categories, multiple auth methods, self-serve/gated a
 
 | File | Description |
 |------|-------------|
-| `case-study.html` | Single-page HTML case study (self-contained, open in browser) |
+| `index.html` | Single-page HTML case study (live at https://sneh30.github.io/composio/) |
 | `all-apps-final.json` | **Canonical** 100-app dataset (authoritative source) |
 | `validate.py` | Assignment validation script — checks all 100 apps against canonical list |
 | `outputs/*.json` | Per-category JSON files (may contain off-list apps from bulk phase) |
@@ -119,10 +119,12 @@ Apps sampled across all 10 categories, multiple auth methods, self-serve/gated a
 
 ```bash
 # View the case study
-open case-study.html
+open index.html
+
+# Or visit live: https://sneh30.github.io/composio/
 
 # Regenerate from JSON (optional)
-python3 build_case_study.py
+python3 generate_case_study.py
 ```
 
 Requires Python 3.8+, no external dependencies.
