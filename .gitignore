@@ -1,7 +1,3 @@
-# Scratch / intermediate files (not for submission)
-all-apps.json
-all-apps-v2.json
-
 # macOS
 .DS_Store
 

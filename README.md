@@ -19,20 +19,22 @@ The agent researches 100 apps across 10 categories (CRM, Support, Communications
 |--------|-------|
 | Apps researched | 100 (10 per category) |
 | Have MCP servers | 91 (91%) |
-| Official MCP | 60 |
+| Official MCP | 62 |
 | Self-serve access | 85 (85%) |
-| MCP auth differs from REST | 12 apps |
-| Apps with zero blockers | 76 |
+| MCP auth differs from REST | 13 apps |
+| Apps with zero blockers | 74 |
 
 **Headline patterns:**
 1. MCP is established, not emerging — 91% adoption
-2. Official MCP is winning — 60 of 91 are vendor-shipped
-3. OAuth 2.0 dominates (61 apps), but API keys (50) are close
-4. MCP auth differs from REST in 12 apps — cannot reuse credentials
+2. Official MCP is winning — 62 of 91 are vendor-shipped
+3. OAuth 2.0 dominates, but API keys are close
+4. MCP auth differs from REST in 13 apps — cannot reuse credentials
 5. 85% self-serve — most APIs accessible without sales calls
 6. CRM, Communications, Ecommerce, Marketing: 100% MCP. Finance: 70%
 
 ## How the Agent Works
+
+See [`agent/PROCESS.md`](agent/PROCESS.md) for full documentation of the research workflow, including the actual prompts used and how the 10 parallel category agents were dispatched.
 
 ### Three-Phase Approach
 
@@ -61,7 +63,7 @@ The agent researches 100 apps across 10 categories (CRM, Support, Communications
 - Zero duplicate app_ids or app_names
 - Cross-check: app_id matches app_name for all 100 entries
 
-### Stratified Spot-Checks (14/14 verified)
+### Stratified Spot-Checks (16/16 verified)
 Apps sampled across all 10 categories, multiple auth methods, self-serve/gated access, official/community/no-MCP:
 
 | App | Category | Finding | Verified Against |
@@ -74,12 +76,14 @@ Apps sampled across all 10 categories, multiple auth methods, self-serve/gated a
 | Notion | Productivity | Bearer + OAuth2, official MCP | developers.notion.com |
 | Stripe | Finance | API_key + OAuth2, official MCP | stripe.com/docs |
 | Intercom | Support | Bearer + OAuth2, official MCP | developers.intercom.com |
-| SFCC | Ecommerce | OAuth2 + Basic, gated, official MCP | developer.salesforce.com |
+| SFCC | Ecommerce | OAuth2, gated, official MCP pilot | developer.salesforce.com |
 | SE Ranking | Data/SEO | API_key, official MCP (corrected) | seranking.com/api |
 | Netlify | Developer | OAuth2 + API_key, no MCP | docs.netlify.com |
 | Mermaid CLI | AI/Media | None auth, no MCP | github.com/mermaid-js |
 | iPayX | Finance | unknown, no MCP (docs 404) | ipayx.com |
 | Gladly | Support | Basic_auth, admin-gated, no MCP | gladly.com |
+| Google Ads | Marketing | OAuth2, self-serve, official MCP | developers.google.com |
+| Squarespace | Ecommerce | API_key + OAuth2, self-serve, official MCP | developers.squarespace.com |
 
 ### Accuracy Trajectory
 - **Pass 1 (v1):** ~70% — fabricated quotes, wrong apps, folded MCP auth
@@ -102,17 +106,20 @@ Apps sampled across all 10 categories, multiple auth methods, self-serve/gated a
 |------|-------------|
 | `index.html` | Single-page HTML case study (live at https://sneh30.github.io/composio/) |
 | `all-apps-final.json` | **Canonical** 100-app dataset (authoritative source) |
-| `validate.py` | Assignment validation script — checks all 100 apps against canonical list |
+| `validate.py` | Assignment validation script — diffs by normalized name, not position |
+| `generate_case_study.py` | Regenerates index.html from JSON in one pass |
+| `agent/prompt-v1.md` | Initial research prompt (Phase 1) |
+| `agent/prompt-v2.md` | Final research prompt with verbatim quotes (Phase 2/3) |
+| `agent/PROCESS.md` | Full documentation of the research workflow |
 | `outputs/*.json` | Per-category JSON files (may contain off-list apps from bulk phase) |
-| `build_case_study.py` | Aggregation and pattern analysis script |
 | `README.md` | This file |
 
-### Scratch / Off-List Files (not for submission)
+### Scratch / Evidence Files
 
 | File | Description |
 |------|-------------|
-| `all-apps.json` | v1 corrupted dataset — superseded by `all-apps-final.json` |
-| `all-apps-v2.json` | Intermediate audit file — contains ~137 unique apps (13 extra off-list) |
+| `scratch/all-apps.json` | v1 corrupted dataset — shows the accuracy trajectory starting point |
+| `scratch/all-apps-v2.json` | Intermediate audit file — contains ~137 unique apps (13 extra off-list) |
 | `outputs/missing-*.json` | Re-research batch files generated during audit phase |
 
 ## How to Run
@@ -123,8 +130,28 @@ open index.html
 
 # Or visit live: https://sneh30.github.io/composio/
 
-# Regenerate from JSON (optional)
+# Validate dataset
+python3 validate.py
+
+# Regenerate from JSON
 python3 generate_case_study.py
 ```
 
 Requires Python 3.8+, no external dependencies.
+
+## Final Validation
+
+```
+============================================================
+VALIDATION: all-apps-final.json
+============================================================
+Apps in file:     100
+Canonical apps:   100
+Matched:          100
+Missing:          0
+Extra:            0
+Duplicates:       0
+Category errors:  0
+
+✓ ALL CHECKS PASSED — exactly 100 canonical apps, no missing, no extras, no duplicates
+```

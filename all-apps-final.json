@@ -289,7 +289,9 @@
       "mcp_auth": "high"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://api.docs.dealcloud.com/mcp/authentication"
+    ]
   },
   {
     "app_id": "hubspot",
@@ -575,7 +577,9 @@
       "mcp_auth": "medium"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_web_server_flow.htm"
+    ]
   },
   {
     "app_id": "twenty",
@@ -629,7 +633,9 @@
       "mcp_auth": "high"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://docs.twenty.com/developers/extend/api"
+    ]
   },
   {
     "app_id": "zoho-crm",
@@ -1700,7 +1706,9 @@
       "mcp_auth": "high"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://docs.slack.dev/authentication"
+    ]
   },
   {
     "app_id": "telegram",
@@ -2981,7 +2989,9 @@
       "mcp_auth": "low"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://commas.com/enterprises"
+    ]
   },
   {
     "app_id": "gumroad",
@@ -3537,7 +3547,9 @@
       "mcp_auth": "high"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://docs.apify.com/integrations/mcp"
+    ]
   },
   {
     "app_id": "bright-data",
@@ -4016,7 +4028,9 @@
       "mcp_auth": "n/a"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://github.com/sherlock-project/sherlock"
+    ]
   },
   {
     "app_id": "waterfall",
@@ -4062,7 +4076,9 @@
       "mcp_auth": "n/a"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://docs.waterfall.io/v1/introduction"
+    ]
   },
   {
     "app_id": "cloudflare",
@@ -5145,7 +5161,9 @@
       "mcp_auth": "high"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://developers.linear.app/docs/api-reference"
+    ]
   },
   {
     "app_id": "monday",
@@ -6022,7 +6040,9 @@
       "mcp_auth": "n/a"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://ipayx.ai/docs"
+    ]
   },
   {
     "app_id": "consensus",
@@ -6350,7 +6370,9 @@
       "mcp_auth": "n/a"
     },
     "research_notes": "",
-    "fetched_urls": []
+    "fetched_urls": [
+      "https://github.com/mermaid-js/mermaid-cli"
+    ]
   },
   {
     "app_id": "notebooklm",
