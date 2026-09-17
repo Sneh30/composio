@@ -2109,42 +2109,74 @@
     ]
   },
   {
-    "app_id": "google-calendar",
-    "app_name": "Google Calendar",
+    "app_id": "gohighlevel",
+    "app_name": "GoHighLevel",
     "category": "Marketing, Ads, Email and Social",
-    "one_liner": "MISSING \u2014 needs research",
+    "one_liner": "All-in-one CRM and marketing platform with REST API for contacts, conversations, calendars, opportunities, payments, and workflow automation, plus official and community MCP servers.",
     "auth": {
-      "methods": [],
-      "auth_notes": ""
+      "methods": [
+        "OAuth2",
+        "API_key"
+      ],
+      "auth_notes": "OAuth 2.0 for public/Marketplace apps (Authorization Code Grant). Private Integration Tokens (PIT) for internal or single-location integrations."
     },
     "access": {
-      "type": "unknown",
-      "access_notes": ""
+      "type": "self-serve",
+      "access_notes": "Basic API access included with Starter and Unlimited plans. Advanced API access on Agency Pro plan. PIT available on all plans."
     },
     "api_surface": {
-      "type": "unknown",
-      "breadth": "unknown",
-      "breadth_notes": "",
-      "existing_mcp": false,
-      "mcp_source": "none"
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Complete REST API covering contacts, conversations, calendars, opportunities, payments, workflows, custom objects, social planner, blogs, emails. Official TypeScript SDK.",
+      "existing_mcp": true,
+      "mcp_source": "official"
     },
     "mcp_auth": {
-      "methods": [],
-      "mcp_auth_notes": "",
-      "same_credentials_as_rest_api": false
+      "methods": [
+        "OAuth2",
+        "API_key"
+      ],
+      "mcp_auth_notes": "Official MCP server accepts OAuth 2.0 or PIT. Same credentials as REST API.",
+      "same_credentials_as_rest_api": true
     },
     "mcp_access": {
-      "type": "unknown",
-      "mcp_access_notes": ""
+      "type": "self-serve",
+      "mcp_access_notes": "Official HTTP-based MCP server. Community stdio MCP server for Claude Desktop."
     },
     "buildability_signal": {
       "blockers_observed": [],
-      "notes": ""
+      "notes": "Excellent buildability. Official MCP with hundreds of operations across 40 domains."
     },
-    "evidence": [],
-    "confidence_per_field": {},
-    "research_notes": "PLACEHOLDER \u2014 app was missing from dataset",
-    "fetched_urls": []
+    "evidence": [
+      {
+        "claim": "GoHighLevel supports OAuth 2.0 and Private Integration Tokens",
+        "url": "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0/",
+        "quote": "HighLevel supports the Authorization Code Grant flow with v2 APIs."
+      },
+      {
+        "claim": "Official MCP server with full operation catalog",
+        "url": "https://marketplace.gohighlevel.com/docs/other/mcp/",
+        "quote": "The LeadConnector MCP server gives AI assistants a standardized way to work with your LeadConnector data and operations."
+      },
+      {
+        "claim": "Community MCP server for Claude Desktop with 88 tools",
+        "url": "https://github.com/HighLevelScaling/ghl-mcp-server",
+        "quote": "A comprehensive Model Context Protocol (MCP) server that connects Claude Desktop directly to your GoHighLevel CRM account."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high",
+      "mcp_access": "high"
+    },
+    "research_notes": "GoHighLevel has a mature API with official MCP support. Two auth methods, self-serve, broad API surface.",
+    "fetched_urls": [
+      "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0/",
+      "https://marketplace.gohighlevel.com/docs/other/mcp/",
+      "https://github.com/HighLevelScaling/ghl-mcp-server"
+    ]
   },
   {
     "app_id": "klaviyo",
@@ -3238,42 +3270,74 @@
     ]
   },
   {
-    "app_id": "square",
-    "app_name": "Square",
+    "app_id": "salesforce-commerce-cloud",
+    "app_name": "Salesforce Commerce Cloud",
     "category": "Ecommerce",
-    "one_liner": "MISSING \u2014 needs research",
+    "one_liner": "Salesforce B2C Commerce platform with SCAPI (Shopper/Login/Admin APIs), SLAS OAuth 2.1 auth, and an official MCP service for agentic shopping experiences.",
     "auth": {
-      "methods": [],
-      "auth_notes": ""
+      "methods": [
+        "OAuth2"
+      ],
+      "auth_notes": "Shopper APIs use SLAS (Shopper Login and API Access Service) based on OAuth 2.1. Admin APIs use Account Manager OAuth 2.0. Bearer token for all requests."
     },
     "access": {
-      "type": "unknown",
-      "access_notes": ""
+      "type": "gated",
+      "access_notes": "Requires a B2C Commerce instance, Business Manager access, and SLAS client creation. Not self-serve."
     },
     "api_surface": {
-      "type": "unknown",
-      "breadth": "unknown",
-      "breadth_notes": "",
-      "existing_mcp": false,
-      "mcp_source": "none"
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "SCAPI covers Shopper APIs (products, carts, orders, customer, search), Admin APIs (catalogs, orders, customer lists), and Custom APIs.",
+      "existing_mcp": true,
+      "mcp_source": "official"
     },
     "mcp_auth": {
-      "methods": [],
-      "mcp_auth_notes": "",
-      "same_credentials_as_rest_api": false
+      "methods": [
+        "OAuth2"
+      ],
+      "mcp_auth_notes": "Official MCP uses SLAS tokens (same OAuth 2.1 flow as REST). Requires sfcc.shopper-mcpagent scope.",
+      "same_credentials_as_rest_api": true
     },
     "mcp_access": {
-      "type": "unknown",
-      "mcp_access_notes": ""
+      "type": "gated",
+      "mcp_access_notes": "Official MCP Service is in pilot \u2014 requires B2C Commerce instance. Developer tooling MCP is open source on GitHub."
     },
     "buildability_signal": {
-      "blockers_observed": [],
-      "notes": ""
+      "blockers_observed": [
+        "requires_b2c_commerce_instance",
+        "slas_client_setup_required"
+      ],
+      "notes": "Strong API surface but gated. MCP pilot available but limited to shopper tools."
     },
-    "evidence": [],
-    "confidence_per_field": {},
-    "research_notes": "PLACEHOLDER \u2014 app was missing from dataset",
-    "fetched_urls": []
+    "evidence": [
+      {
+        "claim": "SCAPI uses SLAS OAuth 2.1 for Shopper APIs",
+        "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html",
+        "quote": "Shopper APIs are secured with the Shopper Login and API Access Service (SLAS), but SCAPI Admin APIs are secured with Account Manager (AM) instead."
+      },
+      {
+        "claim": "Official B2C Commerce MCP Service exists (pilot)",
+        "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html",
+        "quote": "We built the B2C Commerce Model Context Protocol (MCP) Service, focusing on the most important users: your shoppers."
+      },
+      {
+        "claim": "MCP requires SLAS token with specific scope",
+        "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html",
+        "quote": "Create a new SLAS client ID or update your current SLAS client ID to include the sfcc.shopper-mcpagent scope in the SLAS JWT scopes field."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high",
+      "mcp_access": "high"
+    },
+    "research_notes": "Salesforce Commerce Cloud (B2C) has a comprehensive API ecosystem. Auth is SLAS-based OAuth 2.1. Official MCP Service is in pilot for shopper experience.",
+    "fetched_urls": [
+      "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html",
+      "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html"
+    ]
   },
   {
     "app_id": "woocommerce",
