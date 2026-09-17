@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Regenerate case-study.html from all-apps-final.json in one pass.
+Regenerate index.html from all-apps-final.json in one pass.
 Run: python3 generate_case_study.py
 """
 import json, html as h
@@ -314,8 +314,8 @@ li{{margin-bottom:0.3rem}}
 </ul></div>
 </div></body></html>''')
 
-with open("case-study.html", "w") as f:
+with open("index.html", "w") as f:
     f.write("".join(html_parts))
 
-print(f"Generated case-study.html ({len(''.join(html_parts))} bytes)")
+print(f"Generated index.html ({len(''.join(html_parts))} bytes)")
 print(f"Stats: {N} apps, {mcp_count} MCP ({mcp_count*100//N}%), {self_serve} self-serve ({self_serve*100//N}%), {official_mcp} official MCP, {auth_differs} auth-differs, {zero_blockers} zero-blockers")
