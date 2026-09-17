@@ -1,0 +1,331 @@
+[
+  {
+    "app_id": "gitlab",
+    "app_name": "GitLab",
+    "category": "Developer Tools and Infra",
+    "one_liner": "DevSecOps platform with integrated CI/CD, source code management, and project management.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token", "Session_auth"],
+      "auth_notes": "You can authenticate with the GitLab REST API in several ways: OAuth 2.0 tokens, Personal access tokens, Project access tokens, Group access tokens, Session cookie, CI/CD job tokens (specific endpoints only)."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "GitLab.com provides self-serve registration. Self-Managed instances require administrator installation and configuration."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "GitLab provides a comprehensive REST API, a GraphQL API, OAuth 2.0 identity provider API, webhooks, and CLI tools (glab, duo).",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The GitLab MCP server supports OAuth 2.0 Dynamic Client Registration, which enables AI tools to register themselves with your GitLab instance.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "On GitLab.com, access to the MCP server is configured for the top-level group. On Self-Managed and Dedicated, it is configured for the instance."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong API surface with official MCP server. Well-documented authentication methods. Self-serve access on GitLab.com."
+    },
+    "evidence": [
+      {"claim": "GitLab provides REST API, GraphQL API, and MCP server", "url": "https://docs.gitlab.com/api/", "quote": "REST API, GraphQL API, OAuth 2.0 identity provider API, GitLab MCP server"},
+      {"claim": "Official MCP server with OAuth 2.0 Dynamic Client Registration", "url": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/", "quote": "The GitLab MCP server supports OAuth 2.0 Dynamic Client Registration, which enables AI tools to register themselves with your GitLab instance."},
+      {"claim": "Multiple authentication methods supported", "url": "https://docs.gitlab.com/api/rest/authentication/", "quote": "You can authenticate with the GitLab REST API in several ways: OAuth 2.0 tokens, Personal access tokens, Project access tokens, Group access tokens, Session cookie, CI/CD job tokens (specific endpoints only)."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "GitLab has a comprehensive API ecosystem with official MCP server support. The MCP server uses OAuth 2.0 Dynamic Client Registration for secure authentication.",
+    "fetched_urls": ["https://docs.gitlab.com/api/", "https://docs.gitlab.com/api/rest/authentication/", "https://docs.gitlab.com/user/model_context_protocol/mcp_server/"]
+  },
+  {
+    "app_id": "bitbucket",
+    "app_name": "Bitbucket",
+    "category": "Developer Tools and Infra",
+    "one_liner": "Git code management and CI/CD platform with Jira integration for team collaboration.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth", "Bearer_token", "API_key"],
+      "auth_notes": "Bitbucket supports Access tokens (repository, project, workspace), API tokens (Basic HTTP Authentication), OAuth 2.0 (Authorization Code Grant, Client Credentials Grant), and JWT for Forge apps."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Bitbucket Cloud provides self-serve registration and API token creation through the web interface."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering repositories, pull requests, pipelines, issues, webhooks, users, workspaces, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "API_key"],
+      "mcp_auth_notes": "The Atlassian Rovo MCP Server uses OAuth 2.1 or API tokens for authentication, with granular permission controls.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "All Atlassian Cloud customers have access to the Atlassian Rovo MCP server, with site-level rate limits depending on plan."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong API with official Atlassian MCP server covering Bitbucket. Multiple authentication methods available. Self-serve access."
+    },
+    "evidence": [
+      {"claim": "Bitbucket provides REST API with multiple authentication methods", "url": "https://developer.atlassian.com/cloud/bitbucket/rest/intro/", "quote": "Access tokens, API tokens (Basic HTTP Authentication), OAuth 2.0 (Authorization Code Grant, Client Credentials Grant)"},
+      {"claim": "Official Atlassian MCP server supports Bitbucket Cloud", "url": "https://github.com/atlassian/atlassian-mcp-server", "quote": "Official remote MCP server for Atlassian. Securely connect Jira, Confluence, Jira Service Management, Bitbucket, and Compass to Claude, ChatGPT, Cursor, VS Code, and other AI tools using OAuth 2.1 or API tokens."},
+      {"claim": "Atlassian Rovo MCP uses OAuth 2.1 authentication", "url": "https://support.atlassian.com/bitbucket-cloud/docs/interacting-with-bitbucket-via-mcp/", "quote": "The Bitbucket Cloud MCP server lets any supported agent runtime interact securely with Bitbucket. It exposes tools that your agent can use to automate tasks."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Bitbucket is covered by the official Atlassian Rovo MCP server which supports OAuth 2.1 and API tokens. Multiple community MCP servers also exist.",
+    "fetched_urls": ["https://developer.atlassian.com/cloud/bitbucket/rest/intro/", "https://github.com/atlassian/atlassian-mcp-server", "https://support.atlassian.com/bitbucket-cloud/docs/interacting-with-bitbucket-via-mcp/"]
+  },
+  {
+    "app_id": "docker-hub",
+    "app_name": "Docker Hub",
+    "category": "Developer Tools and Infra",
+    "one_liner": "Container image registry and sharing platform for Docker images.",
+    "auth": {
+      "methods": ["Bearer_token", "API_key"],
+      "auth_notes": "Docker Hub API supports Password authentication, Personal Access Tokens (PAT), and Organization Access Tokens (OAT). You must use each authentication type with the Create access token route to obtain a bearer token."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Docker Hub provides self-serve registration and API token creation. Subscription tiers (Personal, Pro, Team) affect available features."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API (v2-beta) covering repositories, tags, organizations, teams, invites, SCIM, audit logs, and access tokens.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "The Docker Hub MCP Server uses a Personal Access Token (PAT) for authentication. HUB_PAT_TOKEN environment variable required.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "The Docker Hub MCP Server is publicly available via Docker MCP Catalog and can be used by anyone with a Docker Hub account."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available. API is in v2-beta status but functional. Self-serve access with PAT authentication."
+    },
+    "evidence": [
+      {"claim": "Docker Hub provides REST API v2-beta with multiple auth methods", "url": "https://docs.docker.com/reference/api/hub/latest/", "quote": "Password, Personal Access Token (PAT), Organization Access Token (OAT)"},
+      {"claim": "Official Docker Hub MCP server exists", "url": "https://github.com/docker/hub-mcp", "quote": "The Docker Hub MCP Server is a Model Context Protocol (MCP) server that interfaces with Docker Hub APIs to make them accessible to LLMs."},
+      {"claim": "MCP server uses PAT authentication", "url": "https://hub.docker.com/mcp/server/dockerhub/overview", "quote": "HUB_PAT_TOKEN: your_hub_pat_token"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Docker Hub has an official MCP server with PAT-based authentication. The API is in v2-beta but provides comprehensive coverage of Docker Hub features.",
+    "fetched_urls": ["https://docs.docker.com/reference/api/hub/latest/", "https://github.com/docker/hub-mcp", "https://hub.docker.com/mcp/server/dockerhub/overview"]
+  },
+  {
+    "app_id": "circleci",
+    "app_name": "CircleCI",
+    "category": "Developer Tools and Infra",
+    "one_liner": "Cloud-based continuous integration and delivery platform for automating software builds and deployments.",
+    "auth": {
+      "methods": ["Bearer_token", "Basic_auth", "API_key"],
+      "auth_notes": "CircleCI API supports Bearer Authentication (recommended), Circle-Token header, Basic Authentication (legacy), and Personal API tokens. OAuth 2.0 Dynamic Client Registration is also available."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "CircleCI provides self-serve registration and API token creation through the web interface."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API (v2) covering pipelines, workflows, jobs, contexts, insights, users, projects, and webhooks.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "The hosted CircleCI MCP server supports OAuth2 authentication or personal API tokens. The CLI MCP uses credentials from circleci auth login or CIRCLE_TOKEN environment variable.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "The hosted MCP server is available at https://mcp.circleci.com/v1/mcp. CircleCI runs it, so there is nothing to install locally."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available both as hosted service and CLI-built-in. Multiple authentication methods. Self-serve access."
+    },
+    "evidence": [
+      {"claim": "CircleCI provides REST API v2 with multiple auth methods", "url": "https://circleci.com/docs/guides/toolkit/api-developers-guide", "quote": "Bearer Authentication (recommended): Industry-standard (RFC 6750). Pass the token as a Bearer token in the Authorization header."},
+      {"claim": "Official CircleCI MCP server available", "url": "https://circleci.com/mcp", "quote": "The CircleCI MCP server makes your build system understandable by AI tools like Cursor, Claude Code, Windsurf, and more."},
+      {"claim": "Hosted MCP server supports OAuth2", "url": "https://circleci.com/product/mcp", "quote": "The hosted MCP server, available at https://mcp.circleci.com/v1/mcp. CircleCI runs it, so there is nothing to install locally. Your AI assistant connects to it over HTTPS, authenticating with OAuth2 or a personal API token."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "CircleCI offers both a hosted MCP server and a CLI-built-in MCP. The hosted server supports OAuth2 authentication, making it easy to integrate with AI tools.",
+    "fetched_urls": ["https://circleci.com/docs/guides/toolkit/api-developers-guide", "https://circleci.com/mcp", "https://circleci.com/product/mcp"]
+  },
+  {
+    "app_id": "jira",
+    "app_name": "Jira",
+    "category": "Developer Tools and Infra",
+    "one_liner": "Project management and issue tracking platform for agile software development teams.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth", "API_key"],
+      "auth_notes": "Jira Cloud supports OAuth 2.0 (3LO) for integrations, Basic authentication for ad-hoc API calls, API tokens, Forge apps with REST API scopes, and Connect apps with JWT authentication."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Jira Cloud provides self-serve registration. Data Center requires administrator installation. The Atlassian Rovo MCP Server is available to all Atlassian Cloud customers."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API (v2, v3) covering issues, projects, workflows, boards, sprints, comments, attachments, users, and many more endpoints.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "API_key"],
+      "mcp_auth_notes": "The Atlassian Rovo MCP Server uses OAuth 2.1 or API tokens for authentication. The MCP server cannot grant access to a project or work item that you cannot already see.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "All Atlassian Cloud customers have access to the Atlassian Rovo MCP server, with site-level rate limits depending on Jira and Confluence plan."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official Atlassian Rovo MCP server provides comprehensive access to Jira. Multiple authentication methods. Self-serve for Cloud, admin for Data Center."
+    },
+    "evidence": [
+      {"claim": "Jira provides comprehensive REST API v3", "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/", "quote": "The Jira REST API enables you to interact with Jira programmatically. Use this API to build apps, script interactions with Jira, or develop any other type of integration."},
+      {"claim": "Official Atlassian Rovo MCP server supports Jira", "url": "https://github.com/atlassian/atlassian-mcp-server", "quote": "The official Atlassian Rovo MCP Server is a cloud-based bridge that gives your AI tools secure, real-time access to Jira, Confluence, Jira Service Management, Bitbucket, Compass, Loom, and the wider Atlassian platform."},
+      {"claim": "MCP server uses OAuth 2.1 authentication", "url": "https://community.atlassian.com/forums/App-Central-articles/Jira-MCP-Explained-What-It-Does-What-It-Doesn-t-and-How-to-Use/ba-p/3241874", "quote": "The Atlassian Rovo MCP Server is the official implementation of Jira MCP. It runs on Atlassian's infrastructure, uses OAuth 2.1 authentication, and gives your AI assistant scoped access to Jira and other Atlassian products."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Jira is covered by the official Atlassian Rovo MCP server with comprehensive API access. OAuth 2.1 authentication provides secure access. Rate limits vary by plan.",
+    "fetched_urls": ["https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/", "https://github.com/atlassian/atlassian-mcp-server", "https://community.atlassian.com/forums/App-Central-articles/Jira-MCP-Explained-What-It-Does-What-It-Doesn-t-and-How-to-Use/ba-p/3241874"]
+  },
+  {
+    "app_id": "notion",
+    "app_name": "Notion",
+    "category": "Developer Tools and Infra",
+    "one_liner": "All-in-one workspace for notes, docs, project management, and databases.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "A bearer token is required to interact with the Notion API. Use an installation access token from an internal connection, an OAuth access token from a public connection, or a personal access token."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Notion provides self-serve registration. OAuth connections require user authorization. Workspace owners can manage MCP client access in Settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "RESTful API covering pages, databases, blocks, users, comments, searches, and file uploads with cursor-based pagination.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Notion MCP is a remote MCP server hosted by Notion. After you authorize a connection with OAuth, the MCP client can use Notion MCP tools to read and update content that you can access.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Workspace owners can manage MCP client access in Settings -> Connections. Organization owners can also use the Admin API to list and revoke members' connections."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official Notion MCP server available with OAuth-based authentication. Well-documented API with SDKs. Self-serve access with user authorization."
+    },
+    "evidence": [
+      {"claim": "Notion provides RESTful API with bearer token authentication", "url": "https://developers.notion.com/reference/intro", "quote": "A bearer token is required to interact with the Notion API. Use an installation access token from an internal connection, an OAuth access token from a public connection, or a personal access token."},
+      {"claim": "Official Notion MCP server with OAuth", "url": "https://developers.notion.com/guides/mcp/overview", "quote": "Notion MCP is a remote MCP server hosted by Notion. After you authorize a connection with OAuth, the MCP client can use Notion MCP tools to read and update content that you can access."},
+      {"claim": "MCP server provides tools for AI agents", "url": "https://github.com/makenotion/notion-mcp-server", "quote": "We've introduced Notion MCP, a remote MCP server with the following improvements: Easy installation via standard OAuth. No need to fiddle with JSON or API tokens anymore. Powerful tools tailored to AI agents, including editing pages in Markdown."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Notion has an official remote MCP server with OAuth-based authentication. The API is well-documented with official SDKs. Self-serve access with workspace-level controls.",
+    "fetched_urls": ["https://developers.notion.com/reference/intro", "https://developers.notion.com/guides/mcp/overview", "https://github.com/makenotion/notion-mcp-server"]
+  },
+  {
+    "app_id": "airtable",
+    "app_name": "Airtable",
+    "category": "Developer Tools and Infra",
+    "one_liner": "Cloud-based database platform with spreadsheet-like interface for building collaborative applications.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "Airtable API supports Personal Access Tokens (PATs) for scripts and server-side setups, and OAuth for end-user connections. The MCP server supports both OAuth (recommended for end-user connections) and PATs."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Airtable provides self-serve registration. The MCP server is available to all users on all plans. Enterprise users may need admin allowlisting for third-party integrations."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering bases, tables, records, fields, attachments, webhooks, and automations. Official JavaScript SDK available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Airtable MCP server supports OAuth (recommended for end-user connections) and Personal Access Tokens (PATs, recommended for CLI, scripts, and server-side setups).",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "The MCP server is available to all users on all plans. Enterprise users may need admin allowlisting for third-party integrations."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official Airtable MCP server available with OAuth and PAT authentication. Well-documented API with official SDK. Self-serve access."
+    },
+    "evidence": [
+      {"claim": "Airtable provides REST API with official JavaScript SDK", "url": "https://airtable.com/developers/web/api/introduction", "quote": "The Airtable API can be used to integrate your data in Airtable with any external system. The API closely follows REST semantics, uses JSON to encode objects."},
+      {"claim": "Official Airtable MCP server with OAuth and PAT", "url": "https://airtable.com/developers/agents/mcp/getting-started", "quote": "Our MCP server supports two authentication methods: OAuth (recommended for end-user connections) and Personal Access Tokens (PATs, recommended for CLI, scripts, and server-side setups)."},
+      {"claim": "MCP server available to all plans", "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server", "quote": "The Airtable MCP server lets you connect AI tools directly to your Airtable bases. This integration allows you to ask questions about your data, create and update records, build and manage automations, and analyze information."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Airtable has an official MCP server with both OAuth and PAT authentication options. The API is well-documented with official SDKs. Available to all plan tiers.",
+    "fetched_urls": ["https://airtable.com/developers/web/api/introduction", "https://airtable.com/developers/agents/mcp/getting-started", "https://support.airtable.com/docs/using-the-airtable-mcp-server"]
+  }
+]

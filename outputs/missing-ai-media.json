@@ -1,0 +1,517 @@
+[
+  {
+    "app_id": "notebooklm",
+    "app_name": "NotebookLM",
+    "category": "AI, Research and Media-native",
+    "one_liner": "Google's AI notebook that lets you upload sources and get grounded, cited answers with audio/video generation — no official public API exists.",
+    "auth": {
+      "methods": ["google_account_cookie", "undocumented_google_api"],
+      "auth_notes": "This library uses undocumented Google APIs that can change without notice."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Free to use with a Google account. Enterprise (Gemini Notebook Enterprise) available via Google Cloud."
+    },
+    "api_surface": {
+      "type": "undocumented",
+      "breadth": "broad",
+      "breadth_notes": "Community libraries (notebooklm-py) expose full notebook lifecycle, sources, studio generation, sharing, Q&A — but all via undocumented internal Google APIs. Enterprise API via Google Cloud REST endpoint exists for managed deployments.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["google_account_cookie"],
+      "auth_notes": "This library uses undocumented Google APIs that can change without notice.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers use browser-based Google login. No official hosted MCP."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["undocumented APIs", "no official public API", "Google can change endpoints anytime"],
+      "notes": "Strong community ecosystem (notebooklm-py has 18K+ GitHub stars). Unofficial but functional. Google rebranded to Gemini Notebook in July 2026. Enterprise API exists but requires Google Cloud setup."
+    },
+    "evidence": [
+      {
+        "claim": "NotebookLM has no official public REST API; community uses undocumented Google APIs",
+        "url": "https://github.com/teng-lin/notebooklm-py",
+        "quote": "This library uses undocumented Google APIs that can change without notice. Not affiliated with Google - This is a community project. APIs may break - Google can change internal endpoints anytime."
+      },
+      {
+        "claim": "Google has an Enterprise API via Google Cloud",
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+        "quote": "Gemini Notebook Enterprise is a powerful tool for generating insights and summaries from your documents. This page describes the APIs that let you perform the following notebook management tasks programmatically: Create a notebook, Retrieve a notebook, List recently viewed notebooks, Delete a notebook, Share a notebook."
+      },
+      {
+        "claim": "Multiple community MCP servers exist",
+        "url": "https://github.com/PleasePrompto/notebooklm-mcp",
+        "quote": "MCP server for Google NotebookLM. It drives a real Chrome via Patchright (stealth + persistent fingerprint) so an agent can chat against a notebook, ingest sources, generate audio overviews, and read DOM-level citations."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "medium",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Google rebranded NotebookLM to Gemini Notebook in July 2026. No official public API from Google. Enterprise API exists via Google Cloud (discoveryengine). Community ecosystem is large (18K+ stars on notebooklm-py) with MCP servers, CLI, Python SDK, and REST API server. All community tools use undocumented internal Google APIs.",
+    "fetched_urls": [
+      "https://github.com/teng-lin/notebooklm-py",
+      "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "https://github.com/PleasePrompto/notebooklm-mcp",
+      "https://github.com/alfredang/notebooklm-mcp",
+      "https://pypi.org/project/notebooklm-py/"
+    ]
+  },
+  {
+    "app_id": "fathom",
+    "app_name": "Fathom",
+    "category": "AI, Research and Media-native",
+    "one_liner": "AI meeting recording and transcription platform with public REST API, SDKs, OAuth, and an official hosted MCP server.",
+    "auth": {
+      "methods": ["api_key", "oauth2"],
+      "auth_notes": "API keys are created at the user level. Your key can access meetings recorded by you or shared to your Team. Admin API keys do not grant access to other users' unshared meetings."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Anyone can browse the API docs and start building! Partners can register an OAuth app to be eligible for a future marketplace listing as a Fathom-approved integration."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API for meetings, summaries, transcripts, teams, team members, webhooks. TypeScript and Python SDKs. Rate limit: 60 calls per minute per user.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "Fathom uses OAuth: the first time you connect, your MCP client opens a browser window to sign in and authorize access, then reuses the credentials for future sessions.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Add the endpoint https://api.fathom.ai/mcp to any MCP-compatible client such as Claude Code, Cursor, or VS Code."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["rate_limit_60rpm"],
+      "notes": "Official hosted MCP at https://api.fathom.ai/mcp with OAuth. Public API is well-documented with SDKs. Rate limit is 60 rpm per user, no higher limits available."
+    },
+    "evidence": [
+      {
+        "claim": "Fathom has a public REST API with API key auth",
+        "url": "https://docs.fathom.ai/quickstart",
+        "quote": "Generate an API key and make your first call. API keys are scoped to the user who creates them. Your key can only access meetings you've recorded or that are shared with your team."
+      },
+      {
+        "claim": "Fathom has an official hosted MCP server",
+        "url": "https://mcp.so/servers/fathom",
+        "quote": "The Fathom remote MCP server is a hosted Model Context Protocol endpoint at https://api.fathom.ai/mcp, so AI assistants can connect to it without installing or running anything locally."
+      },
+      {
+        "claim": "Fathom has official TypeScript and Python SDKs",
+        "url": "https://developers.fathom.ai/sdks/index.md",
+        "quote": "Get started with our official SDKs. They handle authentication, pagination, error handling, and all the complex stuff so you can focus on building amazing integrations."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Fathom (fathom.video) is a meeting AI tool with a well-documented public API. Official MCP at https://api.fathom.ai/mcp. Official TypeScript and Python SDKs. OAuth available for public integrations. Rate limit: 60 rpm per user. Community MCP servers also exist on GitHub.",
+    "fetched_urls": [
+      "https://docs.fathom.ai/",
+      "https://docs.fathom.ai/quickstart",
+      "https://developers.fathom.ai/sdks/index.md",
+      "https://help.fathom.video/en/articles/8368641-public-api",
+      "https://mcp.so/servers/fathom"
+    ]
+  },
+  {
+    "app_id": "consensus",
+    "app_name": "Consensus",
+    "category": "AI, Research and Media-native",
+    "one_liner": "AI-powered academic search engine over 220M+ peer-reviewed papers with REST API and official MCP server.",
+    "auth": {
+      "methods": ["api_key"],
+      "auth_notes": "Every request must include your API key in the x-api-key header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create an API key from your API & MCP Dashboard at consensus.app/api-mcp/. Free plan available with 30 API/MCP calls per month."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "narrow",
+      "breadth_notes": "Single REST endpoint for paper search with query, filters for study type, journal quality, year range, and full text chunks. Focused on search — not a general-purpose API.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth", "api_key"],
+      "auth_notes": "Supported Platforms: Claude Desktop (OAuth), ChatGPT (OAuth), Claude Code (OAuth), Codex (OAuth), Cursor (OAuth), VS Code (Config), Windsurf (Config), Other MCP Clients (Bearer token).",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Server URL: https://mcp.consensus.app/mcp. Add it from the Claude connectors directory or ChatGPT app directory."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["narrow_api_surface"],
+      "notes": "Official MCP at https://mcp.consensus.app/mcp. REST API is narrow — single search endpoint. Free tier: 30 calls/mo. Pro: 500/mo. Deep: 2000/mo. MCP available in Claude, ChatGPT, Cursor, Codex, and more."
+    },
+    "evidence": [
+      {
+        "claim": "Consensus has a single REST search endpoint",
+        "url": "https://docs.consensus.app/api-get-started",
+        "quote": "The Consensus API lets you search 220+ million peer-reviewed papers over a single REST endpoint. Send a query and get back ranked papers with titles, authors, journals, publication years, citation counts, and direct links."
+      },
+      {
+        "claim": "Consensus has an official MCP server",
+        "url": "https://docs.consensus.app/consensus-mcp",
+        "quote": "The Consensus MCP server enables AI assistants like ChatGPT, Claude, Gemini Spark, and other MCP-compatible clients to search over 220 million peer-reviewed academic research papers directly from the conversation."
+      },
+      {
+        "claim": "MCP server hosted at mcp.consensus.app",
+        "url": "https://docs.consensus.app/consensus-mcp",
+        "quote": "Server URL: https://mcp.consensus.app/mcp"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Consensus has official REST API and MCP server. API is focused on paper search (single endpoint). MCP is widely supported (Claude, ChatGPT, Cursor, Codex, Windsurf, VS Code, Gemini Spark, Microsoft Copilot). GitHub repo: Consensus-NLP/consensus-api and Consensus-NLP/consensus-mcp.",
+    "fetched_urls": [
+      "https://docs.consensus.app/",
+      "https://docs.consensus.app/api-get-started",
+      "https://docs.consensus.app/consensus-mcp",
+      "https://github.com/Consensus-NLP/consensus-mcp"
+    ]
+  },
+  {
+    "app_id": "reducto",
+    "app_name": "Reducto",
+    "category": "AI, Research and Media-native",
+    "one_liner": "Agentic document platform for parsing, extracting, splitting, classifying, and editing documents at enterprise scale with REST API, SDKs, CLI, and official MCP server.",
+    "auth": {
+      "methods": ["api_key", "oauth_device_flow"],
+      "auth_notes": "The server resolves API keys in this order: 1. REDUCTO_API_KEY environment variable (highest priority). 2. ~/.reducto/config.yaml, the shared credential store with the Reducto CLI."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Get your API key at studio.reducto.ai/api-keys. Free tier available. Enterprise plans for VPC, on-prem, and air-gapped deployment."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full document lifecycle: parse, extract, split, classify, edit. SDKs in Python, Node.js, Go. CLI. 30+ file types. SOC 2 Type II, HIPAA, zero data retention.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key", "oauth_device_flow"],
+      "auth_notes": "Browser login (recommended): uvx mcp-server-reducto --login. Reuse an existing CLI session: reducto login. Set the env var directly: export REDUCTO_API_KEY=your-key.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Hosted server at https://mcp.reducto.ai/mcp with API key. Local server via uvx mcp-server-reducto with browser login or env var."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP (hosted + local), SDKs in 3 languages, CLI, comprehensive docs. Hosted MCP for quick start, local MCP for file access. Enterprise deployment options."
+    },
+    "evidence": [
+      {
+        "claim": "Reducto has official MCP server (hosted and local)",
+        "url": "https://docs.reducto.ai/mcp-server",
+        "quote": "The Reducto MCP server connects AI agents directly to Reducto. Once installed, agents in Claude Desktop, Claude Code, Codex, Cursor, VS Code, Windsurf, or any other Model Context Protocol client can classify, parse, extract, split, and edit documents as part of their reasoning loop."
+      },
+      {
+        "claim": "Reducto has official Python, Node.js, and Go SDKs",
+        "url": "https://docs.reducto.ai/",
+        "quote": "For developers building automated pipelines. Available in Python, Node.js, Go, and REST."
+      },
+      {
+        "claim": "Hosted MCP at mcp.reducto.ai",
+        "url": "https://docs.reducto.ai/mcp-server",
+        "quote": "The hosted server runs at https://mcp.reducto.ai/mcp."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Reducto is enterprise-grade document processing. Official MCP server on GitHub (reductoai/mcp-server-reducto), hosted at mcp.reducto.ai. SDKs in Python, Node.js, Go. CLI via pip install reducto-cli. SOC 2 Type II, HIPAA compliant. Published on PyPI as mcp-server-reducto.",
+    "fetched_urls": [
+      "https://docs.reducto.ai/",
+      "https://docs.reducto.ai/mcp-server",
+      "https://github.com/reductoai/mcp-server-reducto",
+      "https://pypi.org/project/mcp-server-reducto/"
+    ]
+  },
+  {
+    "app_id": "devin",
+    "app_name": "Devin",
+    "category": "AI, Research and Media-native",
+    "one_liner": "Autonomous AI software engineer by Cognition with REST API, CLI, and official hosted MCP server for delegating coding tasks.",
+    "auth": {
+      "methods": ["api_key", "service_user"],
+      "auth_notes": "Use service users with role-based access control for secure, auditable API access. Service user credentials (cog_ prefix)."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To access Devin, sign up at app.devin.ai. Individual and Teams plans are available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API (v3) for sessions, knowledge, playbooks, secrets. Organization API and Enterprise API. Service user auth with RBAC. CLI available at cli.devin.ai.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key", "oauth"],
+      "auth_notes": "Devin CLI supports OAuth for MCP servers. For the official Devin MCP server, use Bearer token with API key.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Official MCP at https://mcp.devin.ai/mcp. Add to Claude Code: claude mcp add -s user -t http deepwiki https://mcp.devin.ai/mcp -H \"Authorization: Bearer <API_KEY>\""
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official hosted MCP at mcp.devin.ai. REST API with service users. CLI at cli.devin.ai. Devin also supports consuming MCP servers (as a client). DeepWiki MCP server is free with no auth."
+    },
+    "evidence": [
+      {
+        "claim": "Devin has an official hosted MCP server",
+        "url": "https://mcp.devin.ai/",
+        "quote": "Devin MCP Server. Setup Instructions: For most clients (Streamable HTTP): { \"mcpServers\": { \"deepwiki\": { \"url\": \"https://mcp.devin.ai/mcp\", \"headers\": { \"Authorization\": \"Bearer <API_KEY>\" } } } }"
+      },
+      {
+        "claim": "Devin has a v3 REST API with service users",
+        "url": "https://docs.devin.ai/api-reference/overview",
+        "quote": "The Devin API enables you to integrate Devin into your applications, automate workflows, and build powerful tools. Use service users with role-based access control for secure, auditable API access."
+      },
+      {
+        "claim": "Devin CLI is available",
+        "url": "https://docs.devin.ai/",
+        "quote": "You can also install Devin for Terminal to use Devin directly from your command line."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Devin by Cognition has official REST API (v3), CLI, and hosted MCP server. API uses service users with RBAC (cog_ prefix). Official MCP at mcp.devin.ai. Devin CLI can also consume MCP servers as a client. GitHub org: CognitionAI. DeepWiki MCP is free, no auth.",
+    "fetched_urls": [
+      "https://docs.devin.ai/",
+      "https://docs.devin.ai/api-reference/overview",
+      "https://mcp.devin.ai/",
+      "https://docs.devin.ai/cli/extensibility/mcp/overview",
+      "https://github.com/CognitionAI"
+    ]
+  },
+  {
+    "app_id": "higgsfield",
+    "app_name": "higgsfield",
+    "category": "AI, Research and Media-native",
+    "one_liner": "Generative media platform for AI images and videos with REST API, Python/TypeScript SDKs, official hosted MCP, and CLI.",
+    "auth": {
+      "methods": ["api_key_id_secret"],
+      "auth_notes": "Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET}"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create and manage server-side credentials in Higgsfield Console at console.higgsfield.ai."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API for image and video generation across 30+ models (Soul, Cinema, Flux, Kling, Veo, Seedance, etc.). Asynchronous with polling and webhooks. Python and TypeScript SDKs.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth"],
+      "auth_notes": "No. Add the Higgsfield MCP server URL in your agent's settings and authenticate through your Higgsfield account. No API keys to manage or configure.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Add the Higgsfield connector URL to Claude, OpenClaw, Hermes Agent, NemoClaw, or any MCP-compatible client. No API key required for MCP."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official hosted MCP at mcp.higgsfield.ai (no API key needed, uses OAuth). REST API with ID:secret auth. Python and TypeScript SDKs. CLI available. 30+ models for image/video generation."
+    },
+    "evidence": [
+      {
+        "claim": "higgsfield has an official hosted MCP server",
+        "url": "https://higgsfield.ai/mcp",
+        "quote": "Add the Higgsfield MCP server to Claude, OpenClaw, Hermes Agent, NemoClaw, or any MCP-compatible client. 30+ models for image and video generation, no API key required."
+      },
+      {
+        "claim": "higgsfield has REST API with ID:secret auth",
+        "url": "https://docs.higgsfield.ai/docs/quickstart",
+        "quote": "curl --request POST --url https://api.higgsfield.ai/higgsfield-ai/soul/v2/standard --header \"Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET}\""
+      },
+      {
+        "claim": "higgsfield has Python and TypeScript SDKs",
+        "url": "https://docs.higgsfield.ai/docs/how-to/sdk",
+        "quote": "Official SDKs handle authentication, submission, polling, cancellation, and file uploads. Use them only in trusted server-side environments."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "higgsfield is a generative media platform. Official MCP at mcp.higgsfield.ai uses OAuth (no API key needed). REST API uses Key ID:Secret auth. Python SDK (pip install higgsfield-client), TypeScript SDK (npm install @higgsfield/client). Community MCP servers also exist on GitHub.",
+    "fetched_urls": [
+      "https://docs.higgsfield.ai/",
+      "https://docs.higgsfield.ai/docs/quickstart",
+      "https://docs.higgsfield.ai/docs/how-to/sdk",
+      "https://higgsfield.ai/mcp"
+    ]
+  },
+  {
+    "app_id": "youtube-transcript",
+    "app_name": "YouTube Transcript",
+    "category": "AI, Research and Media-native",
+    "one_liner": "REST API and Python/Node.js SDKs for extracting YouTube video transcripts with ASR fallback, batch processing, and official MCP server.",
+    "auth": {
+      "methods": ["api_key"],
+      "auth_notes": "Send your API key in the Authorization header: Authorization: Bearer YOUR_API_KEY"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Get an API key at https://youtubetranscript.dev/auth/sign-up. Free plan available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "V2 REST API: transcribe single videos, batch up to 3000, ASR fallback, translations, playlists, channels. Python and Node.js SDKs. Rate limits per plan (Free 1 req/s, Business 100 req/s).",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key"],
+      "auth_notes": "claude mcp add --transport http youtubetranscript https://mcp.youtubetranscript.dev --header \"x-api-token: YOUR_API_KEY\"",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Official MCP at https://mcp.youtubetranscript.dev. Add via Claude CLI or any MCP client."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong buildability. Official REST API, MCP server, Python SDK, Node.js SDK. V2 API is well-documented with OpenAPI spec. Free tier available. Batch processing up to 3000 videos. ASR fallback for missing captions."
+    },
+    "evidence": [
+      {
+        "claim": "YouTube Transcript has official MCP server",
+        "url": "https://www.youtubetranscript.dev/api-docs",
+        "quote": "MCP server — Claude · Cursor. Add the YouTube Transcript MCP server to Claude Desktop, Cursor, or any MCP-compatible client."
+      },
+      {
+        "claim": "YouTube Transcript has V2 REST API",
+        "url": "https://www.youtubetranscript.dev/api-docs",
+        "quote": "V2 is the streamlined, user-owned transcript model. It prioritizes fast cache hits, consistent responses, and no surprise translations unless you request a language."
+      },
+      {
+        "claim": "Python and Node.js SDKs available",
+        "url": "https://www.youtubetranscript.dev/api-docs",
+        "quote": "Node SDK — First-class TypeScript types, retries, pagination helpers, and webhook signature verification. Python SDK — Sync + async clients, type stubs, and helpers for batch and webhook flows."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "YouTube Transcript (youtubetranscript.dev) has official REST API (V2), MCP server at mcp.youtubetranscript.dev, Python SDK (pip install youtubetranscriptdevapi), and Node.js SDK. OpenAPI spec available. Supports captions, ASR, batch processing, translations. Also note: open-source youtube-transcript-api on PyPI (jdepoix) is a separate community library.",
+    "fetched_urls": [
+      "https://www.youtubetranscript.dev/api-docs",
+      "https://github.com/jdepoix/youtube-transcript-api",
+      "https://pypi.org/project/youtube-transcript-api/",
+      "https://github.com/Youtube-Transcript-Dev/Youtube-Transcript-API"
+    ]
+  },
+  {
+    "app_id": "grain",
+    "app_name": "Grain",
+    "category": "AI, Research and Media-native",
+    "one_liner": "Meeting recording and transcription platform with public REST API, webhooks, and official MCP server for accessing transcripts, clips, and AI notes.",
+    "auth": {
+      "methods": ["personal_access_token", "workspace_access_token", "oauth2"],
+      "auth_notes": "Personal Access Token: grants access as the authenticated user. Workspace Access Token: grants access to ALL workspace data. OAuth2: standard Authorization Code flow with PKCE."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Personal API tokens available on Starter plans and above. Workspace Access Tokens require admin access, available on Business and Enterprise plans."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API for recordings, transcripts, clips, tags, teams, hooks, users, meeting types. Upload external recordings. Webhooks for real-time events. Rate limit: 300 req/min.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth"],
+      "auth_notes": "Grain's MCP server uses industry-standard OAuth authentication and HTTPS. Your data stays in your Grain account and is only processed temporarily by Claude to answer your questions.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Official MCP at https://api.grain.com/_/mcp. Available for all users. Supports Claude (native integration), ChatGPT (coming soon), Cursor, Windsurf via mcp-remote."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["wats_require_business_plan"],
+      "notes": "Official MCP at api.grain.com/_/mcp with OAuth. REST API with PAT, WAT, and OAuth2. PATs available on Starter+. WATs require Business/Enterprise. Webhooks for real-time events. 300 req/min rate limit."
+    },
+    "evidence": [
+      {
+        "claim": "Grain has official MCP server",
+        "url": "https://grain.com/release-note/06-18-2025",
+        "quote": "Grain's official MCP server is available now for all users! 🎉 With Grain's new MCP server you can securely access your meetings, notes, transcripts, deals, & coaching scorecard data natively using Anthropic's new Claude Integrations."
+      },
+      {
+        "claim": "Grain MCP server URL",
+        "url": "https://grain.com/release-note/06-18-2025",
+        "quote": "Integration URL: https://api.grain.com/_/mcp"
+      },
+      {
+        "claim": "Grain has REST API with multiple auth methods",
+        "url": "https://developers.grain.com/",
+        "quote": "Personal Access Token: grants access to all data in the workspace, regardless of which user owns it. Use this for server-side integrations where you need workspace-wide access. Requires admin access to generate and is available on Business and Enterprise plans."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Grain (grain.com) has official REST API at api.grain.com and official MCP at api.grain.com/_/mcp. Auth via PAT (Starter+), WAT (Business/Enterprise), or OAuth2. Webhooks for real-time events. MCP supports Claude (native), ChatGPT (coming soon). Community MCP servers also exist on GitHub (eadm/grain-mcp-server).",
+    "fetched_urls": [
+      "https://developers.grain.com/",
+      "https://grain.com/release-note/06-18-2025",
+      "https://support.grain.com/en/articles/15507288-grain-api",
+      "https://support.grain.com/en/articles/14811968-how-to-use-the-grain-mcp-server"
+    ]
+  }
+]

@@ -1,0 +1,297 @@
+[
+  {
+    "app_id": "stripe",
+    "app_name": "Stripe",
+    "category": "Finance and Fintech",
+    "one_liner": "Stripe is a financial infrastructure platform for businesses, providing payment processing, billing, and revenue management APIs.",
+    "auth": {
+      "methods": ["api_key", "oauth"],
+      "auth_notes": "The Stripe API uses API keys to authenticate requests. You can view and manage your API keys in the Stripe Dashboard. Test mode secret keys start with sk_test_ and have unrestricted access to their sandboxes. In live mode, you configure a restricted API key (starts with rk_live_) with specific API permissions."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up at stripe.com, create an account, and start using API keys immediately. No approval required for basic access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering payments, billing, subscriptions, customers, products, invoicing, disputes, webhooks, and more. SDKs available for Ruby, Python, PHP, Java, Node.js, Go, and .NET.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key", "oauth"],
+      "auth_notes": "Stripe hosts a remote MCP server at https://mcp.stripe.com. This allows secure MCP client access via OAuth. Tool permissions are controlled by your Restricted API Key (RAK).",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Official MCP server available at mcp.stripe.com with OAuth authentication. Also available via npx for local usage."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server exists, comprehensive REST API, self-serve access, well-documented auth."
+    },
+    "evidence": [
+      {
+        "claim": "Stripe API uses API keys for authentication",
+        "url": "https://docs.stripe.com/api/authentication",
+        "quote": "The Stripe API uses API keys to authenticate requests. You can view and manage your API keys in the Stripe Dashboard."
+      },
+      {
+        "claim": "Stripe has official MCP server",
+        "url": "https://github.com/stripe/ai",
+        "quote": "Stripe hosts a remote MCP server at https://mcp.stripe.com. This allows secure MCP client access via OAuth."
+      },
+      {
+        "claim": "REST API with multiple SDKs",
+        "url": "https://docs.stripe.com/api",
+        "quote": "The Stripe API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Stripe is one of the most well-documented financial APIs. Official MCP server exists with OAuth support. Self-serve access with immediate API key generation.",
+    "fetched_urls": [
+      "https://docs.stripe.com/api",
+      "https://docs.stripe.com/api/authentication",
+      "https://github.com/stripe/ai"
+    ]
+  },
+  {
+    "app_id": "binance",
+    "app_name": "Binance",
+    "category": "Finance and Fintech",
+    "one_liner": "Binance is a global cryptocurrency exchange providing spot trading, futures, staking, and various crypto financial services.",
+    "auth": {
+      "methods": ["api_key", "hmac_sha256", "rsa", "ed25519"],
+      "auth_notes": "We support HMAC, RSA, and Ed25519 keys. Secure endpoints require a valid API key to be specified and authenticated. API keys can be created on the API Management page of your Binance account."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a Binance account, complete KYC verification if required, and generate API keys from the API Management page. Regional restrictions may apply."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering spot trading, margin, futures, wallets, staking, earnings, NFTs, P2P, and more. WebSocket streams also available.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["api_key", "hmac_sha256"],
+      "auth_notes": "Community MCP servers use API key and secret with HMAC SHA256 signing. No official MCP server from Binance.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Multiple community MCP servers available on GitHub. Users need their own Binance API keys to use any MCP server."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["regional_restrictions"],
+      "notes": "Strong buildability with community MCP servers. Regional restrictions may affect access in certain jurisdictions. Multiple well-maintained community MCP implementations exist."
+    },
+    "evidence": [
+      {
+        "claim": "Binance API uses HMAC, RSA, and Ed25519 authentication",
+        "url": "https://developers.binance.com/en/docs/products/spot/rest-api",
+        "quote": "We support HMAC, RSA, and Ed25519 keys. For more information, please see API Key types."
+      },
+      {
+        "claim": "Multiple community MCP servers exist",
+        "url": "https://github.com/nirholas/Binance-MCP",
+        "quote": "The most comprehensive Model Context Protocol server for Binance — 478+ tools covering the entire Binance.com API"
+      },
+      {
+        "claim": "API keys created on API Management page",
+        "url": "https://developers.binance.com/en/docs/products/spot/rest-api",
+        "quote": "API keys can be created on the API Management page of your Binance account."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "medium",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Binance has comprehensive REST API with multiple auth methods. No official MCP server but several well-maintained community implementations. Regional restrictions noted - availability varies by jurisdiction.",
+    "fetched_urls": [
+      "https://developers.binance.com/en",
+      "https://developers.binance.com/en/docs/products/spot/rest-api",
+      "https://github.com/nirholas/Binance-MCP"
+    ]
+  },
+  {
+    "app_id": "paygent-connect",
+    "app_name": "Paygent Connect",
+    "category": "Finance and Fintech",
+    "one_liner": "Paygent Connect is a Japanese payment gateway service providing bank transfers, credit card processing, and payment link solutions for merchants.",
+    "auth": {
+      "methods": ["merchant_id", "connection_id", "connection_password", "certificate"],
+      "auth_notes": "Fill in the mandatory Merchant_ID, the mandatory Extra Data: Hash Code Generation Key, the mandatory Extra Data: Connect_ID, the mandatory Extra Data: Connect_Password."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "Requires a contract agreement with Paygent. Merchants must apply and be approved to use the payment processing services."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API for payment processing including bank transfers, credit cards, and payment links. Focused on Japanese market payment methods.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": null,
+    "mcp_access": null,
+    "buildability_signal": {
+      "blockers_observed": ["partnership_required", "japanese_market_focus"],
+      "notes": "Limited buildability. Requires merchant agreement, primarily serves Japanese market. No MCP server exists. Documentation is sparse in English."
+    },
+    "evidence": [
+      {
+        "claim": "Paygent requires merchant credentials for authentication",
+        "url": "https://documentation.ixopay.com/manual/adapters/paygent",
+        "quote": "Fill in the mandatory Merchant_ID, the mandatory Extra Data: Hash Code Generation Key, the mandatory Extra Data: Connect_ID, the mandatory Extra Data: Connect_Password."
+      },
+      {
+        "claim": "Paygent is a payment gateway service",
+        "url": "https://altstack.jp/en/services/payment-providers/paygent",
+        "quote": "Developers can integrate payment processing through an API using the module-type implementation, enabling deep integration with existing e-commerce systems."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "medium",
+      "access": "medium",
+      "api_surface": "low",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "Paygent Connect is a Japanese payment gateway. Limited English documentation available. Authentication uses merchant ID, connection ID, and connection password with client certificates for credit card processing. No MCP server exists. Primarily serves Japanese market with bank transfer and credit card processing.",
+    "fetched_urls": [
+      "https://documentation.ixopay.com/manual/adapters/paygent",
+      "https://altstack.jp/en/services/payment-providers/paygent"
+    ]
+  },
+  {
+    "app_id": "xero",
+    "app_name": "Xero",
+    "category": "Finance and Fintech",
+    "one_liner": "Xero is a cloud-based accounting software platform providing invoicing, bookkeeping, payroll, and financial reporting for small businesses.",
+    "auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "OAuth 2.0 is a protocol that lets your app access a user's account without accessing their password. Your app requests specific permission scopes and is granted an access token upon a user's approval."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a free Xero user account, login to the Xero developer dashboard, and create an API application. Custom Connections require a monthly fee."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering accounting, invoices, contacts, bank transactions, payroll (AU/UK/NZ), files, assets, projects, and more. Multiple SDKs available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "Xero MCP server supports OAuth2 authentication with custom connections. Custom connections require different scopes depending on when they were created.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Official MCP server available from XeroAPI on GitHub. Users need Xero developer account with API credentials."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from XeroAPI with 358+ stars. Comprehensive OAuth2 documentation. Self-serve developer access."
+    },
+    "evidence": [
+      {
+        "claim": "Xero uses OAuth 2.0 for authentication",
+        "url": "https://developer.xero.com/documentation/guides/oauth2/overview",
+        "quote": "OAuth 2.0 is a protocol that lets your app access a user's account without accessing their password."
+      },
+      {
+        "claim": "Official MCP server exists from XeroAPI",
+        "url": "https://github.com/XeroAPI/xero-mcp-server",
+        "quote": "This is a Model Context Protocol (MCP) server implementation for Xero. It provides a bridge between the MCP protocol and Xero's API."
+      },
+      {
+        "claim": "Xero developer accounts are free",
+        "url": "https://developer.xero.com/documentation/guides/oauth2/overview",
+        "quote": "Create a free Xero user account, login to the Xero developer dashboard, and create an API application."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Xero has excellent developer ecosystem with official MCP server (358+ stars). OAuth2 authentication well-documented. Self-serve developer access with free accounts. Multiple SDKs and comprehensive API coverage.",
+    "fetched_urls": [
+      "https://developer.xero.com/documentation/guides/oauth2/overview",
+      "https://github.com/XeroAPI/xero-mcp-server",
+      "https://developer.xero.com/documentation/guides/oauth2/auth-flow"
+    ]
+  },
+  {
+    "app_id": "pitchbook",
+    "app_name": "PitchBook",
+    "category": "Finance and Fintech",
+    "one_liner": "PitchBook is a financial data and software company providing private market intelligence on venture capital, private equity, and M&A transactions.",
+    "auth": {
+      "methods": ["api_token"],
+      "auth_notes": "To authenticate to the PitchBook API, simply include a header named 'authorization' with the value of 'PB-Token {API_KEY}' with each API request."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "Our API is a separate offering from the PitchBook Platform that requires a standalone contract agreement. Each request for data to the API will have an associated credit cost."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "RESTful API with endpoints for companies, deals, investors, funds, people, limited partners, service providers, and credit analysis. JSON responses.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": null,
+    "mcp_access": null,
+    "buildability_signal": {
+      "blockers_observed": ["partnership_required", "credit_based_pricing"],
+      "notes": "Limited buildability. Requires contract agreement and credit-based pricing. No official MCP server. Enterprise-focused with high barrier to entry."
+    },
+    "evidence": [
+      {
+        "claim": "PitchBook API requires PB-Token authentication",
+        "url": "http://documenter.getpostman.com/view/5190535/TzCV1iRc",
+        "quote": "To authenticate to the PitchBook API, simply include a header named 'authorization' with the value of 'PB-Token {API_KEY}' with each API request."
+      },
+      {
+        "claim": "API requires standalone contract agreement",
+        "url": "https://pitchbook.com/help/pitchbook-api",
+        "quote": "Our API is a separate offering from the PitchBook Platform that requires a standalone contract agreement."
+      },
+      {
+        "claim": "API uses credit-based pricing",
+        "url": "http://documenter.getpostman.com/view/5190535/TzCV1iRc",
+        "quote": "Each request for data to the API will have an associated credit cost."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "PitchBook has well-documented REST API but requires enterprise contract and credit-based pricing. No official MCP server exists. High barrier to entry with partnership requirements. API sandbox available for developers.",
+    "fetched_urls": [
+      "https://pitchbook.com/help/pitchbook-api",
+      "http://documenter.getpostman.com/view/5190535/TzCV1iRc",
+      "https://pitchbook.com/products/direct-access-data/api"
+    ]
+  }
+]

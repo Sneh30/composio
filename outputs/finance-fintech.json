@@ -1,0 +1,386 @@
+[
+  {
+    "app_id": "plaid",
+    "app_name": "Plaid",
+    "category": "Finance and Fintech",
+    "one_liner": "Plaid connects apps to users' bank accounts for payments, identity verification, and financial data access.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Almost all Plaid API endpoints require a client_id and secret. These may be sent either in the request body or in the headers PLAID-CLIENT-ID and PLAID-SECRET."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To gain access to the Plaid API, create an account on the Plaid Dashboard. Once you've completed the signup process and acknowledged our terms, we'll provide a live client_id and secret via the Dashboard."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Auth, Balance, Identity, Transactions, Investments, Liabilities, Transfer, Payments, Identity Verification, Monitor, Protect, Credit, Assets, Statements, Income, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "mcp_auth_notes": "The Dashboard MCP server is a remote MCP server hosted by Plaid. It provides Production diagnostics and analytics tools. When you communicate with the MCP server directly, pass the access_token from the authorization step in an Authorization: Bearer <access_token> header.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "The Dashboard MCP server works with Production data only. Your team must be approved for Production access with at least one Plaid product to use the MCP server."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Plaid offers a comprehensive REST API with broad coverage. Official MCP server available for Dashboard tools. Community MCP servers exist for full API surface. Production access requires approval."
+    },
+    "evidence": [
+      {"claim": "Plaid API uses Bearer token authentication", "url": "https://plaid.com/docs/api/", "quote": "Almost all Plaid API endpoints require a client_id and secret. These may be sent either in the request body or in the headers PLAID-CLIENT-ID and PLAID-SECRET."},
+      {"claim": "Plaid offers official MCP server", "url": "https://plaid.com/docs/resources/mcp", "quote": "Plaid offers two Model Context Protocol (MCP) servers: The Dashboard MCP server is a remote MCP server hosted by Plaid. It provides Production diagnostics and analytics tools, including tools for debugging Items, reviewing Link conversion data, and checking usage metrics."},
+      {"claim": "Plaid API is REST-based with broad coverage", "url": "https://plaid.com/docs/api/", "quote": "The Plaid API is JSON over HTTP. Requests are POST requests, and responses are JSON, with errors indicated in response bodies as error_code and error_type."},
+      {"claim": "Self-serve API access via dashboard", "url": "https://plaid.com/docs/api/", "quote": "To gain access to the Plaid API, create an account on the Plaid Dashboard. Once you've completed the signup process and acknowledged our terms, we'll provide a live client_id and secret via the Dashboard."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Plaid has a mature REST API with broad financial data coverage. Official MCP server exists for Dashboard tools. Community MCP servers provide full API access. Production access requires approval but is self-serve to apply.",
+    "fetched_urls": ["https://plaid.com/docs/api/", "https://plaid.com/docs/resources/mcp", "https://github.com/NoBanks/plaid-mcp"]
+  },
+  {
+    "app_id": "wise",
+    "app_name": "Wise",
+    "category": "Finance and Fintech",
+    "one_liner": "Wise Platform provides cross-border payments, multi-currency accounts, and card issuing APIs for banks and fintechs.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "The Wise Platform API implements OAuth 2.0 for all partner accounts. Wise also offers a personal API token for SMBs that wish to automate their own Wise.com business accounts."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "To use the Wise Platform API, you must authenticate your requests. Authentication verifies your identity and ensures only authorised users and applications can access the API. It requires a partnership agreement and mTLS setup."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Quotes, Recipients, Transfers, Balances, Profiles, Rates, Cards, Webhooks, KYC, SCA, and more across 160+ countries.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": {
+      "methods": null,
+      "mcp_auth_notes": null,
+      "same_credentials_as_rest_api": null
+    },
+    "mcp_access": {
+      "type": null,
+      "mcp_access_notes": null
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Partnership agreement required", "mTLS setup required"],
+      "notes": "Wise Platform API requires a partnership agreement and mTLS setup. Not fully self-serve. Personal API tokens available for SMB use cases."
+    },
+    "evidence": [
+      {"claim": "Wise Platform uses OAuth 2.0 for partners", "url": "https://docs.wise.com/guides/developer/auth-and-security", "quote": "The Wise Platform API implements OAuth 2.0 for all partner accounts. Wise also offers enhanced security frameworks — mTLS, JOSE, and SCA & 2FA — for partners requiring additional protection."},
+      {"claim": "Partnership required for API access", "url": "https://docs.wise.com/guides/developer/auth-and-security", "quote": "To use the Wise Platform API, you must authenticate your requests. Authentication verifies your identity and ensures only authorised users and applications can access the API. It requires a partnership agreement and mTLS setup."},
+      {"claim": "Personal API tokens available for SMBs", "url": "https://docs.wise.com/guides/developer/auth-and-security", "quote": "In addition to partner accounts, a sub-set of Wise Platform API capabilities are available to individual Wise business accounts. These accounts can generate a personal API token that they can then use in the authorization header of their API requests."},
+      {"claim": "REST API with comprehensive coverage", "url": "https://docs.wise.com/api-reference", "quote": "The Wise Platform API is a REST-based interface that enables programmatic access to Wise's payment infrastructure. All endpoints return JSON-formatted responses and use standard HTTP methods and status codes."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "Wise Platform API is partnership-gated for full access. OAuth 2.0 with mTLS for partners. Personal API tokens available for SMBs. No official MCP server found.",
+    "fetched_urls": ["https://docs.wise.com/guides/developer/auth-and-security", "https://docs.wise.com/api-reference"]
+  },
+  {
+    "app_id": "deel",
+    "app_name": "Deel",
+    "category": "Finance and Fintech",
+    "one_liner": "Deel is a global payroll and HR platform that helps companies hire, manage, pay, and equip any worker anywhere.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "All Deel API requests require authentication and must be made over HTTPS. Deel supports two authentication methods: API tokens (Bearer tokens) and OAuth2."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You need to be an Org Admin or IT Developer Admin on Deel to generate API tokens and build integrations. Generate tokens from the Developer Center in the Deel dashboard."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering EOR, Contractors, Global Payroll, HRIS, Deel IT, Platform APIs, Accounting, Immigration, KYC, Webhooks, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "The Deel MCP server supports two authentication methods: OAuth2 with dynamic client registration (recommended) and bearer token authentication using a personal access token (PAT).",
+      "same_credentials_as_rest_api": "true"
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Any employee can authorize via OAuth and access tools based on their Deel capabilities. The MCP server is available at https://api.letsdeel.com/mcp."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Deel offers comprehensive REST API with self-serve access. Official MCP server with OAuth2 and bearer token support. Strong integration potential."
+    },
+    "evidence": [
+      {"claim": "Deel API uses Bearer token and OAuth2", "url": "https://developer.deel.com/api/authentication", "quote": "All Deel API requests require authentication and must be made over HTTPS. Deel supports two authentication methods: API tokens Simple token-based authentication for server-to-server integrations and OAuth2 Industry-standard protocol for user-authorized app access."},
+      {"claim": "Deel has official MCP server", "url": "https://developer.deel.com", "quote": "Connect Claude Desktop to Deel's MCP server: 'mcpServers': { 'deel': { 'url': 'https://api.letsdeel.com/mcp' } }"},
+      {"claim": "Self-serve API access via Developer Center", "url": "https://developer.deel.com/api/authentication", "quote": "Generating an API token: Navigate to Developer Center, Go to More → Developer in your Deel dashboard, Access the Tokens tab, Click on Access Tokens tab, Create new token."},
+      {"claim": "MCP supports OAuth2 with dynamic client registration", "url": "https://developer.deel.com/mcp/authorization.md", "quote": "The Deel MCP server supports two authentication methods: OAuth2 with dynamic client registration (recommended) and bearer token authentication using a personal access token (PAT)."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Deel has a mature REST API with broad coverage. Official MCP server with OAuth2 support. Self-serve access via Developer Center. Strong integration potential for global payroll and HR workflows.",
+    "fetched_urls": ["https://developer.deel.com/api/authentication", "https://developer.deel.com", "https://developer.deel.com/mcp/authorization.md"]
+  },
+  {
+    "app_id": "gusto",
+    "app_name": "Gusto",
+    "category": "Finance and Fintech",
+    "one_liner": "Gusto is a payroll, benefits, and HR platform for small and mid-sized businesses with comprehensive API and MCP support.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Gusto Embedded supports two types of tokens: system-level and company-level. System access tokens allow application-level actions. Company access tokens allow company-level actions."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Partners can set up applications through the Gusto developer portal. Company access tokens are obtained through partner-managed company creation or OAuth2 authorization code flow."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Companies, Employees, Contractors, Payroll, Benefits, Time Off, Departments, Webhooks, and more. Supports both Embedded Payroll and App Integration models.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The Gusto MCP server allows you to access your data housed within Gusto using natural language. All tools are read-only, ensuring your payroll and employee data remains secure.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "Primary or global admin permissions in Gusto required. The MCP server provides an OAuth2 based connection process and allows you to select the categories of data to which your chosen LLM will have access."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Gusto offers comprehensive REST API with self-serve access. Official MCP server with OAuth2 support. Both Embedded and App Integration models available."
+    },
+    "evidence": [
+      {"claim": "Gusto supports OAuth2 and system/company tokens", "url": "https://docs.gusto.com/embedded-payroll/docs/authentication-and-authorization.md", "quote": "Gusto Embedded supports two types of tokens used throughout development: system-level and company-level. System access tokens allow you to carry out application-level actions such as creating a partner-managed company."},
+      {"claim": "Gusto has official MCP server", "url": "https://gusto.com/product/integrations/gusto_mcp", "quote": "The Gusto MCP server brings your live Gusto data, and the tools to take action, into the AI tools you already use. Ask questions grounded in your real payroll and people data, or hand off the work itself."},
+      {"claim": "MCP requires admin permissions", "url": "https://docs.gusto.com/app-integrations/docs/mcp", "quote": "Primary or global admin permissions in Gusto required. To use the Gusto MCP server on AI platforms, use https://mcp.api.gusto.com as the URL for the MCP connection."},
+      {"claim": "REST API with comprehensive payroll coverage", "url": "https://docs.gusto.com/embedded-payroll/docs/introduction.md", "quote": "Leverage Gusto's API to build your own in-app payroll solution, customized for your users' needs, with Gusto Embedded."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Gusto has a mature REST API with comprehensive payroll coverage. Official MCP server with OAuth2 support. Both Embedded and App Integration models available. Admin permissions required for MCP access.",
+    "fetched_urls": ["https://docs.gusto.com/embedded-payroll/docs/authentication-and-authorization.md", "https://gusto.com/product/integrations/gusto_mcp", "https://docs.gusto.com/app-integrations/docs/mcp"]
+  },
+  {
+    "app_id": "mercury",
+    "app_name": "Mercury",
+    "category": "Finance and Fintech",
+    "one_liner": "Mercury provides banking and financial services for startups with API access to accounts, transactions, payments, and cards.",
+    "auth": {
+      "methods": ["Bearer_token", "Basic_auth"],
+      "auth_notes": "The Mercury API utilizes basic authentication over HTTPS to authenticate actions. Use your API key for the basic auth username, and no value or empty string for the password. You may also specify the token via bearer auth with a standard authentication header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Log into your Mercury account and go to the API Tokens page to generate a new API token. Tokens have three permission tiers: read-only, read-write, and custom."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Accounts, Transactions, Recipients, Cards, Invoicing, Treasury, Users, Categories, Webhooks, Events, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Mercury MCP is a hosted server that gives AI tools secure access to your Mercury account. It uses OAuth for authentication with safe and secure one-click installation.",
+      "same_credentials_as_rest_api": "false"
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "The Mercury MCP is currently in Beta. Connect through OAuth, with safe and secure one-click installation for supported AI tools."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["MCP in Beta"],
+      "notes": "Mercury offers comprehensive REST API with self-serve access. Official MCP server in Beta with OAuth support. Strong integration potential for banking and financial workflows."
+    },
+    "evidence": [
+      {"claim": "Mercury API uses Basic Auth and Bearer token", "url": "https://docs.mercury.com/docs/getting-started.md", "quote": "The Mercury API utilizes basic authentication over HTTPS to authenticate actions. Use your API key for the basic auth username, and no value or empty string for the password. For convenience, you may also specify the token via bearer auth."},
+      {"claim": "Mercury has official MCP server in Beta", "url": "https://docs.mercury.com/docs/what-is-mercury-mcp.md", "quote": "Mercury MCP is a hosted server that gives AI tools secure access to your Mercury account. It's designed to work seamlessly with popular AI assistants like ChatGPT, Claude, Google AI Studio and more."},
+      {"claim": "Self-serve token generation", "url": "https://docs.mercury.com/docs/getting-started.md", "quote": "Log into your Mercury account and go to the API Tokens page to generate a new API token. Click on your organization on the top left of your page, and click All Settings."},
+      {"claim": "Three token permission tiers", "url": "https://docs.mercury.com/docs/getting-started.md", "quote": "There are three types of tokens: read-only, read-write, and custom. The scope of your token should be limited to your needs."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Mercury has a comprehensive REST API with self-serve access. Official MCP server in Beta with OAuth support. Basic Auth and Bearer token authentication. Three token permission tiers for fine-grained access control.",
+    "fetched_urls": ["https://docs.mercury.com/docs/getting-started.md", "https://docs.mercury.com/docs/what-is-mercury-mcp.md"]
+  },
+  {
+    "app_id": "ramp",
+    "app_name": "Ramp",
+    "category": "Finance and Fintech",
+    "one_liner": "Ramp is a corporate card and spend management platform with comprehensive API, MCP, and CLI for expense management.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth"],
+      "auth_notes": "Ramp uses OAuth 2.0 for secure API access, providing granular permission control through scopes and supporting multiple authorization flows for different use cases. Ramp authenticates requests to /developer/v1/token using your client ID and client secret, typically with HTTP Basic Auth."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Ramp offers self-serve API access through the Developer Console. Create apps in sandbox for testing and production for live usage. Admin and Business Owner roles required for third-party app authorization."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Transactions, Bills, Cards, Users, Departments, Funds, Reimbursements, Custom Records, Webhooks, and more. Also offers CLI and MCP servers.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Ramp MCP allows you to securely connect Ramp with AI assistants like ChatGPT and Claude. The MCP server uses OAuth2 for authentication.",
+      "same_credentials_as_rest_api": "true"
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Admins can control which employees have access to Ramp MCP through Integrations. Navigate to Company → Integrations → Ramp MCP in your Ramp dashboard. Employee Tools available to all Ramp users. Admin Tools only available to users with admin or business owner permissions."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Ramp offers comprehensive REST API with self-serve access. Official MCP server with OAuth2 support. Also offers CLI for terminal-based workflows. Strong integration potential for expense management."
+    },
+    "evidence": [
+      {"claim": "Ramp uses OAuth 2.0 with Basic Auth", "url": "https://docs.ramp.com/llms-guides/authorization.txt", "quote": "Ramp uses OAuth 2.0 for secure API access, providing granular permission control through scopes and supporting multiple authorization flows for different use cases. Ramp authenticates requests to /developer/v1/token using your client ID and client secret, typically with HTTP Basic Auth."},
+      {"claim": "Ramp has official MCP server", "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt", "quote": "Ramp MCP allows you to securely connect Ramp with AI assistants like ChatGPT and Claude, so you can query Ramp data and take actions with natural language."},
+      {"claim": "Self-serve API access", "url": "https://docs.ramp.com/llms-guides/authorization.txt", "quote": "For server-to-server integrations where no user interaction is required. Best for internal company integrations, backend services accessing Ramp data, automated workflows and data sync."},
+      {"claim": "MCP access controlled by admins", "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt", "quote": "Admins can control which employees have access to Ramp MCP through Integrations. Navigate to Company → Integrations → Ramp MCP in your Ramp dashboard."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Ramp has a mature REST API with comprehensive expense management coverage. Official MCP server with OAuth2 support. Also offers CLI for terminal workflows. Admin-controlled access for MCP. Strong integration potential.",
+    "fetched_urls": ["https://docs.ramp.com/llms-guides/authorization.txt", "https://docs.ramp.com/llms-guides/ramp-mcp.txt"]
+  },
+  {
+    "app_id": "brex",
+    "app_name": "Brex",
+    "category": "Finance and Fintech",
+    "one_liner": "Brex is a unified spend platform with corporate cards, expense management, reimbursements, travel, and bill pay APIs.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Brex APIs use the REST architecture and require HTTPS. Authentication uses OAuth2 or API tokens passed as Bearer tokens in the Authorization header."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "An account admin or card admin must accept the Developer API agreement in Settings → Developer. Enable the beta in Settings → Beta features and select Brex in AI assistants."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, and Webhooks.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "The Brex MCP server supports two authentication methods: OAuth (recommended) and API key. MCP clients that support OAuth will automatically initiate a browser-based authorization flow.",
+      "same_credentials_as_rest_api": "true"
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "An account admin or card admin must accept the Developer API agreement in Settings → Developer. Enable the beta in Settings → Beta features. Once enabled, all users in your Brex account can connect to the MCP server with their own credentials."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Beta feature requires admin opt-in"],
+      "notes": "Brex offers comprehensive REST API with admin-gated access. Official MCP server with OAuth2 and API key support. Beta feature requires admin opt-in. Strong integration potential for corporate spend management."
+    },
+    "evidence": [
+      {"claim": "Brex API uses OAuth2 and Bearer tokens", "url": "https://developer.brex.com/index.html.md", "quote": "Brex APIs use the REST architecture, are defined using the OpenAPI specification and use standard HTTP response codes and verbs. All APIs accept and return JSON and require HTTPS."},
+      {"claim": "Brex has official MCP server", "url": "https://developer.brex.com/docs/mcp", "quote": "The Brex MCP server lets AI assistants interact directly with your Brex account: manage expenses, look up users, check cards, review banking transactions, track bills, and more through natural language."},
+      {"claim": "MCP supports OAuth and API key", "url": "https://developer.brex.com/docs/mcp", "quote": "The Brex MCP server supports two authentication methods. OAuth (recommended): MCP clients that support OAuth will automatically initiate a browser-based authorization flow. API key: For clients that don't support OAuth, or for programmatic access."},
+      {"claim": "Admin approval required for API access", "url": "https://developer.brex.com/docs/mcp", "quote": "An account admin or card admin must accept the Developer API agreement in Settings → Developer. Enable the beta in Settings → Beta features and select Brex in AI assistants."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Brex has a comprehensive REST API with admin-gated access. Official MCP server with OAuth2 and API key support. Beta feature requires admin opt-in. Strong integration potential for corporate spend management.",
+    "fetched_urls": ["https://developer.brex.com/index.html.md", "https://developer.brex.com/docs/mcp"]
+  },
+  {
+    "app_id": "quickbooks",
+    "app_name": "QuickBooks",
+    "category": "Finance and Fintech",
+    "one_liner": "QuickBooks Online is an accounting platform with comprehensive REST API for financial data, invoicing, and business management.",
+    "auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "QuickBooks Online uses OAuth 2.0 for authorization. Your app sends an authorization request to the Intuit OAuth 2.0 Server. The user gets redirected to an authorization page where they can give your app permission to access their QuickBooks Online company."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Register an app on the Intuit Developer Portal. Create sandbox and production environments. OAuth 2.0 is the authorization standard for registered apps."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Accounting (Customers, Invoices, Bills, Items, Employees), Payments, Reports, and more. Supports CRUD operations for 29+ entity types and 11+ financial reports.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The QuickBooks MCP server uses OAuth 2.0 to authenticate to a QuickBooks Online company. You'll set up an app on the Intuit Developer Portal and connect it to either a sandbox or your production QBO company.",
+      "same_credentials_as_rest_api": "true"
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Register an app on the Intuit Developer Portal. Sandbox supports http://localhost redirect URIs; production requires a public HTTPS callback for the initial authorization."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["OAuth app setup required"],
+      "notes": "QuickBooks offers comprehensive REST API with self-serve access. Official MCP server with OAuth2 support. Requires OAuth app setup on Intuit Developer Portal. Strong integration potential for accounting and financial workflows."
+    },
+    "evidence": [
+      {"claim": "QuickBooks uses OAuth 2.0", "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0", "quote": "If users grant permission, our Intuit OAuth 2.0 Server sends an authorization code back to your app. Your app exchanges this code for access tokens. These tokens are tied to your users' now authorized QuickBooks Online company."},
+      {"claim": "QuickBooks has official MCP server", "url": "https://github.com/intuit/quickbooks-online-mcp-server", "quote": "The QuickBooks MCP Server lets AI assistants access QuickBooks data via a standard interface. It uses the Model Context Protocol to expose QBO features as callable tools, enabling developers to build AI apps that fetch real-time QBO data through MCP."},
+      {"claim": "REST API with comprehensive coverage", "url": "https://developer.intuit.com/app/developer/qbo/docs/learn/rest-api-features", "quote": "The QuickBooks Online Accounting API is a RESTful API that is used to access QuickBooks companies. Base URLs: POST baseURL/v3/company/realmId/resourceName for Create and update operations."},
+      {"claim": "Self-serve developer portal access", "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0", "quote": "Configure your app so it uses the correct credentials (i.e., Client ID and Client secret) and redirect URIs. Review the base URLs in our authorization discovery documents."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "QuickBooks has a mature REST API with comprehensive accounting coverage. Official MCP server from Intuit with OAuth2 support. Self-serve developer portal access. Strong integration potential for accounting and financial workflows.",
+    "fetched_urls": ["https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0", "https://github.com/intuit/quickbooks-online-mcp-server", "https://developer.intuit.com/app/developer/qbo/docs/learn/rest-api-features"]
+  }
+]

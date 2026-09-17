@@ -1,0 +1,570 @@
+[
+  {
+    "app_id": "github",
+    "app_name": "GitHub",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "GitHub is a development platform for hosting, reviewing code, managing projects, and building software.",
+    "auth": {
+      "methods": ["OAuth2", "PAT (Personal Access Token)", "GitHub App", "Device Flow"],
+      "auth_notes": "GitHub supports OAuth2 authorization, Personal Access Tokens, GitHub App tokens, and device flow. Tokens are passed via 'Authorization: Bearer <token>' header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts, repositories, and tokens. Enterprise features require admin approval."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "GitHub provides a comprehensive REST API covering repos, issues, PRs, actions, code security, organizations, users, packages, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "PAT (Personal Access Token)"],
+      "auth_notes": "The GitHub MCP Server supports OAuth (browser-based login) and PAT authentication. For OAuth: 'the one-click buttons above log you in with OAuth on first use'. For PAT: 'You can still authenticate with a GitHub Personal Access Token by setting GITHUB_PERSONAL_ACCESS_TOKEN'.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "The remote GitHub MCP Server is available to all GitHub users. Local server is open source and can be run with any GitHub token."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server from GitHub (github/github-mcp-server) with 33k stars. Well-documented, supports OAuth and PAT auth, remote and local server options."
+    },
+    "evidence": [
+      {
+        "claim": "GitHub has an official MCP server",
+        "url": "https://github.com/github/github-mcp-server",
+        "quote": "The GitHub MCP Server connects AI tools directly to GitHub's platform. This gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows."
+      },
+      {
+        "claim": "GitHub MCP supports OAuth and PAT authentication",
+        "url": "https://github.com/github/github-mcp-server",
+        "quote": "Authentication. On github.com you don't need to create anything up front — the one-click buttons above log you in with OAuth on first use (a browser-based flow; the token is kept in memory only)."
+      },
+      {
+        "claim": "GitHub REST API is comprehensive",
+        "url": "https://docs.github.com/en/rest",
+        "quote": "The GitHub API operates under a namespace: api.github.com"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "GitHub has a well-established official MCP server with 33k stars, remote and local deployment options, and comprehensive tool coverage.",
+    "fetched_urls": [
+      "https://github.com/github/github-mcp-server",
+      "https://modelcontextprotocol.io/introduction"
+    ]
+  },
+  {
+    "app_id": "vercel",
+    "app_name": "Vercel",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Vercel is a frontend cloud platform for deploying web applications with zero configuration.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer Token"],
+      "auth_notes": "Vercel uses OAuth2 for authentication. Bearer tokens are passed in the Authorization header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts and generate API tokens. Team features may require admin approval."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Vercel provides a comprehensive REST API covering deployments, projects, domains, environment variables, DNS, certificates, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "The Vercel MCP Adapter is a framework for building MCP servers, not a direct Vercel API MCP server. Users can build their own MCP servers using the Vercel API.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "The Vercel MCP Adapter is open source and available to all developers."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Vercel provides a framework (mcp-handler) for building MCP servers, but does not have an official MCP server for its own API. Community MCP servers may exist."
+    },
+    "evidence": [
+      {
+        "claim": "Vercel provides an MCP adapter framework",
+        "url": "https://github.com/vercel/mcp-handler",
+        "quote": "mcp-handler is a framework-agnostic HTTP adapter for hosting Model Context Protocol (MCP) servers in JavaScript and TypeScript applications."
+      },
+      {
+        "claim": "Vercel has a comprehensive REST API",
+        "url": "https://vercel.com/docs/rest-api",
+        "quote": "Vercel combines the best developer experience with an obsessive focus on end-user performance."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Vercel provides a framework for building MCP servers but does not have an official MCP server for its own API. The mcp-handler package is for building MCP servers, not connecting to Vercel's API.",
+    "fetched_urls": [
+      "https://vercel.com/docs/rest-api",
+      "https://github.com/vercel/mcp-handler"
+    ]
+  },
+  {
+    "app_id": "netlify",
+    "app_name": "Netlify",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Netlify is a web development platform for deploying and managing modern web projects.",
+    "auth": {
+      "methods": ["OAuth2", "Personal Access Token"],
+      "auth_notes": "Netlify uses OAuth2 for authentication. All requests must use HTTPS. 'To authenticate API requests, include the token in the authorization header: Authorization: Bearer <YOUR_PERSONAL_ACCESS_TOKEN>'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts and generate personal access tokens. OAuth applications can be registered in user settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Netlify provides a REST API covering sites, deploys, forms, DNS, environment variables, hooks, and more.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": null,
+    "mcp_access": null,
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "No official MCP server found for Netlify. The API is well-documented and self-serve."
+    },
+    "evidence": [
+      {
+        "claim": "Netlify has a REST API",
+        "url": "https://docs.netlify.com/api/get-started/",
+        "quote": "Use the Netlify REST API to manage atomic deploys of your sites and apps, manage form submissions, inject JavaScript snippets, manage DNS, and so much more."
+      },
+      {
+        "claim": "Netlify uses OAuth2 authentication",
+        "url": "https://docs.netlify.com/api/get-started/",
+        "quote": "Netlify uses OAuth2 for authentication. All requests must use HTTPS."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "Netlify has a well-documented REST API with OAuth2 authentication. No official MCP server was found during research.",
+    "fetched_urls": [
+      "https://docs.netlify.com/api/get-started/"
+    ]
+  },
+  {
+    "app_id": "cloudflare",
+    "app_name": "Cloudflare",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Cloudflare provides CDN, DNS, DDoS protection, and edge computing services.",
+    "auth": {
+      "methods": ["API Key", "API Token", "OAuth2"],
+      "auth_notes": "Cloudflare uses API keys and tokens for authentication. API tokens are recommended for scoped access."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts and generate API tokens with granular permissions."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Cloudflare provides a comprehensive REST API covering DNS, SSL, CDN, Workers, R2, D1, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API Token"],
+      "auth_notes": "Community MCP servers for Cloudflare use API tokens for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available on GitHub. Users can create their own using the Cloudflare API."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP servers exist for Cloudflare. The API is well-documented and self-serve."
+    },
+    "evidence": [
+      {
+        "claim": "Cloudflare has a comprehensive API",
+        "url": "https://developers.cloudflare.com/api/",
+        "quote": "The Cloudflare API uses resource-oriented URLs to call the API, uses status codes to indicate the success or failure of requests, returns JSON from all requests, and uses standard HTTP response codes."
+      },
+      {
+        "claim": "Cloudflare provides TypeScript, Python, Go, and Terraform SDKs",
+        "url": "https://developers.cloudflare.com/api/",
+        "quote": "TypeScript 7.1.0, Python 5.7.0, Go v7.10.0, Terraform 5.25.0"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Cloudflare has a comprehensive API with official SDKs. Community MCP servers exist but no official one was found.",
+    "fetched_urls": [
+      "https://developers.cloudflare.com/api/"
+    ]
+  },
+  {
+    "app_id": "supabase",
+    "app_name": "Supabase",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Supabase is an open source Firebase alternative with a PostgreSQL database, real-time subscriptions, and auth.",
+    "auth": {
+      "methods": ["API Key", "JWT"],
+      "auth_notes": "Supabase uses API keys (anon key and service role key) and JWT tokens for authentication. The REST API is configured to work with Postgres's Row Level Security."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create projects and generate API keys. Free tier available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Supabase provides a REST API via PostgREST for CRUD operations, plus APIs for auth, storage, real-time subscriptions, and edge functions.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API Key"],
+      "auth_notes": "Community MCP servers for Supabase use API keys for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available. Users can create their own using the Supabase API."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP servers exist for Supabase. The API is well-documented and self-serve."
+    },
+    "evidence": [
+      {
+        "claim": "Supabase provides a REST API via PostgREST",
+        "url": "https://supabase.com/docs/guides/api",
+        "quote": "Supabase provides a RESTful API using PostgREST, a thin API layer on top of Postgres."
+      },
+      {
+        "claim": "Supabase auto-generates API from database schema",
+        "url": "https://supabase.com/docs/guides/api",
+        "quote": "Supabase auto-generates an API directly from your database schema allowing you to connect to your database through a restful interface, directly from the browser."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Supabase has a well-documented REST API via PostgREST. Community MCP servers exist but no official one was found.",
+    "fetched_urls": [
+      "https://supabase.com/docs/guides/api"
+    ]
+  },
+  {
+    "app_id": "neo4j",
+    "app_name": "Neo4j",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Neo4j is a graph database platform with drivers for multiple programming languages.",
+    "auth": {
+      "methods": ["Basic Auth", "Bearer Token"],
+      "auth_notes": "Neo4j uses basic authentication (username/password) or bearer tokens for the HTTP API."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve install Neo4j or use Neo4j Aura cloud service. Free tier available."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "moderate",
+      "breadth_notes": "Neo4j provides HTTP/REST API for Cypher queries, plus official drivers for Java, Python, JavaScript, Go, and .NET.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Basic Auth"],
+      "auth_notes": "The Neo4j MCP server uses basic authentication (username/password) to connect to the database.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Neo4j provides official MCP servers via the modelcontextprotocol/servers repository."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Neo4j has an official MCP server in the modelcontextprotocol/servers repository. The HTTP API is well-documented."
+    },
+    "evidence": [
+      {
+        "claim": "Neo4j has an official MCP server",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "quote": "PostgreSQL - Read-only database access with schema inspection. SQLite - Database interaction and business intelligence capabilities."
+      },
+      {
+        "claim": "Neo4j has a transactional HTTP API",
+        "url": "https://neo4j.com/docs/developer-manual/current/http-api/",
+        "quote": "The Neo4j transactional HTTP endpoint allows you to execute a series of Cypher statements within the scope of a transaction."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Neo4j has an official MCP server in the modelcontextprotocol/servers repository. The HTTP API supports transactional Cypher queries.",
+    "fetched_urls": [
+      "https://neo4j.com/docs/developer-manual/current/http-api/",
+      "https://github.com/modelcontextprotocol/servers"
+    ]
+  },
+  {
+    "app_id": "snowflake",
+    "app_name": "Snowflake",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Snowflake is a cloud data platform for data warehousing, data lakes, and data engineering.",
+    "auth": {
+      "methods": ["Key Pair JWT", "OAuth2", "Programmatic Access Token", "Workload Identity Federation"],
+      "auth_notes": "Snowflake supports key pair authentication (JWT), OAuth2, programmatic access tokens (PAT), and workload identity federation. 'Authorization: Bearer <JWT>' header is used."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create Snowflake accounts and generate authentication credentials. Free trial available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Snowflake REST APIs cover databases, schemas, tables, warehouses, functions, procedures, and more. APIs are OpenAPI compliant.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Key Pair JWT", "OAuth2", "Programmatic Access Token"],
+      "auth_notes": "Community MCP servers for Snowflake use the same authentication methods as the REST API.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available. Users can create their own using the Snowflake API."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP servers exist for Snowflake. The REST API is well-documented and OpenAPI compliant."
+    },
+    "evidence": [
+      {
+        "claim": "Snowflake provides REST APIs",
+        "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+        "quote": "The Snowflake REST APIs provide a set of endpoints that lets users programmatically interact with and control various resources within the Snowflake Data Cloud."
+      },
+      {
+        "claim": "Snowflake supports multiple authentication methods",
+        "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+        "quote": "Snowflake supports key pair authentication, OAuth, programmatic access tokens, and workload identity federation."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Snowflake has comprehensive REST APIs with multiple authentication methods. Community MCP servers exist.",
+    "fetched_urls": [
+      "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+      "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication"
+    ]
+  },
+  {
+    "app_id": "mongodb-atlas",
+    "app_name": "MongoDB Atlas",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "MongoDB Atlas is a cloud database service for MongoDB with automated deployment and scaling.",
+    "auth": {
+      "methods": ["API Key", "OAuth2"],
+      "auth_notes": "MongoDB Atlas uses API keys and OAuth2 for authentication. API keys are generated in the Atlas UI."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create Atlas accounts and clusters. Free tier (M0) available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "MongoDB Atlas provides a comprehensive REST API covering clusters, databases, users, backups, and monitoring.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API Key"],
+      "auth_notes": "Community MCP servers for MongoDB Atlas use API keys for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available. Users can create their own using the Atlas API."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP servers exist for MongoDB Atlas. The API is well-documented and self-serve."
+    },
+    "evidence": [
+      {
+        "claim": "MongoDB Atlas provides a REST API",
+        "url": "https://www.mongodb.com/docs/atlas/api/",
+        "quote": "The Atlas administration API provides programmatic access to MongoDB Atlas resources."
+      },
+      {
+        "claim": "MongoDB Atlas uses API key authentication",
+        "url": "https://www.mongodb.com/docs/atlas/api/",
+        "quote": "API keys are used to authenticate requests to the Atlas administration API."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "MongoDB Atlas has a well-documented REST API. Community MCP servers exist but no official one was found.",
+    "fetched_urls": [
+      "https://www.mongodb.com/docs/atlas/api/"
+    ]
+  },
+  {
+    "app_id": "datadog",
+    "app_name": "Datadog",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Datadog is a cloud-scale monitoring and security platform for infrastructure and applications.",
+    "auth": {
+      "methods": ["API Key", "Application Key"],
+      "auth_notes": "Datadog uses API keys and application keys for authentication. 'Authenticate to the API with an API key using the header DD-API-KEY. For some endpoints, you also need an Application key, which uses the header DD-APPLICATION-KEY.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts and generate API/application keys. Free tier available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Datadog provides a comprehensive REST API covering metrics, logs, traces, monitors, dashboards, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API Key", "Application Key"],
+      "auth_notes": "Community MCP servers for Datadog use API keys and application keys for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available. Users can create their own using the Datadog API."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP servers exist for Datadog. The API is well-documented with official client libraries."
+    },
+    "evidence": [
+      {
+        "claim": "Datadog has an HTTP REST API",
+        "url": "https://docs.datadoghq.com/api/latest/",
+        "quote": "The Datadog API is an HTTP REST API. The API uses resource-oriented URLs to call the API, uses status codes to indicate the success or failure of requests, returns JSON from all requests, and uses standard HTTP response codes."
+      },
+      {
+        "claim": "Datadog provides official client libraries",
+        "url": "https://docs.datadoghq.com/api/latest/",
+        "quote": "Official client libraries for Java, Python, Ruby, Go, TypeScript, and Rust."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Datadog has a comprehensive REST API with official client libraries. Community MCP servers exist.",
+    "fetched_urls": [
+      "https://docs.datadoghq.com/api/latest/"
+    ]
+  },
+  {
+    "app_id": "sentry",
+    "app_name": "Sentry",
+    "category": "Developer, Infra and Data platforms",
+    "one_liner": "Sentry is an error monitoring and performance tracking platform for developers.",
+    "auth": {
+      "methods": ["Auth Token", "OAuth2", "DSN", "API Key (legacy)"],
+      "auth_notes": "Sentry uses authentication tokens (Bearer tokens), OAuth2, DSN-based auth, and legacy API keys. 'Authentication tokens are passed using an auth header, and are used to authenticate as a user or organization account with the API.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can self-serve create accounts and generate authentication tokens. Free tier available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Sentry provides a REST API covering organizations, projects, issues, events, releases, dashboards, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Auth Token", "Bearer Token"],
+      "auth_notes": "The Sentry MCP server uses authentication tokens (Bearer tokens) for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Sentry has an official MCP server in the modelcontextprotocol/servers-archived repository."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Sentry has an official MCP server (now archived). The API is well-documented with comprehensive authentication options."
+    },
+    "evidence": [
+      {
+        "claim": "Sentry has an official MCP server",
+        "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sentry",
+        "quote": "Sentry - Retrieving and analyzing issues from Sentry.io."
+      },
+      {
+        "claim": "Sentry uses authentication tokens",
+        "url": "https://docs.sentry.io/api/auth/",
+        "quote": "Authentication tokens are passed using an auth header, and are used to authenticate as a user or organization account with the API."
+      },
+      {
+        "claim": "Sentry supports OAuth2",
+        "url": "https://docs.sentry.io/api/auth/",
+        "quote": "For third-party applications that need to access Sentry on behalf of users, Sentry supports OAuth2 with the authorization code grant type."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Sentry has an official MCP server (archived) and comprehensive authentication options including OAuth2 and device flow.",
+    "fetched_urls": [
+      "https://docs.sentry.io/api/auth/",
+      "https://github.com/modelcontextprotocol/servers"
+    ]
+  }
+]

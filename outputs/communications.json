@@ -1,0 +1,575 @@
+[
+  {
+    "app_id": "discord",
+    "app_name": "Discord",
+    "category": "Communications",
+    "one_liner": "A voice, video, and text communication platform with a comprehensive REST and WebSocket API for building bots and integrations.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Authenticating with the Discord API can be done in one of two ways: 1. Using a bot token found on the Bot page within your app's settings. 2. Using an OAuth2 bearer token gained through the OAuth2 API."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a developer application at discord.com/developers/applications to get a client ID and bot token. No approval required for basic bot functionality."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "REST API covers guilds, channels, messages, users, voice, webhooks, OAuth2, and more. Gateway (WebSocket) API provides real-time events. Comprehensive coverage of platform features.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers use a Discord bot token (DISCORD_TOKEN) for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP servers are open source and freely available. Users provide their own bot token."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Discord has excellent API documentation, multiple community MCP servers, and straightforward self-serve access. Strong buildability signal."
+    },
+    "evidence": [
+      {
+        "claim": "Discord API supports OAuth2 and bot token authentication",
+        "url": "https://discord.com/developers/docs/reference",
+        "quote": "Authenticating with the Discord API can be done in one of two ways: 1. Using a bot token found on the Bot page within your app's settings. 2. Using an OAuth2 bearer token gained through the OAuth2 API."
+      },
+      {
+        "claim": "Multiple community MCP servers exist for Discord",
+        "url": "https://github.com/PaSympa/discord-mcp",
+        "quote": "MCP server to control Discord — messages, channels, roles, permissions, members, and moderation - PaSympa/discord-mcp"
+      },
+      {
+        "claim": "Discord API is REST-based with WebSocket Gateway",
+        "url": "https://discord.com/developers/docs/reference",
+        "quote": "Discord's API is based around two core layers, a HTTPS/REST API for general operations, and persistent secure WebSocket based connection for sending and subscribing to real-time events."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Discord has a mature, well-documented API. Multiple community MCP servers exist (v-3/discordmcp, PaSympa/discord-mcp). No official MCP server from Discord, but community coverage is strong.",
+    "fetched_urls": [
+      "https://discord.com/developers/docs/reference",
+      "https://discord.com/developers/docs/topics/oauth2",
+      "https://github.com/PaSympa/discord-mcp",
+      "https://github.com/v-3/discordmcp"
+    ]
+  },
+  {
+    "app_id": "microsoft-teams",
+    "app_name": "Microsoft Teams",
+    "category": "Communications",
+    "one_liner": "Enterprise collaboration platform accessible via Microsoft Graph API with OAuth2 authentication through Microsoft Entra ID.",
+    "auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Microsoft Graph is a protected web API for accessing data in Microsoft cloud services like Microsoft Entra ID and Microsoft 365. It's protected by the Microsoft identity platform, which uses OAuth access tokens."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "Requires a Microsoft 365 tenant with Teams license. Apps must be registered in Microsoft Entra ID (Azure AD) and may require admin consent for permissions."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Microsoft Graph API provides access to Teams messages, channels, meetings, files, and broader M365 ecosystem including Outlook, OneDrive, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Microsoft Teams MCP servers use Microsoft Entra ID OAuth2 authentication with app registration credentials.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "Requires Microsoft 365 tenant, app registration in Entra ID, and potentially admin consent for Graph API permissions."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Requires Microsoft 365 tenant", "Admin consent may be needed for Graph permissions"],
+      "notes": "Enterprise-focused with high barrier to entry. Official MCP server exists but requires tenant setup. Good for enterprise integrations, harder for individual developers."
+    },
+    "evidence": [
+      {
+        "claim": "Microsoft Graph uses OAuth2 via Microsoft Entra ID",
+        "url": "https://learn.microsoft.com/en-us/graph/auth/auth-concepts",
+        "quote": "Microsoft Graph is a protected web API for accessing data in Microsoft cloud services like Microsoft Entra ID and Microsoft 365. It's protected by the Microsoft identity platform, which uses OAuth access tokens to verify that an app is authorized to call Microsoft Graph."
+      },
+      {
+        "claim": "Official Microsoft Teams MCP server exists",
+        "url": "https://github.com/microsoft/mcp",
+        "quote": "Manage Microsoft Teams chats, channels, users, and messages via Graph API. Features server-side filtering, pagination, and token optimization."
+      },
+      {
+        "claim": "Teams supports SSO via Entra ID",
+        "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/authentication/authentication",
+        "quote": "Enable single sign-on (SSO) in a Teams app: SSO within Teams is an authentication method that uses an app user's Teams identity to provide them with access to your app."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Enterprise platform with official MCP support from Microsoft. Requires M365 tenant and Entra ID app registration. The bap-microsoft/MCP-Platform repo provides official Teams MCP server.",
+    "fetched_urls": [
+      "https://learn.microsoft.com/en-us/graph/auth/auth-concepts",
+      "https://github.com/microsoft/mcp",
+      "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/authentication/authentication",
+      "https://github.com/inditextech/mcp-teams-server"
+    ]
+  },
+  {
+    "app_id": "telegram",
+    "app_name": "Telegram",
+    "category": "Communications",
+    "one_liner": "Cloud-based messaging platform with a simple Bot API using token-based authentication for building bots and integrations.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Each bot is given a unique authentication token when it is created. The token looks something like 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a bot via @BotFather on Telegram. No approval process required. Bots can be created instantly."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Bot API covers messages, media, stickers, payments, inline queries, games, web apps, and more. Also has MTProto protocol for full user-level access.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers use Telegram bot tokens (TELEGRAM_BOT_TOKEN) for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available. Users provide their own bot token obtained from @BotFather."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Simple token auth, self-serve access, comprehensive API, and multiple community MCP servers. Very developer-friendly."
+    },
+    "evidence": [
+      {
+        "claim": "Telegram Bot API uses token-based authentication",
+        "url": "https://core.telegram.org/bots/api",
+        "quote": "Each bot is given a unique authentication token when it is created. The token looks something like 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11."
+      },
+      {
+        "claim": "Multiple Telegram MCP servers exist",
+        "url": "https://github.com/mcp-telegram/mcp-telegram",
+        "quote": "Telegram MCP Server — connect Telegram to Claude AI & ChatGPT. 181 tools: messages, media, reactions, polls, stories & more."
+      },
+      {
+        "claim": "Bot API is HTTP-based and free to use",
+        "url": "https://core.telegram.org/bots/api",
+        "quote": "The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Telegram has one of the simplest auth models (bot token). Multiple MCP servers available including mcp-telegram/mcp-telegram (181 tools, MTProto userbot) and BrainDAO/mcp-telegram. Very high buildability.",
+    "fetched_urls": [
+      "https://core.telegram.org/bots/api",
+      "https://github.com/mcp-telegram/mcp-telegram",
+      "https://github.com/BrainDAO/mcp-telegram"
+    ]
+  },
+  {
+    "app_id": "whatsapp-business",
+    "app_name": "WhatsApp Business",
+    "category": "Communications",
+    "one_liner": "Meta's business messaging platform with Cloud API for sending messages, managed through Facebook/Meta developer infrastructure.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "The API supports both user and system user access tokens. You can get a user access token by loading your app in the app dashboard. Since user access tokens expire after 24 hours, you'll likely want to generate a system user access token, which lasts up to 60 days."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "Requires a Meta business portfolio, WhatsApp Business Account (WABA), business verification, and phone number registration. Median time from registration to production-ready status is 3-5 business days."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Cloud API covers messaging (text, template, media, interactive), business profiles, phone numbers, media management, webhooks, and analytics.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "Community MCP servers use Meta/Facebook access tokens (WHATSAPP_API_TOKEN) for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "Requires Meta Business Account with verified business status. Business verification is required before API access is granted."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Requires Meta business verification", "Template messages need approval", "Business verification takes 2-4 days"],
+      "notes": "Moderate buildability. High barrier due to business verification, but well-documented API. Community MCP servers exist but are limited."
+    },
+    "evidence": [
+      {
+        "claim": "WhatsApp Cloud API uses Meta access tokens",
+        "url": "https://www.postman.com/meta/whatsapp-business-platform/documentation/wlk6lh4/whatsapp-cloud-api",
+        "quote": "The API supports both user and system user access tokens. You can get a user access token by loading your app in the app dashboard."
+      },
+      {
+        "claim": "Business verification required for production access",
+        "url": "https://cloud-api.azure.tsu.edu/",
+        "quote": "Our analysis reveals that the median time from initial registration to production-ready status is 3-5 business days, primarily constrained by business verification review timelines."
+      },
+      {
+        "claim": "Community MCP servers exist for WhatsApp Business",
+        "url": "https://github.com/prakashwagle/mcp-whatsapp-business-api",
+        "quote": "A production-ready Node.js Model Context Protocol (MCP) server that provides seamless integration between Claude and the WhatsApp Business Cloud API."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "WhatsApp Business API requires Meta ecosystem involvement. Business verification is the main barrier. Community MCP servers exist but are not official. The API itself is well-documented.",
+    "fetched_urls": [
+      "https://www.postman.com/meta/whatsapp-business-platform/documentation/wlk6lh4/whatsapp-cloud-api",
+      "https://cloud-api.azure.tsu.edu/",
+      "https://github.com/prakashwagle/mcp-whatsapp-business-api",
+      "https://github.com/universal-mcp/whatsapp-business"
+    ]
+  },
+  {
+    "app_id": "twilio",
+    "app_name": "Twilio",
+    "category": "Communications",
+    "one_liner": "Cloud communications platform providing APIs for SMS, voice, video, email, and more with HTTP Basic authentication.",
+    "auth": {
+      "methods": ["Basic_auth", "API_key"],
+      "auth_notes": "To authenticate requests to the Twilio APIs, use HTTP Basic authentication. Use your API key SID as the username and your API key secret as the password."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up for a Twilio account and get API credentials from the console. Free trial available for testing."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Over 1,800 endpoints across 30+ products including Messaging, Voice, Video, Verify, Conversations, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Basic_auth", "API_key"],
+      "mcp_auth_notes": "Official MCP server uses API key credentials (ACCOUNT_SID/API_KEY:API_SECRET). The hosted documentation MCP server requires no authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP servers available: hosted docs server (mcp.twilio.com/docs, no auth) and full API server (@twilio-alpha/mcp, requires API credentials)."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Self-serve access, comprehensive documentation, official MCP server from Twilio Labs, and extensive SDK support."
+    },
+    "evidence": [
+      {
+        "claim": "Twilio uses HTTP Basic authentication with API keys",
+        "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+        "quote": "To authenticate requests to the Twilio APIs, use HTTP Basic authentication. Use your API key SID as the username and your API key secret as the password."
+      },
+      {
+        "claim": "Official Twilio MCP server exists",
+        "url": "https://www.twilio.com/docs/ai/mcp",
+        "quote": "The Twilio Model Context Protocol (MCP) server gives AI coding agents direct, structured access to Twilio's full API surface—over 1,800 endpoints across 30+ products—without leaving your IDE."
+      },
+      {
+        "claim": "MCP server hosted at mcp.twilio.com requires no auth",
+        "url": "https://www.twilio.com/docs/ai/mcp",
+        "quote": "No authentication required: The MCP server indexes public API specifications only. No Twilio account or API keys needed."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Twilio has excellent API with official MCP support. Two MCP options: documentation-only server (no auth) and full API server (requires credentials). Very well documented with SDKs in 7+ languages.",
+    "fetched_urls": [
+      "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "https://www.twilio.com/docs/ai/mcp",
+      "https://github.com/twilio-labs/mcp"
+    ]
+  },
+  {
+    "app_id": "sendgrid",
+    "app_name": "SendGrid",
+    "category": "Communications",
+    "one_liner": "Email delivery platform (now Twilio SendGrid) with REST API authenticated via Bearer token API keys.",
+    "auth": {
+      "methods": ["Bearer_token", "Basic_auth"],
+      "auth_notes": "To use an API key, pass an Authorization header with a value of Bearer <Your-API-Key-Here>. When using Basic Authentication, your username will always be apikey, and your password will be your API key."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a SendGrid account and generate API keys in Settings > API Keys. Free tier available with limited sending."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "API covers email sending, templates, contacts, marketing campaigns, suppressions, statistics, sender authentication, and inbound parse.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "Community MCP servers use SendGrid API keys with Bearer token authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP servers available. Users provide their own SendGrid API key."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Good buildability. Self-serve with API keys, well-documented REST API, community MCP servers available. Part of Twilio ecosystem."
+    },
+    "evidence": [
+      {
+        "claim": "SendGrid uses Bearer token API key authentication",
+        "url": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+        "quote": "To authenticate, add an HTTP Authorization header to your API request that contains an API Key. Using API keys, you can add an additional layer of security to your account."
+      },
+      {
+        "claim": "Community MCP servers exist for SendGrid",
+        "url": "https://github.com/Garoth/sendgrid-mcp",
+        "quote": "SendGrid MCP Server - Allows AI Agents to interact with the Twilio SendGrid v3 API, managing contact lists, templates, single sends, and stats."
+      },
+      {
+        "claim": "SendGrid supports both Bearer and Basic auth",
+        "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+        "quote": "Twilio SendGrid supports API keys delivered via Bearer token or Basic authentication, depending on the Twilio SendGrid functionality you are using."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "SendGrid (now Twilio SendGrid) has straightforward API key auth. Multiple community MCP servers available. Part of Twilio ecosystem which has official MCP support.",
+    "fetched_urls": [
+      "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+      "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+      "https://github.com/Garoth/sendgrid-mcp",
+      "https://github.com/iiinigence/sendgrid-mcp"
+    ]
+  },
+  {
+    "app_id": "mailgun",
+    "app_name": "Mailgun",
+    "category": "Communications",
+    "one_liner": "Email API service (now Sinch Mailgun) with HTTP Basic authentication using API keys for sending, receiving, and tracking email.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "Authentication to the Mailgun API is done by providing an Authorization header using HTTP Basic Auth: Username: api, Password: YOUR_API_KEY"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up for a Mailgun account. Primary account API key is generated automatically. Domain Sending Keys can be created for scoped access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "API covers messaging, domains, webhooks, routes, mailing lists, templates, analytics, suppressions, and IP management. US and EU regions supported.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Official Mailgun MCP server uses MAILGUN_API_KEY environment variable for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server available on npm (@mailgun/mcp-server). Self-serve with API key. Open source under Apache 2.0 license."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Self-serve, official MCP server from Mailgun, comprehensive API documentation, OpenAPI spec available."
+    },
+    "evidence": [
+      {
+        "claim": "Mailgun uses HTTP Basic Auth with API key",
+        "url": "https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth.md",
+        "quote": "Authentication to the Mailgun API is done by providing an Authorization header using HTTP Basic Auth: Username: api, Password: YOUR_API_KEY"
+      },
+      {
+        "claim": "Official Mailgun MCP server exists",
+        "url": "https://github.com/mailgun/mailgun-mcp-server",
+        "quote": "A Model Context Protocol (MCP) server for Mailgun that gives AI agents a practical, workflow-oriented interface to send email, diagnose deliverability, and manage account operations."
+      },
+      {
+        "claim": "Mailgun provides OpenAPI specification",
+        "url": "https://documentation.mailgun.com/docs/mailgun/api-reference",
+        "quote": "The complete OpenAPI spec is available here: Download OAS 3.1 Specification"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Mailgun has an official MCP server (@mailgun/mcp-server) with 50+ tools. Simple API key auth. OpenAPI spec available. Part of Sinch family.",
+    "fetched_urls": [
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth.md",
+      "https://github.com/mailgun/mailgun-mcp-server",
+      "https://documentation.mailgun.com/docs/mailgun/api-reference",
+      "https://documentation.mailgun.com/docs/mailgun/mcp"
+    ]
+  },
+  {
+    "app_id": "plivo",
+    "app_name": "Plivo",
+    "category": "Communications",
+    "one_liner": "Cloud communications platform for SMS, voice, and SIP trunking with HTTP Basic authentication.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "All requests to Plivo API are authenticated with BasicAuth using your AUTH ID and AUTH TOKEN. Find your credentials on the Plivo console."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up for a Plivo account and get AUTH ID and AUTH TOKEN from the console. Free trial available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "API covers messaging (SMS/MMS/WhatsApp), voice, SIP trunking, phone numbers, call tracking, and lookup. JSON input required.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Basic_auth"],
+      "mcp_auth_notes": "Official Plivo MCP server uses Plivo SDK with auth_id and auth_token for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server available on GitHub (plivo/mcp). Self-serve with Plivo credentials."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Good buildability. Self-serve access, official MCP server from Plivo, SDKs in 7+ languages."
+    },
+    "evidence": [
+      {
+        "claim": "Plivo uses HTTP Basic Auth with auth_id and auth_token",
+        "url": "https://www.plivo.com/docs/account/api/overview",
+        "quote": "All requests to Plivo API are authenticated with BasicAuth using your AUTH ID and AUTH TOKEN."
+      },
+      {
+        "claim": "Official Plivo MCP server exists",
+        "url": "https://github.com/plivo/mcp",
+        "quote": "Plivo MCP server implementation for sending SMS and other communications tasks."
+      },
+      {
+        "claim": "Plivo provides SDKs in multiple languages",
+        "url": "https://www.plivo.com/docs/account/api/overview",
+        "quote": "Python Node.js Ruby PHP Java .NET Go cURL - SDKs available for all major languages."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Plivo has an official MCP server (plivo/mcp on GitHub) using FastMCP. Simple Basic Auth. SDKs available in 7+ languages. Similar to Twilio in capabilities.",
+    "fetched_urls": [
+      "https://www.plivo.com/docs/account/api/overview",
+      "https://github.com/plivo/mcp",
+      "https://www.plivo.com/docs/account/api/account"
+    ]
+  },
+  {
+    "app_id": "ringcentral",
+    "app_name": "RingCentral",
+    "category": "Communications",
+    "one_liner": "Unified communications platform with OAuth2 authentication covering phone, messaging, video, and contact center APIs.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "RingCentral supports multiple authentication/authorization methods including Authorization Code flow, Authorization Code with PKCE, and JWT flow. Access tokens are transmitted via Bearer HTTP header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a developer account at developers.ringcentral.com. Register an app to get client ID and secret. Free sandbox available for testing."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "APIs cover phone (calls, SMS, fax, voicemail), team messaging, video, analytics, directory, presence, and more. Both RingCentral and RingCX APIs available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official RingCentral MCP servers use OAuth2 authentication. RingEx Phone/Chat/Admin servers require valid RingCentral session.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official MCP servers at mcp.labs.ringcentral.com. No authentication required for tool discovery; most tools require a valid RingCentral session."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Good buildability. Self-serve developer account, official MCP servers from RingCentral Labs, comprehensive API documentation, SDKs available."
+    },
+    "evidence": [
+      {
+        "claim": "RingCentral uses OAuth2 with multiple flow options",
+        "url": "https://developers.ringcentral.com/guide/authentication/tokens",
+        "quote": "OAuth tokens are used to provide an authorization context in each request. It is important to understand the distinctions between token types."
+      },
+      {
+        "claim": "Official RingCentral MCP servers exist",
+        "url": "https://mcp.labs.ringcentral.com/docs/servers",
+        "quote": "RingCentral currently publishes four active MCP servers. All implement the Model Context Protocol specification and are reachable over HTTPS using Server-Sent Events (SSE) transport."
+      },
+      {
+        "claim": "MCP servers cover Phone, Chat, Admin, and CRM integration",
+        "url": "https://mcp.labs.ringcentral.com/docs/servers",
+        "quote": "RingEx Phone | Call logs, AI call notes, SMS, fax, and voicemail from the message store. RingEx Chat | Team messaging (Glip): chats, direct conversations, teams, and posts."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "RingCentral has 4 official MCP servers (Phone, Chat, Admin, App Connect) at mcp.labs.ringcentral.com. OAuth2 auth with multiple flows. Strong enterprise communications platform.",
+    "fetched_urls": [
+      "https://developers.ringcentral.com/guide/authentication/tokens",
+      "https://mcp.labs.ringcentral.com/docs/servers",
+      "https://developers.ringcentral.com/api-reference/OAuth-and-OIDC/getToken",
+      "https://github.com/ringcentral/ringcentral-mcp-docs"
+    ]
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "app_id": "intercom",
+    "app_name": "Intercom",
+    "category": "Customer Support",
+    "one_liner": "AI-first customer service platform with shared inbox, Messenger, and Fin AI agent for support automation.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "Once you have a token, whether an access token or a token via the OAuth process, simply provide it as an Authorization:Bearer header in your requests."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "We provide you with an Access Token as soon as you create an app on your workspace. Each development workspace automatically gives you the option to use OAuth."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full REST API covering conversations, contacts/companies, articles, tickets, tags, admins, teams, webhooks, events, and data exports.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "The MCP server supports two authentication approaches: 1. OAuth Flow (Recommended): Automatic browser-based authentication. 2. Bearer Token: Direct API token authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Connect using the endpoint that matches your workspace's hosted region. Currently supported: US and EU hosted workspaces."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from Intercom with OAuth and Bearer token auth. Broad REST API with comprehensive endpoints. Self-serve access with immediate token generation."
+    },
+    "evidence": [
+      {"claim": "Intercom provides both Access Token and OAuth authentication", "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication", "quote": "To access the Intercom API, you have two authentication options depending on whether your app is public or private."},
+      {"claim": "Intercom hosts an official MCP server", "url": "https://github.com/intercom/intercom-mcp-server", "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification."},
+      {"claim": "MCP server supports OAuth and Bearer token authentication", "url": "https://github.com/intercom/intercom-mcp-server", "quote": "The MCP server supports two authentication approaches: 1. OAuth Flow (Recommended). 2. Bearer Token: Direct API token authentication."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server at https://mcp.intercom.com/mcp. Supports 14 tools for searching conversations/contacts and fetching data.",
+    "fetched_urls": ["https://developers.intercom.com/docs/build-an-integration/learn-more/authentication", "https://github.com/intercom/intercom-mcp-server"]
+  },
+  {
+    "app_id": "zendesk",
+    "app_name": "Zendesk",
+    "category": "Customer Support",
+    "one_liner": "Enterprise customer service platform with ticketing, help center, messaging, and AI agents across multiple channels.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth"],
+      "auth_notes": "You must be a verified user to make API requests. Zendesk supports using OAuth access tokens to authenticate API requests. API tokens are managed in the Admin Center."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API tokens are auto-generated passwords in the Zendesk Admin Center. You can have up to 256 tokens."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering tickets, users, organizations, help center articles, search, views, triggers, automations, macros, Talk, Chat, and Sell APIs.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Basic_auth"],
+      "mcp_auth_notes": "Community MCP servers use OAuth 2.1 PKCE or API token authentication with email/token:api_token format.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available. No official Zendesk MCP server found."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Very broad REST API. Multiple community MCP servers. Self-serve API token generation."
+    },
+    "evidence": [
+      {"claim": "Zendesk supports OAuth and API token authentication", "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/", "quote": "You must be a verified user to make API requests. Zendesk supports using OAuth access tokens to authenticate API requests."},
+      {"claim": "Community MCP servers exist for Zendesk", "url": "https://github.com/fruggr/zendesk-mcp-server", "quote": "A Model Context Protocol (MCP) server that puts Zendesk inside your AI assistant. It finds answers in the Help Center; drafts, updates and translates articles."},
+      {"claim": "API tokens can be up to 184 characters long", "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/", "quote": "Access tokens can be up to 184 characters long."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "medium"},
+    "research_notes": "No official Zendesk MCP server. Community servers: fruggr/zendesk-mcp-server (OAuth 2.1 PKCE), reminia/zendesk-mcp-server (API token), mattcoatsworth/zendesk-mcp-server.",
+    "fetched_urls": ["https://developer.zendesk.com/api-reference/introduction/security-and-auth/", "https://github.com/fruggr/zendesk-mcp-server"]
+  },
+  {
+    "app_id": "freshdesk",
+    "app_name": "Freshdesk",
+    "category": "Customer Support",
+    "one_liner": "Cloud-based customer support platform with ticketing, knowledge base, and AI-powered automation.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "You can use your personal API key to authenticate the request. If you use the API key, there is no need for a password. You can use any set of characters as a dummy password."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Your API key will be available below the change password section. Log in to your Support Portal, click on your profile picture, go to Profile Settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full REST API covering tickets, contacts, companies, agents, groups, solutions, SLA policies, custom objects, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Basic_auth"],
+      "mcp_auth_notes": "Community MCP servers use HTTP Basic Auth with Freshdesk API key as username and any non-empty string as password.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP servers available. No official Freshdesk MCP server."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Good buildability. Broad REST API with Basic Auth. Community MCP servers available. Self-serve API key generation."
+    },
+    "evidence": [
+      {"claim": "Freshdesk uses Basic Auth with API key", "url": "https://developers.freshdesk.com/api/", "quote": "You can use your personal API key to authenticate the request. curl -v -u apikey:X -H Content-Type: application/json -X GET https://domain.freshdesk.com/api/v2/tickets"},
+      {"claim": "Community MCP server for Freshdesk", "url": "https://github.com/effytech/freshdesk_mcp", "quote": "MCP server created for Freshdesk, allowing AI models to interact with Freshdesk modules and perform various support operations."},
+      {"claim": "Username-password authentication deprecated", "url": "https://community.freshworks.dev/t/username-password-authentication-support/3101", "quote": "We are suspending support for username-password based authentication for Freshdesk API endpoints."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "medium"},
+    "research_notes": "Community MCP servers: effytech/freshdesk_mcp, WYRE-AI/freshdesk-mcp, NeuraLegion/freshdesk_mcp. No official MCP server.",
+    "fetched_urls": ["https://developers.freshdesk.com/api/", "https://github.com/effytech/freshdesk_mcp"]
+  },
+  {
+    "app_id": "help-scout",
+    "app_name": "Help Scout",
+    "category": "Customer Support",
+    "one_liner": "Shared inbox platform for customer support with Beacon chat widget, Docs knowledge base, and conversation management.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth"],
+      "auth_notes": "This is an HTTPS-only API and it uses OAuth 2.0 authorization, implementing Authorization Code and Client Credential flows."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You need to create an OAuth2 application before you can use the API. Create one by navigating to Your Profile > My apps and click Create My App."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Inbox API v2 with OAuth2 for conversations, customers, mailboxes, users. Docs API with API key auth. Chat API for Beacon live chats.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Community MCP servers use OAuth2 Client Credentials flow with App ID and App Secret.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP servers available. No official Help Scout MCP server."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Good buildability. OAuth2-based API with broad coverage. Community MCP server available. Self-serve app creation."
+    },
+    "evidence": [
+      {"claim": "Help Scout uses OAuth 2.0 with Authorization Code and Client Credentials flows", "url": "https://developer.helpscout.com/mailbox-api/overview/authentication", "quote": "This is an HTTPS-only API and it uses OAuth 2.0 authorization, implementing Authorization Code and Client Credential flows."},
+      {"claim": "Community MCP server for Help Scout", "url": "https://github.com/mkeizer/help-scout-mcp-server", "quote": "An MCP server that gives AI assistants direct access to your Help Scout inboxes, conversations, customers, organizations, and threads."},
+      {"claim": "Docs API uses API key authentication", "url": "https://developer.helpscout.com/docs-api/", "quote": "This is an HTTPS-only API. Authentication is based on API keys. The API key is passed via HTTP Basic Authentication."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "medium"},
+    "research_notes": "Community MCP server: mkeizer/help-scout-mcp-server. No official MCP server. Docs API has separate API key auth.",
+    "fetched_urls": ["https://developer.helpscout.com/mailbox-api/overview/authentication", "https://github.com/mkeizer/help-scout-mcp-server"]
+  },
+  {
+    "app_id": "crisp",
+    "app_name": "Crisp",
+    "category": "Customer Support",
+    "one_liner": "Customer messaging platform with live chat, shared inbox, knowledge base, and AI chatbot for support.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "You authenticate by adding an Authorization header to all your HTTP calls. The Authorization header is formatted as such: Authorization: Basic BASE64(identifier:key)."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Website tokens are generated directly from the Crisp app. Plugin tokens are generated via the Crisp Marketplace."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering conversations, messages, contacts, operators, websites, campaigns, helpdesk, and more. Also provides RTM API for real-time messaging.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "The Crisp MCP Server uses the same token as the Crisp REST API. Provide the following Authorization header: Authorization: Bearer <CRISP_MCP_SERVER_TOKEN>.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server at https://api.crisp.chat/mcp/. Token generated from Crisp Dashboard > Settings > Workspace Settings > Advanced configuration."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from Crisp. Broad REST API with Basic Auth. Self-serve token generation."
+    },
+    "evidence": [
+      {"claim": "Crisp REST API uses Basic Auth with token keypair", "url": "https://docs.crisp.chat/guides/rest-api/authentication/", "quote": "You authenticate by adding an Authorization header to all your HTTP calls. The Authorization header is formatted as such: Authorization: Basic BASE64(identifier:key)."},
+      {"claim": "Official Crisp MCP server available", "url": "https://docs.crisp.chat/guides/mcp-server/quickstart/", "quote": "The Crisp MCP Server is available at: https://api.crisp.chat/mcp/"},
+      {"claim": "MCP server uses same token as REST API", "url": "https://docs.crisp.chat/guides/mcp-server/quickstart/", "quote": "The Crisp MCP Server uses the same token as the Crisp REST API. As such, depending on the type of token you will be using, the same ACLs enforced on the REST API apply."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server at https://api.crisp.chat/mcp/. Also community servers: crisp-im/crisp-mcp-demo, zernio-dev/crisp-mcp. Two token types: Website Token (single workspace) and Plugin Token (multi-workspace).",
+    "fetched_urls": ["https://docs.crisp.chat/guides/rest-api/authentication/", "https://docs.crisp.chat/guides/mcp-server/quickstart/"]
+  },
+  {
+    "app_id": "tawk-to",
+    "app_name": "tawk.to",
+    "category": "Customer Support",
+    "one_liner": "Free live chat platform with ticketing, knowledge base, and multi-channel messaging for customer support.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "All REST API requests must use HTTPS and use HTTP Basic Authentication with your API key as the username in the Authorization header."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "The REST API is available by request. Fill out the REST API Access Request Form. Once your request is approved, you'll receive a username, password, and a link to the REST API documentation."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering properties, agents, contacts, conversations, webhooks, and chat data. Also provides JavaScript API for widget customization.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": {
+      "methods": null,
+      "mcp_auth_notes": null,
+      "same_credentials_as_rest_api": null
+    },
+    "mcp_access": {
+      "type": null,
+      "mcp_access_notes": null
+    },
+    "buildability_signal": {
+      "blockers_observed": ["REST API access requires approval via form submission"],
+      "notes": "Moderate buildability. REST API requires approval. No MCP server found. JavaScript API available for widget customization."
+    },
+    "evidence": [
+      {"claim": "tawk.to REST API requires approval", "url": "https://help.tawk.to/article/rest-api", "quote": "The REST API is available by request. To get started: 1. Fill out the REST API Access Request Form. 2. Once your request is approved, you'll receive a username, password, and a link to the REST API documentation."},
+      {"claim": "API uses HTTP Basic Authentication", "url": "https://help.tawk.to/article/rest-api", "quote": "All REST API requests must use HTTPS and use HTTP Basic Authentication with your API key as the username in the Authorization header."},
+      {"claim": "JavaScript API for widget customization", "url": "https://developer.tawk.to/", "quote": "Our Javascript API makes it easier for you to manipulate the chat widget displayed on your website and allows you to create complex functions."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "medium", "mcp_auth": "n/a"},
+    "research_notes": "No MCP server found for tawk.to. REST API is in beta and requires approval. JavaScript API available for widget customization. No OAuth support mentioned.",
+    "fetched_urls": ["https://help.tawk.to/article/rest-api", "https://developer.tawk.to/"]
+  },
+  {
+    "app_id": "livechat",
+    "app_name": "LiveChat",
+    "category": "Customer Support",
+    "one_liner": "Customer service platform with live chat, help desk, and AI-powered automation for real-time support.",
+    "auth": {
+      "methods": ["Basic_auth", "OAuth2"],
+      "auth_notes": "Personal Access Tokens (PATs) are the easiest way to access the Text APIs. A PAT acts like a password for the API. OAuth allows each user to authorize your application with their own account."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Personal Access Tokens can be created from the Developer Console. Go to Settings > Authorization > Personal Access Tokens."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive APIs including Agent Chat API, Configuration API, Reports API, Customer Chat API, and HelpDesk API. WebSocket for real-time events.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Basic_auth"],
+      "mcp_auth_notes": "The Text MCP server enforces the authenticated user's existing Text account permissions. External clients connect via mcp-remote to the public endpoint with OAuth.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official Text MCP server at https://mcp.text.com. Supports browser-based connection to Claude and ChatGPT."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from Text/LiveChat. Broad API coverage with PAT and OAuth. Self-serve token creation."
+    },
+    "evidence": [
+      {"claim": "LiveChat uses Personal Access Tokens and OAuth", "url": "https://developers.livechatinc.com/docs/authorization/personal-access-tokens", "quote": "Personal Access Tokens (PATs) are the easiest way to access the Text APIs. A PAT acts like a password for the API."},
+      {"claim": "Official Text MCP server available", "url": "https://platform.text.com/docs/guides/mcp", "quote": "The Text Model Context Protocol (MCP) server enables AI assistants to interact with Text features and data directly."},
+      {"claim": "MCP server enforces user permissions", "url": "https://platform.text.com/docs/guides/mcp", "quote": "The Text MCP server enforces the authenticated user's existing Text account permissions, restricting all actions and data access to their assigned roles, teams, and authorized resources."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server at https://mcp.text.com. Supports tools: search, fetch, get-chat-transcript, list-archived-chats, list-chat-tags, find-ticket, list-tickets, list-ticket-tags. Also community MCP servers via Pipedream and Frontegg.",
+    "fetched_urls": ["https://developers.livechatinc.com/docs/authorization/personal-access-tokens", "https://platform.text.com/docs/guides/mcp"]
+  },
+  {
+    "app_id": "hubspot-service-hub",
+    "app_name": "HubSpot Service Hub",
+    "category": "Customer Support",
+    "one_liner": "Customer service platform within HubSpot's CRM suite with ticketing, knowledge base, and customer feedback tools.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time. Access token is provided using the Bearer HTTP authorization header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You can use service keys to query HubSpot's REST APIs directly without having to use the CLI. Service keys are configured with object-specific scopes."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive CRM APIs covering contacts, companies, deals, tickets, knowledge base, feedback, and more. Part of the broader HubSpot platform.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "HubSpot MCP server supports OAuth 2.0. Apps built with the HubSpot MCP server follow the same distribution limits as other HubSpot apps.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official HubSpot MCP server available. Must be on the new HubSpot Developer Platform. Create a user-level application with read scopes for the CRM objects you want to access."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from HubSpot. Broad CRM API coverage. Multiple authentication methods. Self-serve developer platform."
+    },
+    "evidence": [
+      {"claim": "HubSpot uses OAuth for multi-account apps and static tokens for single accounts", "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview", "quote": "OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time."},
+      {"claim": "Official HubSpot MCP server available", "url": "https://developers.hubspot.com/ai-tools/mcp", "quote": "HubSpot offers two distinct MCP servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform."},
+      {"claim": "Service keys for direct API access", "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/account-service-keys", "quote": "You can use service keys to query HubSpot's REST APIs directly without having to use the CLI or other platform developer tools first."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server (Remote) at mcp.hubspot.com. Also Developer MCP Server (Local) for CLI. Supports OAuth 2.0 with plans for 2.1. Service Hub is part of broader HubSpot CRM platform.",
+    "fetched_urls": ["https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview", "https://developers.hubspot.com/ai-tools/mcp"]
+  },
+  {
+    "app_id": "front",
+    "app_name": "Front",
+    "category": "Customer Support",
+    "one_liner": "Shared inbox platform for team collaboration with email, chat, and SMS unified in one interface.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "The Core API uses Bearer tokens to authenticate its user. You MUST send the token for each request in the Authorization header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You must be an admin to create or manage API tokens. Go to Settings > Developers > API Tokens tab > Create API token."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Core API covering conversations, contacts, messages, channels, teammates, tags, rules, knowledge bases, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Front's MCP server uses OAuth 2.1 with PKCE compatibility. Agents authenticate as a specific Front user, with permissions matching that user's role (user-scoped authorization).",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server at https://mcp.frontapp.com/mcp. Supports Streamable HTTP transport with OAuth 2.1 authentication."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent buildability. Official MCP server from Front. Broad REST API. OAuth 2.1 for MCP. Self-serve API token creation."
+    },
+    "evidence": [
+      {"claim": "Front Core API uses Bearer tokens", "url": "https://dev.frontapp.com/docs/authentication", "quote": "The Core API uses Bearer tokens to authenticate its user. You MUST send the token for each request in the Authorization header."},
+      {"claim": "Official Front MCP server available", "url": "https://dev.frontapp.com/docs/mcp-server", "quote": "Front's MCP server (mcp.frontapp.com/mcp) lets AI agents act on Front conversation data using a single OAuth-authenticated endpoint."},
+      {"claim": "OAuth is required for public integrations", "url": "https://dev.frontapp.com/docs/authentication", "quote": "Front requires that partners implement OAuth instead of API tokens when building Core API integrations that make updates on behalf of a Front customer."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server at https://mcp.frontapp.com/mcp. Also community servers: jp-pfh/front-mcp-server, wearehoust/front-mcp. OAuth 2.1 for MCP, API tokens available for private use.",
+    "fetched_urls": ["https://dev.frontapp.com/docs/authentication", "https://dev.frontapp.com/docs/mcp-server"]
+  },
+  {
+    "app_id": "dixa",
+    "app_name": "Dixa",
+    "category": "Customer Support",
+    "one_liner": "Conversational customer service platform with omnichannel messaging, workflows, and AI-powered automation.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "The Dixa API uses bearer token-based authentication. The tokens can be generated through the Dixa interface and placed in the Authorization header."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "In order to get access to the Dixa API, you have to create an API token as a form of authentication. Currently, only administrators in Dixa terms have access to generating such a token."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering conversations, messages, tags, notes, agents, queues, analytics, end users, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "The Dixa MCP Server connects your AI assistant to your Dixa organization. Authentication: Include your Dixa API key in the Authorization header.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official Dixa MCP server hosted at https://dixa-mcp-public.fastmcp.app/mcp. Provides 79 tools for accessing Dixa data."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API access requires admin privileges"],
+      "notes": "Good buildability. Official MCP server from Dixa. REST API with Bearer token auth. API access gated to admins."
+    },
+    "evidence": [
+      {"claim": "Dixa API uses Bearer token authentication", "url": "https://docs.dixa.io/docs/api-standards-rules", "quote": "The Dixa API uses bearer token-based authentication. Bearer authentication (or sometimes also called token authentication) is an HTTP authentication scheme that involves security tokens called bearer tokens."},
+      {"claim": "Official Dixa MCP server available", "url": "https://docs.dixa.io/docs/dixamcp/dixa-mcp", "quote": "The Dixa MCP Server is a Model Context Protocol (MCP) server that connects your AI assistant to your Dixa organization."},
+      {"claim": "Only admins can generate API tokens", "url": "https://docs.dixa.io/docs/tutorial-create-an-api-token", "quote": "In order to get access to the Dixa API, you have to create an API token as a form of authentication in Dixa. Currently, only administrators in Dixa terms have access to generating such a token."}
+    ],
+    "confidence_per_field": {"auth": "high", "access": "high", "api_surface": "high", "mcp_auth": "high"},
+    "research_notes": "Official MCP server at https://dixa-mcp-public.fastmcp.app/mcp with 79 tools. Also community MCP servers. API access requires admin privileges.",
+    "fetched_urls": ["https://docs.dixa.io/docs/api-standards-rules", "https://docs.dixa.io/docs/dixamcp/dixa-mcp"]
+  }
+]

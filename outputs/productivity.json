@@ -1,0 +1,631 @@
+[
+  {
+    "app_id": "google-calendar",
+    "app_name": "Google Calendar",
+    "category": "Productivity",
+    "one_liner": "Google's calendar service for scheduling, events, and time management with cross-platform sync.",
+    "auth": {
+      "methods": ["OAuth2", "API_key"],
+      "auth_notes": "Google Calendar API uses OAuth 2.0 for user-delegated access and API keys for restricted access."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create projects and enable the Calendar API via Google Cloud Console with self-service access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full CRUD for calendars, events, free/busy queries, color management, and calendar list operations.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Community MCP servers use OAuth2 with Google Cloud credentials. No official MCP server from Google.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available on GitHub. Users configure their own Google OAuth credentials."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Well-documented REST API with broad functionality. Multiple mature community MCP servers exist. No official MCP from Google but community implementations are robust."
+    },
+    "evidence": [
+      {
+        "claim": "Google Calendar API uses OAuth 2.0",
+        "url": "https://developers.google.com/calendar/api/concepts/overview",
+        "quote": "The Calendar API uses OAuth 2.0 for authentication and authorization."
+      },
+      {
+        "claim": "Multiple community MCP servers exist",
+        "url": "https://github.com/nspady/google-calendar-mcp",
+        "quote": "A Model Context Protocol (MCP) server that provides Google Calendar integration for AI assistants like Claude."
+      },
+      {
+        "claim": "Official API supports REST with OAuth2",
+        "url": "https://cloud.google.com/calendar/docs/quickstart",
+        "quote": "The Google Calendar API lets you read and modify calendar events."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Google Calendar has a mature REST API with OAuth2. No official MCP server, but multiple community implementations on GitHub (nspady/google-calendar-mcp, globodai-group/mcp-google-calendar). Community servers use OAuth2 with Google Cloud credentials.",
+    "fetched_urls": [
+      "https://developers.google.com/calendar/api/concepts/overview",
+      "https://cloud.google.com/calendar/docs/quickstart",
+      "https://github.com/nspady/google-calendar-mcp"
+    ]
+  },
+  {
+    "app_id": "outlook-calendar",
+    "app_name": "Outlook Calendar",
+    "category": "Productivity",
+    "one_liner": "Microsoft's calendar service integrated with Outlook and Microsoft 365 for enterprise scheduling.",
+    "auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Microsoft Graph API uses OAuth 2.0 for calendar access via Azure AD app registrations."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can register apps in Azure Portal and request delegated permissions for calendar access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full calendar operations via Microsoft Graph API including events, calendars, free/busy, recurring events, and shared calendars.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Community MCP servers use OAuth2 via Microsoft Graph with Azure AD app registrations. No official Microsoft MCP server.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available. Users configure Azure AD app registrations for authentication."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Robust Graph API with comprehensive calendar operations. Multiple community MCP servers. No official Microsoft MCP for Outlook calendar."
+    },
+    "evidence": [
+      {
+        "claim": "Microsoft Graph provides calendar API access",
+        "url": "https://learn.microsoft.com/en-us/graph/api/overview",
+        "quote": "Microsoft Graph REST API v1.0 endpoint reference provides access to calendar resources."
+      },
+      {
+        "claim": "Community MCP servers exist for Outlook calendar",
+        "url": "https://github.com/jspv/msgraph-email-calendar-mcp",
+        "quote": "A Model Context Protocol (MCP) server that gives AI assistants full access to Microsoft Outlook email and calendar through the Microsoft Graph API."
+      },
+      {
+        "claim": "Calendar events can be managed via Graph API",
+        "url": "https://learn.microsoft.com/en-us/graph/api/resources/calendar",
+        "quote": "The calendar resource type provides access to calendar events and calendar sharing permissions."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Outlook Calendar accessed via Microsoft Graph API with OAuth2. Multiple community MCP servers (jspv/msgraph-email-calendar-mcp, jairosoft-com/mcp-server-outlook-calendar). No official Microsoft MCP server for calendar.",
+    "fetched_urls": [
+      "https://learn.microsoft.com/en-us/graph/api/overview",
+      "https://github.com/jspv/msgraph-email-calendar-mcp",
+      "https://github.com/jairosoft-com/mcp-server-outlook-calendar"
+    ]
+  },
+  {
+    "app_id": "asana",
+    "app_name": "Asana",
+    "category": "Productivity",
+    "one_liner": "Work management platform for projects, tasks, and team collaboration with structured workflows.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Asana supports Personal Access Tokens (PATs) for direct API access and OAuth2 for third-party apps."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create apps in the Asana Developer Console and use Personal Access Tokens for testing."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering tasks, projects, sections, tags, custom fields, portfolios, goals, time tracking, and workspaces.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Official MCP server at mcp.asana.com uses OAuth2. Community servers use Personal Access Tokens.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official MCP server requires OAuth2 authentication. Enterprise+ tiers can control MCP access via app management."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available at mcp.asana.com. Comprehensive API with broad functionality. Multiple community MCP servers also exist."
+    },
+    "evidence": [
+      {
+        "claim": "Asana has an official MCP server",
+        "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+        "quote": "Asana offers a Model Context Protocol (MCP) server that allows AI assistants and other applications to access the Asana Work Graph."
+      },
+      {
+        "claim": "Official MCP server URL is mcp.asana.com",
+        "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+        "quote": "The Asana MCP V2 server is available at: https://mcp.asana.com/v2/mcp."
+      },
+      {
+        "claim": "Enterprise tiers can control MCP access",
+        "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+        "quote": "Customers in Asana's Enterprise+ or Legacy Enterprise tiers can use Asana's app management to allow or block Asana MCP clients."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Asana has an official MCP server at mcp.asana.com/v2/mcp using OAuth2. Also supports Personal Access Tokens. Enterprise tiers can gate MCP access. Multiple community MCP servers also available.",
+    "fetched_urls": [
+      "https://developers.asana.com/docs/overview",
+      "https://developers.asana.com/docs/using-asanas-mcp-server",
+      "https://github.com/roychri/mcp-server-asana"
+    ]
+  },
+  {
+    "app_id": "monday-com",
+    "app_name": "Monday.com",
+    "category": "Productivity",
+    "one_liner": "Work OS platform for project management, CRM, and custom workflows with visual boards.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Monday.com API uses API tokens for authentication. OAuth is available for apps in the marketplace."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate API tokens from their Monday.com account settings for personal use."
+    },
+    "api_surface": {
+      "type": "GraphQL",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive GraphQL API covering boards, items, columns, groups, users, teams, and workspace management.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key", "OAuth2"],
+      "mcp_auth_notes": "Official MCP server supports API token authentication. Hosted MCP uses OAuth.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server available at mcp.monday.com. Local installation also available via npm package."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with hosted and local options. GraphQL API with broad functionality. Active development with recent updates."
+    },
+    "evidence": [
+      {
+        "claim": "Monday.com has an official MCP server",
+        "url": "https://github.com/mondaycom/mcp",
+        "quote": "This repository, maintained by the monday.com AI team, provides a comprehensive set of tools for AI agent developers who want to integrate with monday.com."
+      },
+      {
+        "claim": "Hosted MCP server at mcp.monday.com",
+        "url": "https://github.com/mondaycom/mcp",
+        "quote": "The fastest, most robust, and reliable way to connect to monday.com. Our hosted MCP service handles all the infrastructure for you."
+      },
+      {
+        "claim": "Local installation via npm",
+        "url": "https://github.com/mondaycom/mcp",
+        "quote": "The @mondaydotcomorg/monday-api-mcp package provides a plug-and-play server implementation for the Model Context Protocol (MCP)."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Monday.com has an official MCP server (mondaycom/mcp) with hosted option at mcp.monday.com. Uses GraphQL API. API tokens for authentication. 422 stars on GitHub.",
+    "fetched_urls": [
+      "https://developer.monday.com/api-reference/reference",
+      "https://github.com/mondaycom/mcp",
+      "https://github.com/mondaycom/mcp/blob/master/packages/monday-api-mcp/README.md"
+    ]
+  },
+  {
+    "app_id": "clickup",
+    "app_name": "ClickUp",
+    "category": "Productivity",
+    "one_liner": "All-in-one productivity platform for tasks, docs, goals, and team collaboration.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "ClickUp supports Personal API Tokens and OAuth2 for third-party app integrations."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate API tokens from ClickUp Settings > Apps. OAuth apps can be created for marketplace distribution."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API v2 covering tasks, spaces, folders, lists, views, comments, docs, goals, time tracking, and custom fields.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key", "OAuth2"],
+      "mcp_auth_notes": "Official MCP server in public beta supports API token authentication. OAuth2 available for third-party apps.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official MCP server available as public beta. Users can set up via ClickUp's documentation."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server in public beta. Comprehensive REST API with broad functionality. Multiple community MCP servers also exist."
+    },
+    "evidence": [
+      {
+        "claim": "ClickUp has an official MCP server in public beta",
+        "url": "https://clickup.com/api/",
+        "quote": "Connect your AI with ClickUp using our MCP Server."
+      },
+      {
+        "claim": "MCP setup instructions available",
+        "url": "https://clickup.com/api/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+        "quote": "Use ClickUp right from your AI assistant."
+      },
+      {
+        "claim": "ClickUp API supports OAuth2",
+        "url": "https://clickup.com/api/docs/authentication",
+        "quote": "Build apps for others - OAuth flow."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "ClickUp has an official MCP server in public beta. REST API v2 with comprehensive coverage. OAuth2 and API token authentication. Multiple community MCP servers on GitHub.",
+    "fetched_urls": [
+      "https://clickup.com/api/",
+      "https://clickup.com/api/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+      "https://clickup.com/api/docs/authentication"
+    ]
+  },
+  {
+    "app_id": "todoist",
+    "app_name": "Todoist",
+    "category": "Productivity",
+    "one_liner": "Task management app for organizing work and personal tasks with natural language input.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Todoist supports Personal API tokens and OAuth2 with refresh tokens for secure authentication."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate API tokens from Todoist Settings > Integrations. OAuth apps can be registered via App Management Console."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API and Sync API covering tasks, projects, sections, labels, comments, reminders, filters, and workspaces.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official MCP server at ai.todoist.net/mcp uses OAuth2 authentication. Users authorize via browser.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official hosted MCP server at ai.todoist.net/mcp. Also available as npm package for local use."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with hosted and local options. Comprehensive API with REST and Sync endpoints. Active development with recent v1 API updates."
+    },
+    "evidence": [
+      {
+        "claim": "Todoist has an official MCP server",
+        "url": "https://github.com/Doist/todoist-mcp",
+        "quote": "A set of tools to connect to AI agents, to allow them to use Todoist on a user's behalf. Includes MCP support."
+      },
+      {
+        "claim": "Official MCP server URL is ai.todoist.net/mcp",
+        "url": "https://developer.todoist.com/rest/v2",
+        "quote": "Primary URL (Streamable HTTP): https://ai.todoist.net/mcp"
+      },
+      {
+        "claim": "Todoist supports OAuth2 with refresh tokens",
+        "url": "https://developer.todoist.com/rest/v2",
+        "quote": "OAuth is also available for token generation. It's especially useful for external applications to obtain a user authorized API token via the OAuth2 protocol."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Todoist has an official MCP server at ai.todoist.net/mcp (538 stars on GitHub). OAuth2 with refresh tokens. REST API and Sync API. Also supports Personal Access Tokens. Multiple community MCP servers exist.",
+    "fetched_urls": [
+      "https://developer.todoist.com/rest/v2",
+      "https://github.com/Doist/todoist-mcp",
+      "https://github.com/Doist/todoist-mcp/blob/main/docs/mcp-server.md"
+    ]
+  },
+  {
+    "app_id": "coda",
+    "app_name": "Coda",
+    "category": "Productivity",
+    "one_liner": "Collaborative document platform combining docs, spreadsheets, and app building capabilities.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Coda API uses Personal API tokens for authentication. OAuth2 is used for the official MCP server."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate API tokens from Coda Account Settings > API. OAuth apps can be created for integrations."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API v1 covering docs, pages, tables, rows, columns, formulas, controls, permissions, folders, and automations.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official MCP server at coda.io/apis/mcp uses OAuth2 with PKCE. Community servers use API tokens.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official hosted MCP server at coda.io/apis/mcp in public beta since April 2026."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available in public beta. Comprehensive REST API. Multiple community MCP servers also exist."
+    },
+    "evidence": [
+      {
+        "claim": "Coda has an official MCP server",
+        "url": "https://www.usecarly.com/blog/coda-mcp/",
+        "quote": "Yes — Coda has an official MCP server. It's a hosted, remote server at coda.io/apis/mcp that lets any MCP-compatible AI tool read and write your Coda docs, pages, tables, and rows."
+      },
+      {
+        "claim": "Official MCP server in public beta since April 2026",
+        "url": "https://www.usecarly.com/blog/coda-mcp/",
+        "quote": "It went into public beta in April 2026, and it's the connection most people searching 'Coda MCP' are actually looking for."
+      },
+      {
+        "claim": "Official MCP uses OAuth2 with PKCE",
+        "url": "https://www.usecarly.com/blog/coda-mcp/",
+        "quote": "Coda uses OAuth 2 with PKCE, and the scope is automatically set to read and write."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Coda has an official MCP server at coda.io/apis/mcp (public beta since April 2026). Uses OAuth2 with PKCE. REST API v1 with comprehensive coverage. Multiple community MCP servers (vish288/mcp-coda, nkpar/coda-mcp, orellazri/coda-mcp).",
+    "fetched_urls": [
+      "https://www.usecarly.com/blog/coda-mcp/",
+      "https://github.com/vish288/mcp-coda",
+      "https://github.com/orellazri/coda-mcp"
+    ]
+  },
+  {
+    "app_id": "loom",
+    "app_name": "Loom",
+    "category": "Productivity",
+    "one_liner": "Video messaging platform for async communication with screen and camera recording.",
+    "auth": {
+      "methods": ["Session_auth"],
+      "auth_notes": "Loom does not provide a public API key or OAuth for external developers. Internal GraphQL API requires browser session cookies."
+    },
+    "access": {
+      "type": "unknown",
+      "access_notes": "Loom's developer portal focuses on Record SDK and Embed SDK for embedding video, not a general-purpose API. No public REST API for video management."
+    },
+    "api_surface": {
+      "type": "undocumented",
+      "breadth": "narrow",
+      "breadth_notes": "Loom offers Record SDK and Embed SDK for embedding video. No documented REST API for video CRUD or management. Internal GraphQL API exists but is not public.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Session_auth"],
+      "mcp_auth_notes": "Community MCP servers use browser session cookies (connect.sid) to access Loom's internal GraphQL API.",
+      "same_credentials_as_rest_api": null
+    },
+    "mcp_access": {
+      "type": "unknown",
+      "mcp_access_notes": "Community MCP servers require extracting browser cookies. No official MCP server from Loom."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["No public API for video management", "MCP servers use undocumented internal API", "Session cookie authentication is fragile"],
+      "notes": "Loom lacks a public REST API for video management. Community MCP servers use undocumented internal GraphQL API with session cookies. Not suitable for reliable integration."
+    },
+    "evidence": [
+      {
+        "claim": "Loom developer portal focuses on SDKs for embedding",
+        "url": "https://developers.loom.com/",
+        "quote": "With just a few lines of code, you can implement Loom in less than a day. Start building with recordSDK today for free."
+      },
+      {
+        "claim": "Community MCP server uses internal GraphQL API",
+        "url": "https://github.com/karbassi/mcp-loom",
+        "quote": "This server uses Loom's internal GraphQL API via a browser session cookie. There is no official API key — you must grab the cookie from your browser."
+      },
+      {
+        "claim": "Loom offers Record SDK and Embed SDK",
+        "url": "https://developers.loom.com/",
+        "quote": "Our patented video infrastructure delivers the fastest recording, editing, and sharing experience in the world."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "medium",
+      "access": "low",
+      "api_surface": "low",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Loom does not offer a public REST API for video management. Developer portal focuses on Record SDK and Embed SDK for embedding. Community MCP server (karbassi/mcp-loom) uses undocumented internal GraphQL API with browser session cookies. Not suitable for reliable API integration.",
+    "fetched_urls": [
+      "https://developers.loom.com/",
+      "https://github.com/karbassi/mcp-loom"
+    ]
+  },
+  {
+    "app_id": "calendly",
+    "app_name": "Calendly",
+    "category": "Productivity",
+    "one_liner": "Scheduling automation platform for booking meetings and managing availability.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Calendly supports Personal Access Tokens and OAuth2 for API access. OAuth uses standard authorization code flow."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate Personal Access Tokens from Calendly Integrations > API & Webhooks. OAuth apps can be created for third-party integrations."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API v2 covering users, organizations, event types, scheduled events, invitees, webhooks, routing forms, and availability.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official MCP server at mcp.calendly.com uses OAuth2 authentication.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official hosted MCP server available at mcp.calendly.com. Users authenticate via OAuth."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available. Comprehensive REST API with broad coverage. Active development with recent Scheduling API additions."
+    },
+    "evidence": [
+      {
+        "claim": "Calendly has an official MCP server",
+        "url": "https://developer.calendly.com/",
+        "quote": "Add scheduling to your AI apps. Bring scheduling actions into your AI apps through natural conversation, powered by Calendly MCP."
+      },
+      {
+        "claim": "Official MCP endpoint at mcp.calendly.com",
+        "url": "https://developer.calendly.com/",
+        "quote": "Scheduling MCP endpoint: https://mcp.calendly.com"
+      },
+      {
+        "claim": "Calendly API supports OAuth2",
+        "url": "https://developer.calendly.com/",
+        "quote": "OAuth authorization server: https://calendly.com/.well-known/oauth-authorization-server"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Calendly has an official MCP server at mcp.calendly.com. REST API v2 with comprehensive coverage. OAuth2 and Personal Access Token authentication. Multiple community MCP servers also exist.",
+    "fetched_urls": [
+      "https://developer.calendly.com/",
+      "https://developer.calendly.com/api-docs",
+      "https://github.com/meAmitPatil/calendly-mcp-server"
+    ]
+  },
+  {
+    "app_id": "typeform",
+    "app_name": "Typeform",
+    "category": "Productivity",
+    "one_liner": "Conversational form builder for surveys, quizzes, and data collection with engaging UX.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Typeform supports Personal Access Tokens and OAuth2 for API access. OAuth uses standard authorization code flow."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Users can generate Personal Access Tokens from Typeform Account Settings > Developer > Personal tokens."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering forms, responses, themes, images, workspaces, webhooks, and translations.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official MCP server at api.typeform.com/mcp uses OAuth2 authentication. Users authorize via browser.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official hosted MCP server at api.typeform.com/mcp in generally-available beta."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available in beta. Comprehensive REST API. Active development with recent MCP capabilities."
+    },
+    "evidence": [
+      {
+        "claim": "Typeform has an official MCP server",
+        "url": "https://www.typeform.com/developers/get-started/mcp/",
+        "quote": "The Typeform MCP server is a connector that allows you to interact with your Typeform account from an LLM client of your choice."
+      },
+      {
+        "claim": "Official MCP endpoint at api.typeform.com/mcp",
+        "url": "https://www.typeform.com/developers/get-started/mcp/",
+        "quote": "You can connect to the Typeform MCP server at this address: https://api.typeform.com/mcp"
+      },
+      {
+        "claim": "MCP server supports OAuth",
+        "url": "https://www.typeform.com/developers/get-started/mcp/",
+        "quote": "The MCP server supports OAuth. When you connect, you should be prompted to grant OAuth access to your Typeform account with the required scopes."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Typeform has an official MCP server at api.typeform.com/mcp (generally-available beta). REST API with forms, responses, themes, and webhooks. OAuth2 authentication. Multiple community MCP servers also exist.",
+    "fetched_urls": [
+      "https://www.typeform.com/developers/",
+      "https://www.typeform.com/developers/get-started/mcp/",
+      "https://www.typeform.com/developers/mcp/"
+    ]
+  }
+]

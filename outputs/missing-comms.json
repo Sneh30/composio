@@ -1,0 +1,293 @@
+[
+  {
+    "app_id": "zoho-cliq",
+    "app_name": "Zoho Cliq",
+    "category": "Communications and Messaging",
+    "one_liner": "Team messaging platform with REST API, webhooks, and an official MCP server for AI agent integration.",
+    "auth": {
+      "methods": ["OAuth 2.0"],
+      "auth_notes": "Zoho Cliq API uses the OAuth 2.0 protocol for authentication. OAuth 2.0 is an industry-standard protocol specification that enables third-party applications (also known as clients) to gain delegated access to protected resources in Zoho Cliq via an API."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Self-serve via Zoho API Console. Register application, obtain OAuth 2.0 client ID and secret."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering chats, messages, threads, channels, users, bots, slash commands, message actions, functions, datastores, reminders, settings, and more. v3 introduces CRUD endpoints for platform components.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth 2.0"],
+      "auth_notes": "The Zoho Cliq MCP Server brings your chats into the world of AI using the Model Context Protocol (MCP). This open protocol defines how AI agents can connect to real-world tools and data sources in a structured, predictable way.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Configure tools through Zoho MCP console at mcp.zoho.com. Create server, choose Zoho Cliq tools, and obtain MCP URL."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available via Zoho MCP platform. REST API is well-documented with OpenAPI spec. OAuth 2.0 authentication is standard."
+    },
+    "evidence": [
+      {
+        "claim": "Zoho Cliq API uses OAuth 2.0 for authentication",
+        "url": "https://www.zoho.com/cliq/help/restapi/v3/introduction",
+        "quote": "Zoho Cliq API uses the OAuth 2.0 protocol for authentication. OAuth 2.0 is an industry-standard protocol specification that enables third-party applications (also known as clients) to gain delegated access to protected resources in Zoho Cliq via an API."
+      },
+      {
+        "claim": "Official MCP server exists for Zoho Cliq",
+        "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+        "quote": "The Zoho Cliq MCP Server brings your chats into the world of AI using the Model Context Protocol (MCP). This open protocol defines how AI agents can connect to real-world tools and data sources in a structured, predictable way."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Well-documented REST API v3 with broad coverage. Official MCP server available through Zoho MCP platform at mcp.zoho.com. Multiple data centers supported.",
+    "fetched_urls": [
+      "https://www.zoho.com/cliq/help/restapi/v3/introduction",
+      "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+      "https://www.zoho.com/cliq/help/platform/configure-zoho-cliq-mcp.html"
+    ]
+  },
+  {
+    "app_id": "lark",
+    "app_name": "Lark (Larksuite)",
+    "category": "Communications and Messaging",
+    "one_liner": "Enterprise collaboration superapp with comprehensive REST API and official MCP server for AI agent integration.",
+    "auth": {
+      "methods": ["OAuth 2.0", "App Access Token", "User Access Token", "Tenant Access Token"],
+      "auth_notes": "Lark Open Platform provides various types of access tokens, which represent different resource access permissions. When calling APIs, the access token needs to be included in the HTTP header to access resources within the defined permissions."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Self-serve via Lark Developer Console. Create custom apps or store apps (ISV only). Apply for API scopes and configure data permissions."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive RESTful API covering contacts, messages, calendar, docs, wiki, bitable, mail, tasks, meetings, and more. Available in both Chinese (Feishu) and international (Lark) versions.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["App ID + App Secret", "User Access Token", "OAuth 2.0"],
+      "auth_notes": "The MCP tool encapsulates Feishu/Lark Open Platform API interfaces as MCP tools, allowing AI assistants to directly call these interfaces. Supports both App Access Token and User Access Token authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Official MCP server available as npm package @larksuiteoapi/lark-mcp. Install via npx and configure with App ID and Secret. Supports stdio and SSE transport modes."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server on GitHub (larksuite/lark-openapi-mcp) with MIT license. Comprehensive SDKs in Go, Python, Java, Node.js. Well-documented REST API."
+    },
+    "evidence": [
+      {
+        "claim": "Lark provides various types of access tokens",
+        "url": "https://open.larksuite.com/document/server-docs/getting-started/getting-started?lang=en-US",
+        "quote": "Lark Open Platform provides various types of access tokens, which represent different resource access permissions. When calling APIs, the access token needs to be included in the HTTP header to access resources within the defined permissions."
+      },
+      {
+        "claim": "Official MCP server on GitHub",
+        "url": "https://github.com/larksuite/lark-openapi-mcp",
+        "quote": "This is the Feishu/Lark official OpenAPI MCP (Model Context Protocol) tool designed to help users quickly connect to the Feishu/Lark platform and enable efficient collaboration between AI Agents and Feishu/Lark."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server maintained by Lark on GitHub with MIT license. Supports both Chinese (Feishu) and international (Lark) domains. Comprehensive SDKs available.",
+    "fetched_urls": [
+      "https://open.larksuite.com/document/server-docs/getting-started/getting-started?lang=en-US",
+      "https://github.com/larksuite/lark-openapi-mcp",
+      "https://open.larksuite.com/document/home/index?lang=en-US"
+    ]
+  },
+  {
+    "app_id": "pumble",
+    "app_name": "Pumble",
+    "category": "Communications and Messaging",
+    "one_liner": "Team messaging app with REST API using API key authentication and official MCP server for AI agent integration.",
+    "auth": {
+      "methods": ["API Key"],
+      "auth_notes": "To interact with the API, you must first generate an API key within your Pumble workspace administration panel. This token must be passed inside the HTTP header of every request as a bearer token."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Self-serve. Install API addon, generate API keys directly in Pumble workspace. Available on all plans to Owners, Admins, and Members."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering users, channels, messages (list/preview, create, update, reactions, replies), scheduled messages. No Events API. Limited to messaging operations.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API Key", "App Key", "User Token", "Bot Token"],
+      "auth_notes": "The Pumble MCP server requires token and x-app-token headers. Create a Pumble addon and take credentials from there. The x-app-token/xpat token is the App key you receive when you create an app from scratch.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Official MCP server at https://mcp.pumble.com/mcp. Supports Claude CLI, Codex CLI, Gemini CLI. Use HTTP transport with token and x-app-token headers."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available. REST API uses simple API key auth. Limited API surface compared to competitors (no Events API). Rate limit: 1000 requests per minute per user."
+    },
+    "evidence": [
+      {
+        "claim": "Pumble API uses API key authentication",
+        "url": "https://pumble.com/learn/pumble/ai-automation-guide",
+        "quote": "To interact with the API, you must first generate an API key within your Pumble workspace administration panel. This token must be passed inside the HTTP header of every request as a bearer token."
+      },
+      {
+        "claim": "Official MCP server available",
+        "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server",
+        "quote": "With the Pumble Model Context Protocol (MCP) server, you can connect third-party AI agents (e.g., Claude, Gemini, Codex) to Pumble and let them access content so they can search messages, find information, and take actions on your behalf."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server available. Simple API key authentication. Limited API surface (messaging operations only). No Events API. Rate limit: 1000 requests/minute per user.",
+    "fetched_urls": [
+      "https://docs.pumble.com/",
+      "https://pumble.com/learn/pumble/ai-automation-guide",
+      "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server",
+      "https://pumble-api-keys.addons.marketplace.cake.com/api-docs"
+    ]
+  },
+  {
+    "app_id": "aircall",
+    "app_name": "Aircall",
+    "category": "Communications and Messaging",
+    "one_liner": "Cloud phone system with REST API and webhooks, with community MCP servers available on GitHub.",
+    "auth": {
+      "methods": ["API Key + API Token (Basic Auth)", "OAuth 2.0"],
+      "auth_notes": "If you are an Aircall customer, building for your own Aircall account only, the Basic Auth flow will do the trick. All endpoints behave similarly between the two authentication methods, unless indicated otherwise in the documentation."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Self-serve via Aircall Dashboard. Get API ID and API token at dashboard.aircall.io/integrations/api-keys."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering calls, numbers, contacts, users, teams, tags, webhooks, SMS, AI agents. Webhooks for real-time events. MCP support for AI Virtual Agent (coming soon).",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API ID + API Token (Basic Auth)"],
+      "auth_notes": "Community MCP servers use AIRCALL_API_ID and AIRCALL_API_TOKEN environment variables for Basic Auth authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Community MCP servers available on GitHub. Official MCP support for AI Virtual Agent is coming soon. Community servers use npm packages like @allo/aircall-mcp-server."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP support for AI Virtual Agent is marked as coming soon. Multiple community MCP servers exist on GitHub. REST API is well-documented with Postman collection."
+    },
+    "evidence": [
+      {
+        "claim": "Aircall uses Basic Auth or OAuth 2.0",
+        "url": "https://developer.aircall.io/api-references",
+        "quote": "If you are an Aircall customer, building for your own Aircall account only, the Basic Auth flow will do the trick. All endpoints behave similarly between the two authentication methods, unless indicated otherwise in the documentation."
+      },
+      {
+        "claim": "Official MCP support coming soon",
+        "url": "https://developer.aircall.io/docs/introduction",
+        "quote": "Build MCP-compliant integrations for Aircall's AI Virtual Agent. 🚧 Coming soon."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "REST API with Basic Auth or OAuth 2.0. Official MCP for AI Virtual Agent coming soon. Multiple community MCP servers exist on GitHub (themobilefirstco/aircall-mcp-server, MaximeDeconinck/aircall-mcp, RosenAdvertising/aircall-mcp).",
+    "fetched_urls": [
+      "https://developer.aircall.io/docs/introduction",
+      "https://developer.aircall.io/api-references",
+      "https://github.com/themobilefirstco/aircall-mcp-server"
+    ]
+  },
+  {
+    "app_id": "vonage",
+    "app_name": "Vonage",
+    "category": "Communications and Messaging",
+    "one_liner": "Communications API platform with REST APIs for messaging, voice, video, and official MCP servers.",
+    "auth": {
+      "methods": ["API Key + Secret", "JWT", "OAuth 2.0"],
+      "auth_notes": "Vonage APIs support different authentication methods depending on which product you are using. Methods include API key/secret, JWT tokens, and OAuth 2.0."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Self-serve via Vonage API Dashboard. Create account, obtain API key and secret, generate JWTs as needed."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API suite covering messaging (SMS, MMS, WhatsApp, Viber, RCS), voice, video (OpenTok), number management, verify, reports, and more. Multiple SDKs available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API Key + Secret", "JWT"],
+      "auth_notes": "Official MCP servers use X-Account-ID (API key) and X-Account-Secret (API secret) headers for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Official MCP servers available: neru-mcp for Code Hub deployment, vonage-mcp-server-api-bindings for API tools, vonage-mcp-server-documentation for docs. Remote endpoints available in EU, US, and APAC regions."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Multiple official MCP servers available. Comprehensive documentation and SDKs. Well-established API platform with multiple communication channels."
+    },
+    "evidence": [
+      {
+        "claim": "Vonage APIs support different authentication methods",
+        "url": "https://developer.vonage.com/getting-started/concepts/authentication?source=getting-started",
+        "quote": "Vonage APIs support different authentication methods depending on which product you are using: Learn more in Vonage's API documentation."
+      },
+      {
+        "claim": "Official MCP server available",
+        "url": "https://developer.vonage.com/en/vonage-cloud-runtime/getting-started/ai-mcp",
+        "quote": "neru-mcp is a Model Context Protocol (MCP) server that lets your AI assistant publish and deploy applications to Code Hub without leaving your chat interface."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Multiple official MCP servers: neru-mcp for deployment, vonage-mcp-server-api-bindings for API tools, vonage-mcp-server-documentation for docs. REST APIs with multiple auth methods. Comprehensive communication platform.",
+    "fetched_urls": [
+      "https://developer.vonage.com/en/documentation",
+      "https://developer.vonage.com/en/vonage-cloud-runtime/getting-started/ai-mcp",
+      "https://github.com/Vonage-Community/vonage-mcp-server-api-bindings"
+    ]
+  }
+]

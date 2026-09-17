@@ -1,0 +1,426 @@
+[
+  {
+    "app_id": "shopify",
+    "app_name": "Shopify",
+    "category": "Ecommerce",
+    "one_liner": "Shopify is a leading ecommerce platform that enables merchants to create online stores and manage their business with a comprehensive API ecosystem.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Shopify apps use OAuth 2.0 for authorization and access tokens (Bearer tokens) for API authentication. The Admin API uses X-Shopify-Access-Token header, while the Storefront API uses X-Shopify-Storefront-Access-Token header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create apps through the Shopify Partners Dashboard or Shopify admin. Custom apps can be created in-store without partner account approval."
+    },
+    "api_surface": {
+      "type": "GraphQL",
+      "breadth": "broad",
+      "breadth_notes": "Shopify has a comprehensive GraphQL Admin API covering products, orders, customers, inventory, payments, and more. REST Admin API is legacy as of October 2024. Storefront API (GraphQL only) for customer-facing operations.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "MCP servers use the same OAuth2 flow and Bearer token authentication as the REST API. Static access tokens or OAuth client credentials can be used.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "MCP servers are available for public use. Official Storefront MCP server and community Admin MCP servers exist with no special access requirements beyond standard API credentials."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent API coverage with multiple official and community MCP servers. Shopify has invested heavily in AI/MCP infrastructure with dedicated MCP documentation."
+    },
+    "evidence": [
+      {"claim": "GraphQL Admin API is the primary API", "url": "https://shopify.dev/docs/api/admin-graphql/latest", "quote": "All GraphQL Admin API requests require a valid Shopify access token."},
+      {"claim": "REST Admin API is legacy", "url": "https://shopify.dev/docs/api/admin-rest", "quote": "The REST Admin API is a legacy API as of October 1, 2024."},
+      {"claim": "Official MCP server exists", "url": "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront", "quote": "Storefront MCP servers don't require authentication: Connect your AI agent to a specific Shopify store's catalog."},
+      {"claim": "Multiple community MCP servers on GitHub", "url": "https://github.com/hcu7/shopify-mcp", "quote": "The most complete open-source MCP server and CLI for Shopify. 59 built-in tools + 5 custom tools across 5 domains."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Shopify has a mature ecosystem with official and multiple community MCP servers. The platform is GraphQL-first since 2024, with comprehensive API coverage.",
+    "fetched_urls": ["https://shopify.dev/docs/api/admin-graphql/latest", "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront", "https://github.com/hcu7/shopify-mcp"]
+  },
+  {
+    "app_id": "woocommerce",
+    "app_name": "WooCommerce",
+    "category": "Ecommerce",
+    "one_liner": "WooCommerce is an open-source WordPress plugin that provides ecommerce functionality with a comprehensive REST API.",
+    "auth": {
+      "methods": ["Basic_auth", "OAuth2"],
+      "auth_notes": "WooCommerce supports HTTP Basic Auth (consumer key as username, consumer secret as password) and OAuth 1.0a one-legged authentication for REST API access."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API keys can be generated directly in WordPress admin under WooCommerce > Settings > Advanced > REST API. No approval required."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering products, orders, customers, coupons, shipping, taxes, and more. Uses WordPress REST API framework.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Basic_auth"],
+      "mcp_auth_notes": "MCP servers use the same WooCommerce REST API credentials (consumer key and secret) with Basic authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "WooCommerce includes native MCP support in developer preview. Multiple community MCP servers available on GitHub."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "WooCommerce has official native MCP support (developer preview) and multiple community MCP servers. Self-hosted nature requires store-specific credentials."
+    },
+    "evidence": [
+      {"claim": "WooCommerce has native MCP support", "url": "https://github.com/woocommerce/woocommerce/blob/trunk/docs/features/mcp/README.md", "quote": "WooCommerce includes native support for the Model Context Protocol (MCP), enabling AI assistants and tools to interact directly with WooCommerce stores through a standardized protocol."},
+      {"claim": "REST API with Basic Auth", "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication", "quote": "You may use HTTP Basic Auth by providing the REST API Consumer Key as the username and the REST API Consumer Secret as the password."},
+      {"claim": "Multiple community MCP servers", "url": "https://github.com/AmitGurbani/mcp-server-woocommerce", "quote": "MCP server for managing WooCommerce stores through AI assistants like Claude. Provides 101 tools covering products, orders, customers, coupons, shipping, taxes, webhooks, settings, reports, and more."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "WooCommerce has both official native MCP support and many community implementations. The self-hosted nature means each store has its own credentials.",
+    "fetched_urls": ["https://developer.woocommerce.com/docs/apis/rest-api/authentication", "https://github.com/woocommerce/woocommerce/blob/trunk/docs/features/mcp/README.md", "https://github.com/AmitGurbani/mcp-server-woocommerce"]
+  },
+  {
+    "app_id": "bigcommerce",
+    "app_name": "BigCommerce",
+    "category": "Ecommerce",
+    "one_liner": "BigCommerce is a hosted ecommerce platform with comprehensive REST and GraphQL APIs for store management.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "BigCommerce uses OAuth 2.0 for API authentication. REST APIs use X-Auth-Token header. GraphQL APIs use JWT Bearer tokens. Store-level and app-level OAuth credentials available."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create API accounts in the BigCommerce admin panel under Advanced Settings > API Accounts. No partnership required for basic integration."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST Management API and GraphQL Storefront/Admin APIs. Covers catalog, orders, customers, carts, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "mcp_auth_notes": "MCP servers use the same OAuth credentials and Bearer tokens as the REST/GraphQL APIs.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official BigCommerce MCP server available for storefront operations. Community MCP servers available on GitHub for management APIs."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "BigCommerce has an official MCP server and multiple community implementations. Both REST and GraphQL APIs are well-documented."
+    },
+    "evidence": [
+      {"claim": "Official MCP server exists", "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview", "quote": "The BigCommerce MCP server lets AI agents interact with a BigCommerce storefront using purpose-built commerce tools."},
+      {"claim": "OAuth-based API authentication", "url": "https://developer.bigcommerce.com/docs/start/authentication", "quote": "Most of our REST endpoints and GraphQL Admin API endpoints use the X-Auth-Token header to authenticate to BigCommerce servers."},
+      {"claim": "Multiple community MCP servers", "url": "https://github.com/isaacgounton/bigcommerce-api-mcp", "quote": "A comprehensive Model Context Protocol (MCP) server for BigCommerce REST API integration."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "BigCommerce has official MCP support and multiple community implementations. The platform supports both REST and GraphQL APIs with OAuth authentication.",
+    "fetched_urls": ["https://developer.bigcommerce.com/docs/start/authentication", "https://docs.bigcommerce.com/developer/api-reference/mcp/overview", "https://github.com/isaacgounton/bigcommerce-api-mcp"]
+  },
+  {
+    "app_id": "square",
+    "app_name": "Square",
+    "category": "Ecommerce",
+    "one_liner": "Square is a payment and commerce platform providing POS, ecommerce, and payment processing with comprehensive APIs.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Square uses OAuth 2.0 for seller authorization. Access tokens are used as Bearer tokens in the Authorization header. Supports standard OAuth flow and PKCE."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create applications in the Square Developer Console. OAuth access is obtained by redirecting sellers to Square's authorization page."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering payments, orders, customers, inventory, catalog, labor, and more. JSON:API specification compliance.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Official MCP server supports OAuth authentication (recommended) and static access tokens. Remote MCP server at mcp.squareup.com uses OAuth.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official Square MCP server available with both local and remote options. Remote MCP uses OAuth for easier authentication."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Square has an official MCP server with OAuth support. Well-documented API with comprehensive coverage. Remote MCP server available for easier integration."
+    },
+    "evidence": [
+      {"claim": "Official MCP server with OAuth", "url": "https://github.com/square/square-mcp-server", "quote": "Square now offers a hosted remote MCP server at: https://mcp.squareup.com/sse. The remote MCP is recommended as it uses OAuth authentication."},
+      {"claim": "OAuth 2.0 authentication", "url": "https://developer.squareup.com/docs/oauth-api/overview", "quote": "The OAuth API lets you request permissions from Square sellers to manage their resources and get access tokens to call Square APIs on their behalf."},
+      {"claim": "Comprehensive API coverage", "url": "https://developer.squareup.com/reference/square/o-auth-api", "quote": "Allow your application to gain programmatic access to Square seller accounts."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Square has an excellent official MCP server with OAuth support. The remote MCP server at mcp.squareup.com simplifies authentication. Well-documented REST API.",
+    "fetched_urls": ["https://github.com/square/square-mcp-server", "https://developer.squareup.com/docs/oauth-api/overview", "https://developer.squareup.com/reference/square/o-auth-api"]
+  },
+  {
+    "app_id": "braintree",
+    "app_name": "Braintree",
+    "category": "Ecommerce",
+    "one_liner": "Braintree is a PayPal service providing payment processing with OAuth-based merchant connection and comprehensive payment APIs.",
+    "auth": {
+      "methods": ["OAuth2", "Basic_auth", "Bearer_token"],
+      "auth_notes": "Braintree supports OAuth 2.0 for Braintree Auth (merchant connection), token-based authentication for direct API access, and OAuth for GraphQL API."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can create sandbox accounts and obtain API credentials through the Braintree Control Panel. Braintree Auth (OAuth) is in closed beta."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Payment-focused API covering transactions, customers, subscriptions, and payment methods. Both REST and GraphQL interfaces available.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token", "Basic_auth"],
+      "mcp_auth_notes": "Community MCP server uses Braintree's standard API credentials (access token or merchant ID + public/private key).",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP server available on GitHub. No official MCP server from Braintree/PayPal."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Braintree Auth (OAuth for merchant connection) is in closed beta"],
+      "notes": "Community MCP server exists but no official one. Braintree Auth OAuth flow is still in beta. Well-documented payment APIs."
+    },
+    "evidence": [
+      {"claim": "Community MCP server exists", "url": "https://github.com/QuentinCody/braintree-mcp-server", "quote": "An unofficial Model Context Protocol (MCP) server for interacting with PayPal Braintree payment processing services."},
+      {"claim": "Braintree Auth OAuth is in beta", "url": "https://developer.paypal.com/braintree/docs/guides/braintree-auth/oauth-flow/node", "quote": "Availability Braintree Auth is in closed beta. Contact us to express interest."},
+      {"claim": "Standard token authentication", "url": "http://developer.paypal.com/braintree/docs", "quote": "Accept and process cards, wallets, and Local Payment Methods in a single, modern integration."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "medium",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Braintree has a community MCP server but no official one. The Braintree Auth OAuth flow for merchant connection is still in closed beta. Payment-focused API surface.",
+    "fetched_urls": ["https://github.com/QuentinCody/braintree-mcp-server", "https://developer.paypal.com/braintree/docs/guides/braintree-auth/oauth-flow/node", "http://developer.paypal.com/braintree/docs"]
+  },
+  {
+    "app_id": "lemonsqueezy",
+    "app_name": "Lemon Squeezy",
+    "category": "Ecommerce",
+    "one_liner": "Lemon Squeezy is a merchant of record platform for selling digital products, SaaS, and subscriptions with a developer-friendly REST API.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Lemon Squeezy uses API keys for authentication. Include the API key in the Authorization header as a Bearer token for all requests."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API keys can be created in the Lemon Squeezy dashboard under Settings > API. No approval required."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "JSON:API compliant REST API covering stores, products, customers, subscriptions, license keys, checkouts, and webhooks.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "MCP servers use the same Lemon Squeezy API key as Bearer token authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available on GitHub. No official MCP server from Lemon Squeezy."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Multiple community MCP servers with good coverage. Developer-friendly API with JSON:API compliance. Now owned by Stripe."
+    },
+    "evidence": [
+      {"claim": "Multiple community MCP servers", "url": "https://github.com/YawLabs/lemonsqueezy-mcp", "quote": "MCP server for the LemonSqueezy API. Manage your store, products, customers, subscriptions, discounts, license keys, and more from any MCP-compatible AI assistant."},
+      {"claim": "Bearer token authentication", "url": "https://docs.lemonsqueezy.com/guides/developer-guide/getting-started", "quote": "The API uses Bearer authentication for all requests. This would be the API key that you previously created."},
+      {"claim": "JSON:API compliant REST API", "url": "https://docs.lemonsqueezy.com/api", "quote": "The Lemon Squeezy API is a REST API that has predictable resource-oriented URLs, returns valid JSON:API encoded responses and uses standard HTTP response codes, authentication, and verbs."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Lemon Squeezy has multiple community MCP servers. Simple API key authentication. Now owned by Stripe. Good developer experience.",
+    "fetched_urls": ["https://docs.lemonsqueezy.com/api", "https://docs.lemonsqueezy.com/guides/developer-guide/getting-started", "https://github.com/YawLabs/lemonsqueezy-mcp"]
+  },
+  {
+    "app_id": "paddle",
+    "app_name": "Paddle",
+    "category": "Ecommerce",
+    "one_liner": "Paddle is a merchant of record billing platform for SaaS and digital products with a comprehensive REST API and official MCP server.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Paddle uses API keys for server-side authentication. Include the API key as a Bearer token in the Authorization header. Client-side tokens available for Paddle.js frontend use."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API keys can be created in Paddle > Developer tools > Authentication. No approval required for basic access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering catalog, customers, billing, subscriptions, transactions, reports, and webhooks. JSON formatted requests/responses.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Official MCP server supports OAuth (recommended) and API key Bearer token authentication. Remote MCP server at mcp.paddle.com.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official remote MCP server available at mcp.paddle.com with OAuth authentication. Sandbox MCP at sandbox-mcp.paddle.com."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent official MCP server with OAuth support. Remote hosted MCP server. Well-documented API with comprehensive coverage."
+    },
+    "evidence": [
+      {"claim": "Official remote MCP server", "url": "https://mcp.paddle.com/", "quote": "Give any AI assistant direct access to the Paddle API over the Model Context Protocol. This server gives AI assistants like Claude, Cursor, and Windsurf direct access to Paddle API operations."},
+      {"claim": "Bearer token authentication", "url": "https://developer.paddle.com/api-reference/about/authentication.md", "quote": "Use Bearer authentication when making requests to the Paddle API. Get a key from Paddle > Developer tools > Authentication."},
+      {"claim": "Official MCP on GitHub", "url": "https://github.com/paddlehq/paddle-mcp-server", "quote": "This is a Model Context Protocol (MCP) server that provides LLMs and AI agents with tools for interacting with the Paddle API."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Paddle has an excellent official MCP server with OAuth support and a remote hosted endpoint. Well-documented API with comprehensive billing coverage.",
+    "fetched_urls": ["https://mcp.paddle.com/", "https://developer.paddle.com/api-reference/about/authentication.md", "https://github.com/paddlehq/paddle-mcp-server"]
+  },
+  {
+    "app_id": "gumroad",
+    "app_name": "Gumroad",
+    "category": "Ecommerce",
+    "one_liner": "Gumroad is a platform for creators to sell digital products with an OAuth 2.0 API and CLI tools.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Gumroad uses OAuth 2.0 for API authentication. Applications must be registered to get an application ID and secret. Access tokens are passed as query parameters."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Developers can register OAuth applications in Gumroad settings. Access tokens can be manually generated for personal use or through OAuth flow for third-party apps."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "narrow",
+      "breadth_notes": "Focused API covering products, sales, subscribers, and license verification. Smaller scope compared to enterprise platforms.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "MCP servers use Gumroad access tokens for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Multiple community MCP servers available on GitHub. No official MCP server from Gumroad."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Multiple community MCP servers. OAuth 2.0 authentication. CLI available. API is focused on creator sales use cases."
+    },
+    "evidence": [
+      {"claim": "Multiple community MCP servers", "url": "https://github.com/rmarescu/gumroad-mcp", "quote": "A Model Context Protocol (MCP) server implementation for Gumroad, enabling MCP-compatible AI clients like Claude Desktop to interact with Gumroad API."},
+      {"claim": "OAuth 2.0 authentication", "url": "https://gumroad.com/api", "quote": "Gumroad's OAuth 2.0 API lets you see information about your products, as well as you can add, edit, and delete offer codes, variants, and custom fields."},
+      {"claim": "CLI available", "url": "https://gumroad.com/api", "quote": "Command line - Prefer a terminal? The Gumroad CLI wraps every endpoint below and is built for humans and AI agents alike."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Gumroad has multiple community MCP servers. OAuth 2.0 authentication with CLI support. Focused API for creator digital product sales.",
+    "fetched_urls": ["https://gumroad.com/api", "https://github.com/rmarescu/gumroad-mcp", "https://github.com/stcmain/gumroad-mcp"]
+  },
+  {
+    "app_id": "chargebee",
+    "app_name": "Chargebee",
+    "category": "Ecommerce",
+    "one_liner": "Chargebee is a subscription billing and revenue management platform with comprehensive APIs and official MCP servers.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "Chargebee uses HTTP Basic authentication for API calls. The username is your API key while the password is empty."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API keys can be created in Settings > Configure Chargebee > API Keys and Webhooks. No approval required."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering subscriptions, customers, invoices, payments, coupons, and more. Form-encoded requests, JSON responses.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official MCP server uses OAuth authentication. Runs in browser on first connect. No API keys needed in config file.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official Chargebee MCP server available with multiple predefined configurations (Data Lookup, Onboarding, Knowledge Base). Custom MCP servers can be created."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent official MCP server with OAuth. Multiple predefined MCP server configurations. Well-documented API with comprehensive coverage."
+    },
+    "evidence": [
+      {"claim": "Official MCP server with OAuth", "url": "https://www.chargebee.com/mcp", "quote": "The Chargebee MCP server connects your live billing data to Claude, Cursor, ChatGPT, Codex, Notion AI, and Claude Code, so agents and developers query subscriptions, invoices, usage, and pricing in plain language."},
+      {"claim": "Basic Auth for API", "url": "https://apidocs.chargebee.com/docs/api/v1/auth", "quote": "Chargebee uses HTTP Basic authentication for API calls. The username is your API key while the password is empty."},
+      {"claim": "Multiple MCP server configurations", "url": "https://www.chargebee.com/docs/billing/2.0/ai-in-chargebee/chargebee-mcp", "quote": "Chargebee provides the following predefined MCP servers. Select a server to view configuration, authentication, and toolset details. Create custom MCP servers by combining Chargebee tools for your specific use cases."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Chargebee has an excellent official MCP server with OAuth authentication. Multiple predefined MCP configurations. Comprehensive billing API with Basic Auth for REST.",
+    "fetched_urls": ["https://www.chargebee.com/mcp", "https://apidocs.chargebee.com/docs/api/v1/auth", "https://www.chargebee.com/docs/billing/2.0/ai-in-chargebee/chargebee-mcp"]
+  }
+]

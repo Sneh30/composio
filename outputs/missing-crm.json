@@ -1,0 +1,302 @@
+[
+  {
+    "app_id": "attio",
+    "app_name": "Attio",
+    "category": "CRM and Sales",
+    "one_liner": "A data-driven, AI-native CRM platform with a modern REST API, SDK, SQL, and an official hosted MCP server.",
+    "auth": {
+      "methods": ["OAuth2", "API_key"],
+      "auth_notes": "There are two ways to generate an access token: 1. By implementing an OAuth 2.0 flow 2. By generating an API key for your workspace. Both OAuth access tokens and single-workspace access tokens are used in the same way. Pass the value of the token in the Authorization header of your requests like so. Authorization: Bearer <access_token>"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You can generate an API key in the developer settings page of your apps. If you're looking to move beyond just the REST API and understand the Attio developer platform as a whole, you can find general documentation for Attio developers here."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covers objects, attributes, records, lists, entries, notes, tasks, emails, meetings, call recordings, files, webhooks, workspace members, comments, and SQL queries. Also has App SDK (TypeScript React) and GraphQL for internal queries.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Attio MCP uses OAuth authentication, so you simply log in with your Attio account—no API keys required.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Add https://mcp.attio.com/mcp as a remote MCP server and complete the OAuth authentication when prompted. Connect your AI tools to Attio using the Model Context Protocol (MCP), an open standard that lets AI assistants interact with your Attio CRM workspace."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Attio provides an official hosted MCP server at mcp.attio.com. Also has multiple community MCP servers on GitHub. Full REST API with broad coverage. No blockers for integration."
+    },
+    "evidence": [
+      {
+        "claim": "Attio provides OAuth2 and API key authentication for its REST API",
+        "url": "https://docs.attio.com/rest-api/guides/authentication",
+        "quote": "There are two ways to generate an access token: 1. By implementing an OAuth 2.0 flow 2. By generating an API key for your workspace"
+      },
+      {
+        "claim": "Attio has an official hosted MCP server",
+        "url": "https://docs.attio.com/mcp/overview",
+        "quote": "Attio MCP is Attio's hosted MCP server that gives AI tools secure access to your Attio workspace."
+      },
+      {
+        "claim": "Attio MCP uses OAuth authentication",
+        "url": "https://docs.attio.com/mcp/overview",
+        "quote": "Attio MCP uses OAuth authentication, so you simply log in with your Attio account—no API keys required."
+      },
+      {
+        "claim": "Attio REST API is a public REST API exchanging JSON over HTTPS",
+        "url": "https://docs.attio.com/rest-api/overview",
+        "quote": "Attio provides a public REST API which exchanges JSON over HTTPS."
+      },
+      {
+        "claim": "Attio developer platform includes REST API, SDK, MCP, and SQL",
+        "url": "https://docs.attio.com/docs/overview.md",
+        "quote": "The Attio Developer Platform consists of four parts: App SDK, REST API, MCP, SQL"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Attio has excellent developer documentation with an official hosted MCP server. The MCP server uses OAuth and supports comprehensive CRM operations including records, lists, notes, tasks, emails, meetings, and SQL queries.",
+    "fetched_urls": [
+      "https://docs.attio.com/rest-api/guides/authentication",
+      "https://docs.attio.com/mcp/overview",
+      "https://docs.attio.com/rest-api/overview",
+      "https://docs.attio.com/docs/overview.md",
+      "https://github.com/kesslerio/attio-mcp-server"
+    ]
+  },
+  {
+    "app_id": "podio",
+    "app_name": "Podio",
+    "category": "CRM and Sales",
+    "one_liner": "A flexible work platform with a comprehensive REST API, client libraries, and community MCP server integrations.",
+    "auth": {
+      "methods": ["OAuth2", "API_key"],
+      "auth_notes": "The Podio API uses the OAuth2 protocol for authentication. This allows external apps to request authorization to Podio without having direct access to the user's password. Our API supports different OAuth flows depending on what kind of integration you are making. Before you can use the Podio API you must register your application."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "It's easy to get one or more API keys for accessing your Podio data. You just have to sign in or sign up with Podio, and go to the API key tab in your settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Applications, Items, Contacts, Files, Hooks, Tasks, Organizations, Spaces, Search, Calendar, Conversations, Email, Forms, and many more areas. Client libraries available for PHP, .NET, Ruby, Java, Python, Android, and Objective-C.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "API_key"],
+      "auth_notes": "Community MCP servers use API keys or OAuth2 tokens depending on the implementation. The Podio MCP Server by stoskov and Zapier MCP both connect to the Podio API.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available on GitHub and through Zapier. No official Podio MCP server exists yet. Users can self-host community implementations."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["No official MCP server from Podio"],
+      "notes": "Podio has a comprehensive REST API with client libraries, but no official MCP server. Community implementations exist (stoskov/podio-mcp, Zapier MCP). The Podio developer docs returned 410 errors on some pages, indicating possible documentation migration."
+    },
+    "evidence": [
+      {
+        "claim": "Podio uses OAuth2 for authentication",
+        "url": "https://developers.podio.com/authentication",
+        "quote": "The Podio API uses the OAuth2 protocol for authentication. This allows external apps to request authorization to Podio without having direct access to the user's password."
+      },
+      {
+        "claim": "API keys are self-serve through account settings",
+        "url": "https://developers.podio.com/api-key",
+        "quote": "It's easy to get one or more API keys for accessing your Podio data. You just have to sign in or sign up with Podio, and go to the API key tab in your settings."
+      },
+      {
+        "claim": "Podio has a comprehensive REST API with multiple areas",
+        "url": "https://developers.podio.com/doc",
+        "quote": "Our API is split up into different areas, that each contains a subset of methods grouped by functionality."
+      },
+      {
+        "claim": "Community MCP servers exist for Podio",
+        "url": "https://github.com/stoskov/podio-mcp",
+        "quote": "An MCP (Model Context Protocol) server that gives AI agents access to the Podio API. Designed around what users want to accomplish, not around raw API endpoints."
+      },
+      {
+        "claim": "Zapier provides a Podio MCP server",
+        "url": "https://zapier.com/mcp/podio",
+        "quote": "Podio is a collaborative work platform that's perfect for managing projects, teams, and anything else in your business that needs flexible apps that work the way you do."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Podio has a mature REST API with comprehensive documentation and client libraries. No official MCP server exists, but community implementations are available. The developer docs returned 410 errors on some pages, suggesting a possible documentation restructuring.",
+    "fetched_urls": [
+      "https://developers.podio.com/authentication",
+      "https://developers.podio.com/api-key",
+      "https://developers.podio.com/doc",
+      "https://github.com/stoskov/podio-mcp",
+      "https://zapier.com/mcp/podio"
+    ]
+  },
+  {
+    "app_id": "zoho-crm",
+    "app_name": "Zoho CRM",
+    "category": "CRM and Sales",
+    "one_liner": "A comprehensive CRM platform with OAuth2 authentication, a broad REST API, and an official Zoho MCP platform for AI agent integration.",
+    "auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "OAuth2.0 requests are usually authenticated with an access token, which is passed as bearer token. To use this access token, you need to construct a normal HTTP request and include it in an Authorization header along with the value of Bearer."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You must use your domain-specific Zoho Accounts URL to generate access and refresh tokens. If your application has more than one environment, the access and refresh token generated for a user becomes organization-specific in an environment."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full CRM API supporting Leads, Contacts, Accounts, Deals, and custom modules. Also supports modules, workflows, and data insights. Multiple regional endpoints (US, EU, AU, IN, JP, CN, SA, CA).",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Zoho MCP uses OAuth2 authentication. The MCP server configuration requires OAuth credentials (Client ID, Client Secret, and Refresh Token) as environment variables.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Zoho provides an official MCP platform with four composable MCP servers for CRM: Data Insights, Data Operations, Modules, Workflow & Automation. Users can configure MCP servers through the Zoho MCP console."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Zoho provides an official MCP platform (zoho.com/mcp) with four composable servers for CRM. Also has community MCP servers. Comprehensive OAuth2 documentation with regional support. No blockers for integration."
+    },
+    "evidence": [
+      {
+        "claim": "Zoho CRM uses OAuth2 authentication with bearer tokens",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v7/access-refresh.html",
+        "quote": "OAuth2.0 requests are usually authenticated with an access token, which is passed as bearer token. To use this access token, you need to construct a normal HTTP request and include it in an Authorization header along with the value of Bearer."
+      },
+      {
+        "claim": "Zoho provides an official MCP platform for CRM",
+        "url": "https://www.zoho.com/crm/developer/mcp.html",
+        "quote": "Connect AI agents to your CRM. Deploy four composable MCP servers that give your AI agent secure, scoped access to your Zoho CRM."
+      },
+      {
+        "claim": "Zoho MCP has four servers: Data Insights, Data Operations, Modules, Workflow & Automation",
+        "url": "https://www.zoho.com/crm/developer/mcp.html",
+        "quote": "Four servers. One CRM. Infinite possibilities. Each server is scoped to a specific job. Connect one or connect all four, your agent handles the orchestration."
+      },
+      {
+        "claim": "Zoho MCP supports OAuth authentication",
+        "url": "https://www.zoho.com/crm/developer/mcp.html",
+        "quote": "Your AI connects through the MCP client in your agent platform. From there, it can talk to one or more servers at once, authenticated securely through OAuth."
+      },
+      {
+        "claim": "Zoho MCP supports multiple regional endpoints",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v7/access-refresh.html",
+        "quote": "You must use your domain-specific Zoho Accounts URL to generate access and refresh tokens. The following are the various domains: US, AU, EU, IN, CN, JP, SA, CA."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Zoho CRM has excellent developer documentation with comprehensive OAuth2 support and regional endpoints. Zoho provides an official MCP platform with four composable servers for CRM integration. Multiple community MCP servers also exist.",
+    "fetched_urls": [
+      "https://www.zoho.com/crm/developer/docs/api/v7/access-refresh.html",
+      "https://www.zoho.com/crm/developer/mcp.html",
+      "https://www.zoho.com/mcp/services/zoho-services.html",
+      "https://github.com/zoho/analytics-mcp-server",
+      "https://pypi.org/project/zoho-crm-mcp-server"
+    ]
+  },
+  {
+    "app_id": "copper",
+    "app_name": "Copper",
+    "category": "CRM and Sales",
+    "one_liner": "A Google Workspace-native CRM with API key and OAuth2 authentication, a REST API, and community MCP server implementations.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "There are two ways to access the Copper Developer API: API keys and OAuth2.0. API Keys are suitable for individual users, while OAuth2.0 is the preferred approach for partner integrations."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To generate an API token, in the Copper web app go to System settings > API Keys and click the 'GENERATE API KEY' button. Copper allows you to label each key for its unique purpose."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API with JSON responses covering Account, Users, Leads, Contacts, Companies, Opportunities, Activities, and custom fields. Rate limited to 180 requests per minute. Bulk APIs have additional rate limits.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Community MCP servers use API keys. The copper-mcp server requires COPPER_API_KEY, COPPER_USER_EMAIL, and COPPER_USER_ID environment variables.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Community MCP servers are available on GitHub (dazanza/copper-mcp, hasankhadra/copper-mcp) and through Apideck. No official Copper MCP server exists yet."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["No official MCP server from Copper"],
+      "notes": "Copper has a solid REST API with API key and OAuth2 authentication, but no official MCP server. Community implementations exist on GitHub. The developer docs are well-structured with clear authentication documentation."
+    },
+    "evidence": [
+      {
+        "claim": "Copper Developer API supports API keys and OAuth2",
+        "url": "https://developer.copper.com/introduction/authentication.html",
+        "quote": "There are two ways to access the Copper Developer API: API keys and OAuth2.0. API Keys are suitable for individual users, while OAuth2.0 is the preferred approach for partner integrations."
+      },
+      {
+        "claim": "API keys are self-serve through the Copper web app",
+        "url": "https://developer.copper.com/introduction/authentication.html",
+        "quote": "To generate an API token, in the Copper web app go to System settings > API Keys and click the 'GENERATE API KEY' button. Copper allows you to label each key for its unique purpose."
+      },
+      {
+        "claim": "Copper API is RESTful with JSON responses",
+        "url": "https://developer.copper.com/",
+        "quote": "The Copper Developer API ('Dev API') provides a RESTful interface with JSON-formatted responses to access most Copper resources."
+      },
+      {
+        "claim": "Community MCP servers exist for Copper CRM",
+        "url": "https://github.com/dazanza/copper-mcp",
+        "quote": "MCP server for the Copper CRM API. Search contacts, log activities, manage opportunities, and query companies."
+      },
+      {
+        "claim": "Copper API requires specific headers for authentication",
+        "url": "https://developer.copper.com/introduction/requests.html",
+        "quote": "All Copper API calls must include the following headers to authenticate the request: X-PW-AccessToken, X-PW-Application, X-PW-UserEmail."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Copper has a well-documented REST API with API key and OAuth2 authentication. No official MCP server exists, but community implementations are available on GitHub. The API is focused on CRM operations with moderate breadth compared to larger platforms.",
+    "fetched_urls": [
+      "https://developer.copper.com/introduction/authentication.html",
+      "https://developer.copper.com/",
+      "https://developer.copper.com/introduction/requests.html",
+      "https://github.com/dazanza/copper-mcp",
+      "https://developer.copper.com/introduction/oauth/flow.html"
+    ]
+  }
+]

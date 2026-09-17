@@ -1,0 +1,350 @@
+[
+  {
+    "app_id": "meta-ads",
+    "app_name": "Meta Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "Meta Marketing API for managing Facebook and Instagram ad campaigns, ad sets, creatives, audiences, and insights across Meta technologies.",
+    "auth": {
+      "methods": ["oauth2", "access_token", "system_user_token"],
+      "auth_notes": "Before advertising on Facebook, Instagram, Messenger, and WhatsApp, we recommend you learn about Meta's ad campaign structure to understand the objects you're working with and how they relate to each other."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Begin creating and managing Meta ad campaigns by following step-by-step guidance on setting up campaigns, ad sets, and creatives using the Marketing API."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "The Marketing API is a collection of Graph API endpoints and other features that can be used to help you advertise across Meta technologies.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "The ads MCP server is a Meta-hosted Model Context Protocol server that lets you manage Meta ads directly from an AI agent. Sign in with your Meta account when prompted.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Add the server URL to your client. Most clients have a Connectors or MCP settings panel. Sign in with your Meta account when prompted."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available at mcp.facebook.com/ads. Multiple community MCP servers also available. REST API with comprehensive documentation."
+    },
+    "evidence": [
+      {
+        "claim": "Meta hosts an official MCP server for ads",
+        "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+        "quote": "The ads MCP server is a Meta-hosted Model Context Protocol server that lets you manage Meta ads directly from an AI agent."
+      },
+      {
+        "claim": "Marketing API is REST-based Graph API",
+        "url": "https://developers.facebook.com/docs/marketing-api",
+        "quote": "The Marketing API is a collection of Graph API endpoints and other features that can be used to help you advertise across Meta technologies."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Meta provides an official MCP server at mcp.facebook.com/ads. The Marketing API uses Graph API (REST-like) endpoints. Multiple community MCP servers exist on GitHub.",
+    "fetched_urls": [
+      "https://developers.facebook.com/docs/marketing-api",
+      "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+      "https://developers.facebook.com/documentation/mcp"
+    ]
+  },
+  {
+    "app_id": "linkedin-ads",
+    "app_name": "LinkedIn Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "LinkedIn Marketing API for creating and managing B2B advertising campaigns, lead generation forms, and performance analytics on the professional network.",
+    "auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "Authentication uses OAuth 2.0 authorization code flow. Scopes include r_ads, rw_ads, w_member_social, r_organization_social, w_organization_social."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "Access requires approval through LinkedIn Marketing API Program. Developers must apply and be approved for API access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "APIs for campaign management, reporting and analytics, lead sync, matched audiences, audience insights, media planning, conversions, and company intelligence.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "OAuth client ID and client secret from LinkedIn Developer Portal required. Scopes: r_ads, rw_ads, w_member_social, r_organization_social, w_organization_social.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Community MCP servers are open source and self-hosted. No additional gating beyond LinkedIn API access."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["LinkedIn Marketing API access requires application and approval"],
+      "notes": "Multiple community MCP servers available. No official MCP server from LinkedIn/Microsoft."
+    },
+    "evidence": [
+      {
+        "claim": "LinkedIn Marketing API requires access approval",
+        "url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+        "quote": "The LinkedIn Marketing Platform helps businesses grow by building technology to reach, engage, and convert professional audiences at scale."
+      },
+      {
+        "claim": "Community MCP servers exist for LinkedIn Ads",
+        "url": "https://github.com/dhawalshah/linkedin-ads-mcp",
+        "quote": "A Model Context Protocol (MCP) server for LinkedIn Ads. Connect Claude (or any MCP-compatible AI client) directly to your LinkedIn ad accounts."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "LinkedIn Marketing API requires partnership/approval for access. REST API with comprehensive coverage. Multiple community MCP servers exist but no official one.",
+    "fetched_urls": [
+      "https://learn.microsoft.com/en-us/linkedin/marketing/",
+      "https://github.com/dhawalshah/linkedin-ads-mcp",
+      "https://github.com/mharnett/mcp-linkedin-ads"
+    ]
+  },
+  {
+    "app_id": "gohighlevel",
+    "app_name": "GoHighLevel",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "GoHighLevel is an all-in-one CRM platform with REST API for contacts, conversations, calendars, opportunities, payments, and workflow automation.",
+    "auth": {
+      "methods": ["oauth2", "private_integration_token"],
+      "auth_notes": "HighLevel supports OAuth 2.0 for public integrations and Private Integration Tokens for internal or single-location integrations."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Basic API access is included with Starter and Unlimited plans, while Advanced API access is available on Agency Pro plan."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Complete REST API documentation for CRM, contacts, messaging, calendars, opportunities, payments, webhooks, workflows, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["private_integration_token", "oauth2"],
+      "auth_notes": "Private Integration Token (PIT) for single-location integrations. OAuth 2.0 for app-marketplace integrations with automatic refresh.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Community MCP servers are open source. Official HTTP-based MCP server mentioned but not yet available for Claude Desktop."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Multiple community MCP servers with 50-269 tools. GoHighLevel provides official HTTP-based MCP but Claude Desktop requires stdio, hence community solutions."
+    },
+    "evidence": [
+      {
+        "claim": "GoHighLevel provides REST API with OAuth and PIT authentication",
+        "url": "https://marketplace.gohighlevel.com/docs/",
+        "quote": "Complete REST API documentation for the HighLevel CRM platform."
+      },
+      {
+        "claim": "Community MCP servers are comprehensive",
+        "url": "https://github.com/tkturners/gohighlevel-mcp",
+        "quote": "81 built-in tools — the most comprehensive open-source GoHighLevel MCP integration available."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "GoHighLevel has a mature REST API with OAuth 2.0 and Private Integration Tokens. Multiple community MCP servers exist. Official HTTP MCP server mentioned but stdio-based community solutions fill the gap.",
+    "fetched_urls": [
+      "https://marketplace.gohighlevel.com/docs/",
+      "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0/",
+      "https://github.com/tkturners/gohighlevel-mcp"
+    ]
+  },
+  {
+    "app_id": "systemeio",
+    "app_name": "systeme.io",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "systeme.io is an all-in-one business platform with REST API and official MCP server for contact management, tags, courses, and newsletter operations.",
+    "auth": {
+      "methods": ["api_key"],
+      "auth_notes": "To authenticate with the Systeme.io Public API, your only option right now is to attach your API key to the X-API-Key header of each request."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Go to your Systeme.io dashboard → Profile → Public API keys → Generate a new key."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "narrow",
+      "breadth_notes": "API exposes a carefully selected set of features for contacts, tags, and contact fields. Newsletter management also available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key"],
+      "auth_notes": "To authenticate with the MCP server, you must use your MCP key. The server supports HTTP Header (X-MCP-Key) and Query Parameter (mcpKey) authentication methods.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Generate MCP key from systeme.io dashboard → Profile → MCP & API keys section."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available. REST API with API key authentication. Community MCP server also exists with broader tool coverage."
+    },
+    "evidence": [
+      {
+        "claim": "systeme.io has an official MCP server",
+        "url": "https://developer.systeme.io/docs/mcp-server",
+        "quote": "The Systeme.io MCP server allows AI applications to access specific contact-management tools within your account."
+      },
+      {
+        "claim": "REST API uses API key authentication",
+        "url": "https://developer.systeme.io/reference/api",
+        "quote": "To authenticate with the Systeme.io Public API, your only option right now is to attach your API key to the X-API-Key header of each request."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "systeme.io provides both an official MCP server and REST API. API key authentication only. Limited scope (contacts, tags, newsletters). Community MCP server adds course and subscription management.",
+    "fetched_urls": [
+      "https://developer.systeme.io/docs/mcp-server",
+      "https://developer.systeme.io/reference/api",
+      "https://github.com/snzeeee/mcp-server-systemeio"
+    ]
+  },
+  {
+    "app_id": "pinterest",
+    "app_name": "Pinterest",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "Pinterest API v5 for creating pins, managing boards, tracking analytics, and researching keywords on the visual discovery platform.",
+    "auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "Pinterest uses OAuth 2.0 with PKCE. Authorization Code flow is the recommended full-capability flow. Access tokens expire in 30 days, refresh tokens in 60 days."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "Application requests are reviewed each business day. Trial access for read operations. Standard access requires video demo of OAuth flow via 'Upgrade access'."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Pinterest API v5 supports pins, boards, analytics, keywords, and account management. Tiered access: Trial (read) vs Standard (full CRUD).",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "OAuth 2.0 with PKCE. Each user authorizes their own Pinterest account. Tokens stored encrypted. Server handles upstream token refresh.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Community MCP servers are open source and self-hosted. One hosted on Cloudflare Workers with remote HTTP endpoint."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Pinterest API access tiers require application and approval"],
+      "notes": "Multiple community MCP servers exist. No official MCP server from Pinterest. Access tier gating may limit functionality."
+    },
+    "evidence": [
+      {
+        "claim": "Pinterest API v5 with OAuth 2.0",
+        "url": "https://developers.pinterest.com/docs/getting-started/",
+        "quote": "Build a working authentication flow based on OAuth 2."
+      },
+      {
+        "claim": "Community MCP servers provide full coverage",
+        "url": "https://github.com/what-name/pinterest-mcp",
+        "quote": "Full-coverage Pinterest API v5 MCP server. Create pins, manage boards, research keywords, track analytics."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Pinterest REST API v5 with OAuth 2.0 and tiered access. Multiple community MCP servers. No official MCP server. Access requires business account and app approval.",
+    "fetched_urls": [
+      "https://developers.pinterest.com/docs/getting-started/",
+      "https://github.com/what-name/pinterest-mcp",
+      "https://github.com/salshwauva/pinterest-mcp"
+    ]
+  },
+  {
+    "app_id": "threads",
+    "app_name": "Threads (Meta)",
+    "category": "Marketing, Ads, Email and Social",
+    "one_liner": "Threads API by Meta for creating and publishing posts, retrieving media and profiles, moderating replies, and accessing insights on the text-based social platform.",
+    "auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "Threads API requires OAuth 2.0 authentication through Meta Developer Platform. Scopes include threads_basic, threads_content_publish, threads_read_replies, threads_manage_replies, threads_manage_insights, threads_keyword_search."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Requires Meta Developer App with Threads API product added. Business or Creator account on Threads required."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Threads API endpoints for posts, replies, media, profiles, insights, search, and location tagging. Accessed via graph.threads.com or graph.threads.net.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["oauth2"],
+      "auth_notes": "OAuth 2.0 through Meta Developer Platform. Access token with threads_basic, threads_content_publish, threads_read_replies, threads_manage_replies, threads_manage_insights scopes.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Community MCP servers are open source. No official MCP server from Meta for Threads specifically."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Multiple community MCP servers with full Threads API coverage. Meta provides official MCP for ads but not specifically for Threads."
+    },
+    "evidence": [
+      {
+        "claim": "Threads API documentation available",
+        "url": "https://developers.facebook.com/docs/threads",
+        "quote": "Use the Threads API to create and publish posts, retrieve media and profiles, moderate replies, and access insights."
+      },
+      {
+        "claim": "Community MCP servers provide comprehensive coverage",
+        "url": "https://github.com/sergekostenchuk/threads-mcp",
+        "quote": "Complete Model Context Protocol (MCP) server for Meta's Threads platform with OAuth authentication, media uploads, analytics, and enterprise features."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Threads API is part of Meta's developer platform with OAuth 2.0 authentication. Multiple community MCP servers exist with full coverage. No official MCP server for Threads specifically.",
+    "fetched_urls": [
+      "https://developers.facebook.com/docs/threads",
+      "https://developers.facebook.com/documentation/threads/overview",
+      "https://github.com/sergekostenchuk/threads-mcp"
+    ]
+  }
+]

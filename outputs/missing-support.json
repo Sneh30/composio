@@ -1,0 +1,320 @@
+[
+  {
+    "app_id": "pylon",
+    "app_name": "Pylon",
+    "category": "Support and Helpdesk",
+    "one_liner": "B2B support platform with AI agents for collaborative customer work across Slack, email, and other channels.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Only Admin users can create API tokens. To learn more about Admins, see Roles & User Management."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Only Admin users can create API tokens. Some common use cases for our API include: Fetching information about customers, Fetching information about issues, Creating issues programmatically."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "API spans accounts, activities, attachments, audit logs, call recordings, contacts, custom fields, custom objects, email, feature requests, issues, knowledge base, macros, messages, surveys, tags, tasks & projects, teams, ticket forms, training data, users.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol (e.g. Claude, ChatGPT, Cursor). AI tools authenticate with your Pylon account via OAuth and can read and update issues, accounts, and contacts within the data you can see in Pylon.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Configure and enable the MCP Server from the Pylon dashboard: Settings → AI Controls → MCP Server. Use the MCP URL above in your AI tool."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with OAuth auth is available. REST API with broad coverage. Well-documented."
+    },
+    "evidence": [
+      {
+        "claim": "Pylon uses REST API with API token authentication",
+        "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+        "quote": "Only Admin users can create API tokens. To learn more about Admins, see Roles & User Management."
+      },
+      {
+        "claim": "Official MCP server available",
+        "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+        "quote": "The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol (e.g. Claude, ChatGPT, Cursor). AI tools authenticate with your Pylon account via OAuth and can read and update issues, accounts, and contacts within the data you can see in Pylon."
+      },
+      {
+        "claim": "MCP server URL and setup",
+        "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+        "quote": "Server URL: https://mcp.usepylon.com Auth: OAuth 2.0 (AuthKit). Actions are performed on behalf of the authenticated user; access is scoped to the same data as in the Pylon dashboard. Transport: Streamable HTTP (stateless; no server-side sessions)."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Pylon has a well-documented REST API with broad coverage and an official MCP server using OAuth 2.0. The MCP server is hosted remotely at mcp.usepylon.com and supports Streamable HTTP transport.",
+    "fetched_urls": [
+      "https://docs.usepylon.com/pylon-docs/developer/api",
+      "https://docs.usepylon.com/pylon-docs/developer/api/api-reference",
+      "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+      "https://www.usepylon.com/integrations/api-webhooks"
+    ]
+  },
+  {
+    "app_id": "liveagent",
+    "app_name": "LiveAgent",
+    "category": "Support and Helpdesk",
+    "one_liner": "Integrated customer support software with ticketing, live chat, social helpdesk, and voice helpdesk capabilities.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "API key is an identity of your LiveAgent (like your username and password) which you can use to build your own custom integration solutions. Never give it to anybody you don't trust."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "While logged in as an admin navigate to Configuration> System> API which loads the API v3 section where you find existing API keys or create new ones."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "API v1 and v3 covering agents, tickets, companies, conversations, contacts, tags, departments, messages, filters, groups, phone numbers, predefined answers, and more.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "auth_notes": "LIVEAGENT_BASE_URL=https://your-instance.liveagent.com LIVEAGENT_V3_API_KEY=your_api_key_here",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Requires a LiveAgent instance and API key. Install via pip install liveagent-mcp-server and configure with your instance URL and API key."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Community MCP server available on GitHub. REST API with v1 and v3 versions. Well-documented with Python client."
+    },
+    "evidence": [
+      {
+        "claim": "LiveAgent uses API key authentication for REST API",
+        "url": "https://support.liveagent.com/802463-REST-API",
+        "quote": "API key is an identity of your LiveAgent (like your username and password) which you can use to build your own custom integration solutions."
+      },
+      {
+        "claim": "Community MCP server available",
+        "url": "https://github.com/QualityUnit/liveagent-mcp-server",
+        "quote": "An MCP (Model Context Protocol) server that provides access to LiveAgent API functionality, enabling AI assistants to interact with your LiveAgent helpdesk system."
+      },
+      {
+        "claim": "MCP server configuration",
+        "url": "https://github.com/QualityUnit/liveagent-mcp-server",
+        "quote": "LIVEAGENT_BASE_URL=https://your-instance.liveagent.com LIVEAGENT_V3_API_KEY=your_api_key_here"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "LiveAgent has a well-documented REST API (v1 and v3) with API key authentication. A community MCP server exists on GitHub from QualityUnit (the LiveAgent developers). Uses same API key credentials as REST API.",
+    "fetched_urls": [
+      "https://support.liveagent.com/802463-REST-API",
+      "https://support.liveagent.com/840770-Complete-API-reference",
+      "https://github.com/QualityUnit/liveagent-mcp-server",
+      "https://github.com/QualityUnit/LiveAgent-api-python"
+    ]
+  },
+  {
+    "app_id": "plain",
+    "app_name": "Plain",
+    "category": "Support and Helpdesk",
+    "one_liner": "API-first customer support platform for B2B SaaS built entirely on its own public GraphQL API with full API-UI parity.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Authorization: Bearer YOUR_TOKEN where the token is your API key. See authentication for more details."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Go to Settings → Machine Users and click 'Add Machine User'. A Machine User has two fields: Name and Public name. Click 'Add API Key' and select the permissions you need."
+    },
+    "api_surface": {
+      "type": "GraphQL",
+      "breadth": "broad",
+      "breadth_notes": "Full GraphQL API covering customers, companies, tenants, threads, messaging, help center, labels, tiers/SLAs, snippets, tasks, events, webhooks. API-UI parity: same API Plain uses internally is exposed to customers.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "Plain MCP uses OAuth to allow your MCP server connection to share the same context as your normal web app user. No additional managing of permissions required. This means replies to threads will appear as though they come from your user.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "The Plain MCP server at https://mcp.plain.com/mcp lets tools like Claude, ChatGPT, and Cursor work with your support data directly. You authenticate with your existing Plain account, so the MCP server has the same permissions as your user. No API keys needed."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with OAuth auth. GraphQL API with full schema introspection. TypeScript SDK available. Well-documented with API explorer."
+    },
+    "evidence": [
+      {
+        "claim": "Plain uses GraphQL API with Bearer token auth",
+        "url": "https://plain.com/docs/graphql/introduction",
+        "quote": "Plain itself is built on this same GraphQL API. This means that there are no limitations in what can be done via the API vs the UI."
+      },
+      {
+        "claim": "Official MCP server available",
+        "url": "https://plain.com/docs/agents/mcp-server",
+        "quote": "MCP (Model Context Protocol) is an open standard that lets AI tools connect to external platforms. The Plain MCP server at https://mcp.plain.com/mcp lets tools like Claude, ChatGPT, and Cursor work with your support data directly."
+      },
+      {
+        "claim": "MCP authentication details",
+        "url": "https://plain.com/docs/agents/mcp-server",
+        "quote": "Plain MCP uses OAuth to allow your MCP server connection to share the same context as your normal web app user. No additional managing of permissions required."
+      },
+      {
+        "claim": "API key creation process",
+        "url": "https://plain.com/docs/graphql/authentication",
+        "quote": "Go to Settings → Machine Users and click 'Add Machine User'. Click 'Add API Key' and select the permissions you need."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Plain has a GraphQL API with full schema introspection and API-UI parity. Official MCP server uses OAuth (not API keys) and provides 30 tools for threads, customers, tenants, help center, and user/workspace management. Very well-documented.",
+    "fetched_urls": [
+      "https://plain.com/docs/graphql/introduction",
+      "https://plain.com/docs/graphql/authentication",
+      "https://plain.com/docs/agents/mcp-server",
+      "https://plain.com/docs"
+    ]
+  },
+  {
+    "app_id": "gorgias",
+    "app_name": "Gorgias",
+    "category": "Support and Helpdesk",
+    "one_liner": "Ecommerce-focused helpdesk platform with REST API and OAuth2 for public apps, serving thousands of online stores.",
+    "auth": {
+      "methods": ["Basic_auth", "OAuth2"],
+      "auth_notes": "The Gorgias API supports two authentication methods: 1. Private app → API key 2. Public app → OAuth2. Using OAuth2 is mandatory for public apps."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "The account owner and admins can access the API credentials and create API keys. You can find the Base API URL, your Username, and Password (API Key) in your Gorgias settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering account, customers, custom fields, events, files, integrations, jobs, macros, metric cards, rules, satisfaction surveys, search, statistics, tags, teams, tickets, ticket messages, users, views, voice calls.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "auth_notes": "The Gorgias MCP is a first-party connector that plugs your Gorgias account into any AI client that speaks MCP — Claude, ChatGPT, Cursor, and more. Once connected, your AI assistant can read and act on your tickets, customers, tags, macros, knowledge (Skills), Workflows, and AI Agent settings — all scoped to your account, via OAuth.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "On first connect you'll be asked which Gorgias account to authorize. The MCP server at https://mcp.gorgias.com/mcp handles OAuth flow automatically."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with OAuth auth. REST API with comprehensive documentation. Postman collection available. Multiple community MCP servers also exist."
+    },
+    "evidence": [
+      {
+        "claim": "Gorgias uses Basic auth (API key) and OAuth2",
+        "url": "https://developers.gorgias.com/reference/authentication",
+        "quote": "The Gorgias API supports two authentication methods: 1. Private app → API key 2. Public app → OAuth2. Using OAuth2 is mandatory for public apps."
+      },
+      {
+        "claim": "Official MCP server available",
+        "url": "https://mcp.gorgias.com/",
+        "quote": "This URL hosts an MCP endpoint, not a website. To use it, point an MCP client (Claude Desktop, Claude Code, etc.) at: https://mcp.gorgias.com/mcp On first connect you'll be asked which Gorgias account to authorize."
+      },
+      {
+        "claim": "MCP cookbook with recipes",
+        "url": "https://github.com/gorgias/mcp-cookbook",
+        "quote": "The Gorgias MCP is a first-party connector that plugs your Gorgias account into any AI client that speaks MCP — Claude, ChatGPT, Cursor, and more. Once connected, your AI assistant can read and act on your tickets, customers, tags, macros, knowledge (Skills), Workflows, and AI Agent settings — all scoped to your account, via OAuth."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Gorgias has a comprehensive REST API with both Basic auth (for private apps) and OAuth2 (for public apps). Official MCP server at mcp.gorgias.com uses OAuth. Gorgias also has a GitHub org with an MCP cookbook repository.",
+    "fetched_urls": [
+      "https://developers.gorgias.com/reference/authentication",
+      "https://developers.gorgias.com/docs/access-tokens-api-keys",
+      "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias",
+      "https://mcp.gorgias.com/",
+      "https://github.com/gorgias/mcp-cookbook"
+    ]
+  },
+  {
+    "app_id": "gladly",
+    "app_name": "Gladly",
+    "category": "Support and Helpdesk",
+    "one_liner": "Customer service platform focused on conversations, with REST API and Lookup API for building customer relationship tools.",
+    "auth": {
+      "methods": ["Basic_auth"],
+      "auth_notes": "Gladly API uses token-based Basic Authentication. API tokens are associated with designated Gladly users. To create and use an API token, your user must have the API User permission."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "Gladly Administrators can set API permissions on an agent-by-agent basis. To allow a user to create API tokens and access the API, the admin must enable the 'API User' permission on the user profile."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering agents, answers (public and management), audiences, business hours, communications (SMS, email), conversations, customers, endpoints, events, export, inboxes, organization, proactive conversations, reports, tasks, teams, topics, webhooks, plus Lookup API.",
+      "existing_mcp": false,
+      "mcp_source": "none"
+    },
+    "mcp_auth": null,
+    "mcp_access": null,
+    "buildability_signal": {
+      "blockers_observed": ["No official MCP server found", "API access requires admin approval"],
+      "notes": "No official or well-known community MCP server found for Gladly. REST API is comprehensive but requires admin-level permission grants. Third-party MCP via StackOne exists but is not official."
+    },
+    "evidence": [
+      {
+        "claim": "Gladly uses token-based Basic Authentication",
+        "url": "https://developer.gladly.com/rest/index.html",
+        "quote": "Gladly API uses token-based Basic Authentication. API tokens are associated with designated Gladly users. To create and use an API token, your user must have the API User permission. An API token can be used to perform any API request without restriction."
+      },
+      {
+        "claim": "Admin approval required for API access",
+        "url": "https://developer.gladly.com/rest/index.html",
+        "quote": "Gladly Administrators can set API permissions on an agent-by-agent basis. To allow a user to create API tokens and access the API: 1. Log in to your Gladly instance. 2. Open the menu on the top left-hand corner of the page. 3. Navigate to Settings > Users 4. Search and click the user profile you wish to give access to. 5. You'll see a permission called API User. Select it, while making sure to keep the user's Agent role intact."
+      },
+      {
+        "claim": "REST API documentation",
+        "url": "https://developer.gladly.com/rest/index.html",
+        "quote": "Clients can access the REST API via HTTPS at your organization's Gladly domain (e.g. https://{organization}.gladly.com). Resources follow REST semantics and utilize industry-standard HTTP verbs, response codes, and authentication schemes."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "Gladly has a comprehensive REST API with Basic auth (token-based). API access requires admin approval to grant 'API User' permission. No official MCP server found. A third-party MCP server exists via StackOne but is not official.",
+    "fetched_urls": [
+      "https://developer.gladly.com/rest/index.html",
+      "https://developer.gladly.com/",
+      "https://help.gladly.com/docs/generate-api-tokens-and-create-webhooks"
+    ]
+  }
+]

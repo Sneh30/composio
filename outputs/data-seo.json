@@ -1,0 +1,432 @@
+[
+  {
+    "app_id": "clearbit",
+    "app_name": "Clearbit",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "B2B marketing and sales intelligence platform providing company and person enrichment data via REST APIs, now part of HubSpot Breeze Intelligence.",
+    "auth": {
+      "methods": ["API_key", "Basic_auth", "Bearer_token"],
+      "auth_notes": "Clearbit authenticates with a single long-lived Secret API key scoped to the account, presented either as HTTP Basic (key as the username, empty password) or as an RFC 6750 Bearer token."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "API keys are available for Clearbit accounts created in 2023 and earlier. If you signed up in 2024, free or paid plans with API keys are not available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Multiple APIs: Person Enrichment, Company Enrichment, Reveal, Prospector, Discovery, Autocomplete. Covers firmographics, technographics, and persona data across 100+ company and 60+ person attributes.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers use the same Clearbit API key for authentication via HTTP Basic or Bearer token.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "unknown",
+      "mcp_access_notes": "Community MCP servers available, but no official remote MCP server from Clearbit/HubSpot."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API key issuance closed to new users since 2023", "Free accounts sunset 2025-04-30", "Self-serve API purchasing removed - now requires HubSpot subscription"],
+      "notes": "Legacy API endpoints remain functional for existing customers, but new integrators cannot obtain API keys. Clearbit is now sold exclusively as HubSpot Breeze Intelligence."
+    },
+    "evidence": [
+      {"claim": "Clearbit authenticates with API key via Basic or Bearer", "url": "https://apis.io/security/clearbit/clearbit-authentication/", "quote": "Clearbit authenticates with a single long-lived Secret API key scoped to the account, presented either as HTTP Basic (key as the username, empty password) or as an RFC 6750 Bearer token."},
+      {"claim": "API key issuance closed to new users", "url": "https://help.clearbit.com/hc/en-us/articles/6045527495191-How-Do-I-Access-My-Clearbit-API-Key", "quote": "API keys are available for Clearbit accounts created in 2023 and earlier. If you signed up in 2024, free or paid plans with API keys are not available."},
+      {"claim": "No standalone API purchasing path exists anymore", "url": "https://casrai.org/guides/clearbit-pricing", "quote": "No. The self-serve, CRM-independent API purchasing path that standalone Clearbit offered did not carry over to Breeze Intelligence, which is sold and consumed as a HubSpot platform feature rather than an independent developer product."},
+      {"claim": "Community MCP servers exist", "url": "https://anythingmcp.com/guides/clearbit-to-mcp", "quote": "Enrich emails, domains and IPs via Clearbit (HubSpot Breeze Intelligence). 6 tools, Bearer auth. Marketing intelligence + technographics + firmographics."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Clearbit is in wind-down as standalone product. Legacy API works for existing customers but new sign-ups go through HubSpot. Community MCP servers exist via AnythingMCP and leadenrich-mcp.",
+    "fetched_urls": [
+      "https://apis.io/security/clearbit/clearbit-authentication/",
+      "https://help.clearbit.com/hc/en-us/articles/6045527495191-How-Do-I-Access-My-Clearbit-API-Key",
+      "https://casrai.org/guides/clearbit-pricing",
+      "https://anythingmcp.com/guides/clearbit-to-mcp",
+      "https://github.com/carsonlabs/leadenrich-mcp"
+    ]
+  },
+  {
+    "app_id": "semrush",
+    "app_name": "Semrush",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Comprehensive SEO and digital marketing platform offering keyword research, backlink analysis, site audit, and competitive intelligence APIs.",
+    "auth": {
+      "methods": ["API_key", "OAuth2", "Bearer_token"],
+      "auth_notes": "Version 4 APIs use either Version 4 API keys (v4) or OAuth 2.0 access tokens. API key passed in Authorization header as 'Authorization: Apikey <YOUR_API_KEY>' or as query parameter."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "All Semrush API options require an eligible subscription. The required subscription depends on the API you want to use. Your Semrush API key is available in the API keys section of your Semrush profile."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Multiple API versions (v3, v4) covering SEO data, Trends API, Local API, Backlinks, Keywords, Domain Analytics, and more. Wide range of SEO and competitive intelligence endpoints.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "API_key"],
+      "mcp_auth_notes": "Semrush MCP supports two authentication mechanisms: OAuth is the default MCP server authentication approach. API key: If your AI agent doesn't support OAuth, you can authenticate using an API key instead.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "The Semrush MCP is available across Semrush One, SEO Classic, and Trends API plans."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Well-documented API with multiple versions, official MCP server, and self-serve access. Strong integration potential."
+    },
+    "evidence": [
+      {"claim": "Semrush APIs use API key or OAuth 2.0", "url": "https://developer.semrush.com/api/v4/get-started/authorization/", "quote": "Version 4 APIs use either Version 4 API keys (v4) or OAuth 2.0 access tokens."},
+      {"claim": "API access requires subscription", "url": "https://developer.semrush.com/api/v4/get-started/api-access/", "quote": "Yes. All Semrush API options require an eligible subscription. The required subscription depends on the API you want to use."},
+      {"claim": "Official MCP server available", "url": "https://developer.semrush.com/api/v4/introduction/semrush-mcp/", "quote": "The Semrush MCP server provides AI agents with secure access to Semrush's public APIs."},
+      {"claim": "MCP supports OAuth and API key", "url": "https://developer.semrush.com/api/v4/introduction/semrush-mcp/", "quote": "Semrush MCP supports two authentication mechanisms: OAuth is the default MCP server authentication approach. No additional configuration or headers are required."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Semrush has comprehensive API documentation with multiple versions. Official MCP server available at mcp.semrush.com. Self-serve access with subscription required.",
+    "fetched_urls": [
+      "https://developer.semrush.com/api/v4/get-started/authorization/",
+      "https://developer.semrush.com/api/v4/get-started/api-access/",
+      "https://developer.semrush.com/api/v4/introduction/semrush-mcp/",
+      "https://github.com/mrkooblu/semrush-mcp"
+    ]
+  },
+  {
+    "app_id": "ahrefs",
+    "app_name": "Ahrefs",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Professional SEO toolset providing backlink analysis, keyword research, rank tracking, site audits, and competitive analysis via REST API.",
+    "auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "auth_notes": "To send requests to Ahrefs API, you'll need an API key. Send your API key as a bearer token in the Authorization: Bearer <API_KEY> header. Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with PKCE.",
+      "access_notes": "Only workspace owners and admins can create and manage API keys."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Ahrefs API requires a paid subscription. API keys can be created by workspace owners and admins in Account settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive API covering Site Explorer, Keywords Explorer, Batch Analysis, Rank Tracker, Site Audit, and more. Full OpenAPI specification available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token", "OAuth2"],
+      "mcp_auth_notes": "Ahrefs provides a hosted MCP server. The remote MCP server uses Bearer token authentication with MCP-scoped keys. Legacy local server used API v3 keys.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Ahrefs MCP is available on Lite, Standard, Advanced, and Enterprise plans."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official remote MCP server available. API keys and MCP keys are not interchangeable - need MCP-scoped key for remote server."
+    },
+    "evidence": [
+      {"claim": "Ahrefs API uses Bearer token authentication", "url": "https://docs.ahrefs.com/api/docs/introduction.md", "quote": "To send requests to Ahrefs API, you'll need an API key. Only workspace owners and admins can create and manage API keys."},
+      {"claim": "Official remote MCP server available", "url": "https://docs.ahrefs.com/en/mcp/docs/introduction", "quote": "Ahrefs MCP lets AI agents securely access the Ahrefs API and enrich their answers with real Ahrefs data."},
+      {"claim": "MCP uses different keys than API", "url": "https://studiomeyer.io/en/blog/ahrefs-mcp-server-setup", "quote": "The hosted remote server is the opposite. It wants a key with MCP scope, which you generate separately in your Ahrefs account. Ahrefs states plainly that API keys and MCP keys are not interchangeable."},
+      {"claim": "OAuth 2.0 available via Ahrefs Connect", "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md", "quote": "Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with Proof Key for Code Exchange (PKCE)."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Ahrefs has official MCP server hosted remotely. API and MCP keys are separate - need to generate MCP-scoped key for remote server. Old local server archived.",
+    "fetched_urls": [
+      "https://docs.ahrefs.com/api/docs/introduction.md",
+      "https://docs.ahrefs.com/en/mcp/docs/introduction",
+      "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+      "https://github.com/ahrefs/ahrefs-mcp-server"
+    ]
+  },
+  {
+    "app_id": "moz",
+    "app_name": "Moz",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "SEO software providing link analysis, keyword research, and site metrics through JSON-RPC API with beta MCP server support.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "To authenticate requests to the API, simply include a custom x-moz-token header with the value set to one of your API tokens every time you send a POST request to https://api.moz.com/jsonrpc."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To access the Moz API, you must first sign up for an API account. The Moz API requires a separate subscription from Moz Pro."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "JSON-RPC 2.0 API covering domain authority, page authority, link metrics, and keyword data. Currently transitioning between API versions with some legacy endpoints.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Both endpoints support authentication through OAuth directly inside your client. Manual connection with a Bearer token using your Moz API key is also supported.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "The Moz MCP server is currently in beta. Access is limited to account owners during beta. Requires Moz Data API or Moz Local subscription."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API transitioning between versions", "Some endpoints only available via legacy version"],
+      "notes": "Beta MCP server available. API uses JSON-RPC format which is less common. Documentation is comprehensive.",
+      "mcp_notes": "MCP server is beta, but functional with OAuth and Bearer token support."
+    },
+    "evidence": [
+      {"claim": "Moz API uses x-moz-token header", "url": "https://moz.com/api/docs/guides/authentication", "quote": "To authenticate requests to the API, simply include a custom x-moz-token header with the value set to one of your API tokens every time you send a POST request to https://api.moz.com/jsonrpc."},
+      {"claim": "API requires separate subscription", "url": "https://moz.com/api/docs/guides/getting-started", "quote": "To get started right away, sign up for an API account if you don't already have one and log in to the API dashboard to generate an API token."},
+      {"claim": "MCP server in beta", "url": "https://cdn.moz.com/api/docs/guides/mcp-servers", "quote": "The Moz Model Context Protocol (MCP) server lets LLM hosts call the Moz APIs directly as tools. The Moz MCP server is currently in beta."},
+      {"claim": "MCP supports OAuth and Bearer token", "url": "https://cdn.moz.com/api/docs/guides/mcp-servers", "quote": "Both endpoints support authentication through OAuth directly inside your client. When you add the server in a client like Claude Desktop or ChatGPT Desktop, the client will walk you through the OAuth sign-in flow."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Moz has beta MCP server with official support. API uses JSON-RPC format. MCP server supports both OAuth and Bearer token authentication.",
+    "fetched_urls": [
+      "https://moz.com/api/docs/guides/authentication",
+      "https://moz.com/api/docs/guides/getting-started",
+      "https://cdn.moz.com/api/docs/guides/mcp-servers",
+      "https://github.com/metehan777/moz-mcp"
+    ]
+  },
+  {
+    "app_id": "hunter-io",
+    "app_name": "Hunter.io",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Email finding and verification platform providing B2B contact data through REST API with official remote MCP server.",
+    "auth": {
+      "methods": ["API_key", "Bearer_token"],
+      "auth_notes": "Authentication is made with a key you will have to add to every call you make to our API. It can be passed in the api_key query parameter, in the X-API-KEY header, or in the Authorization header (Bearer YOUR_API_KEY)."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up to get your free API key. API key can be generated from the dashboard."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering Domain Search, Email Finder, Email Verifier, and Account management. Focused on B2B email finding and verification.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key", "OAuth2"],
+      "mcp_auth_notes": "The remote MCP server accepts API key via X-API-KEY header. OAuth 2.1 authorization server exists but is not documented in API reference.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Available on all Hunter plans. Works with Claude, ChatGPT, and any MCP-compatible client."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official remote MCP server available. Simple API key authentication. Free tier available for testing.",
+      "mcp_notes": "Official MCP server at mcp.hunter.io. Uses X-API-KEY header or OAuth."
+    },
+    "evidence": [
+      {"claim": "Hunter API supports multiple auth methods", "url": "https://hunter.io/api-documentation/v2", "quote": "Authentication is made with a key you will have to add to every call you make to our API. This parameter is always required. We'll return an error if the key is either missing or invalid."},
+      {"claim": "Free API key available", "url": "https://hunter.io/api-documentation/v2", "quote": "Sign up to get your free API key."},
+      {"claim": "Official MCP server available", "url": "https://hunter.io/mcp", "quote": "The remote MCP server works with any MCP-compatible client. Add it once with your API key and start prospecting."},
+      {"claim": "MCP available on all plans", "url": "https://hunter.io/mcp", "quote": "Available on all Hunter plans. Works with Claude, ChatGPT, and any MCP-compatible client."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Hunter.io has official remote MCP server. Simple API key authentication with free tier. OAuth 2.1 exists but not documented in main API docs.",
+    "fetched_urls": [
+      "https://hunter.io/api-documentation/v2",
+      "https://hunter.io/mcp",
+      "https://github.com/hunter-io/hunter-mcp",
+      "https://raw.githubusercontent.com/api-evangelist/hunter/refs/heads/main/authentication/hunter-authentication.yml"
+    ]
+  },
+  {
+    "app_id": "snov-io",
+    "app_name": "Snov.io",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Sales automation and lead generation platform providing email finding, verification, drip campaigns, and CRM capabilities via REST API.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Snov.io uses OAuth 2.0 client_credentials to obtain short-lived Bearer tokens. POST your API User ID (client_id) and API Secret (client_secret) to https://api.snov.io/v1/oauth/access_token to receive a Bearer access_token valid for 3600 seconds."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Free plan available with limited credits. API access requires account with API User ID and Secret from account settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering email finding, domain search, email verification, drip campaigns, CRM pipeline, and LinkedIn prospect automation. Rate limited to 60 requests per minute.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Snov.io MCP uses OAuth 2.0 authorization_code with PKCE against an authorization server on app.snov.io, with open dynamic client registration and a single scope named 'mcp'.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Available on every plan including the free Trial. Consumes the same credits, recipients and LinkedIn slots as the rest of the platform."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official remote MCP server available. MCP and REST API use different credential paths. MCP surface is larger than REST API surface.",
+      "mcp_notes": "MCP server exposes 100+ actions covering prospecting, CRM, and LinkedIn - more than REST API."
+    },
+    "evidence": [
+      {"claim": "Snov.io uses OAuth 2.0 client credentials", "url": "https://snov.io/api", "quote": "You need to generate an access token to authenticate future requests. When making a request, please specify this access token in the Authorization field."},
+      {"claim": "Token valid for 1 hour", "url": "https://snov.io/knowledgebase/how-to-use-snov-io-api/", "quote": "The access token is valid for 1 hour (3600 seconds)"},
+      {"claim": "Official MCP server available", "url": "https://snov.io/mcp", "quote": "Snov.io MCP is a remote Model Context Protocol server that connects your Snov.io account to AI assistants."},
+      {"claim": "MCP uses different auth than REST", "url": "https://raw.githubusercontent.com/api-evangelist/snov-io/refs/heads/main/authentication/snov-io-authentication.yml", "quote": "Snov.io runs TWO independent OAuth 2.0 deployments that share no credentials, no host and no grant type."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Snov.io has official remote MCP server with larger surface than REST API. MCP and REST use separate OAuth deployments. Free tier available.",
+    "fetched_urls": [
+      "https://snov.io/api",
+      "https://snov.io/mcp",
+      "https://snov.io/knowledgebase/how-to-use-snov-io-api/",
+      "https://raw.githubusercontent.com/api-evangelist/snov-io/refs/heads/main/authentication/snov-io-authentication.yml"
+    ]
+  },
+  {
+    "app_id": "phantombuster",
+    "app_name": "PhantomBuster",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Web automation platform providing pre-built scrapers and lead generation tools with API and official MCP server for programmatic control.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Authentication is dead simple: put your API key in the X-Phantombuster-Key-1 HTTP header (or in the key query string parameter) of every request you make."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "The PhantomBuster API is available on all paid plans. You need a valid API key from your PhantomBuster Workspace to authenticate requests."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering agent management, container operations, script management, and storage. API versions v1 and v2 both live with v2 current.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Authentication uses OAuth: the first time your client connects, you'll be redirected to sign in to PhantomBuster and authorize access. No API keys to copy or paste.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "MCP server is available to all PhantomBuster users. Must connect from a Workspace where you're an owner."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official remote MCP server available. MCP uses OAuth while REST uses API key. MCP is curated subset of REST API.",
+      "mcp_notes": "MCP server is curated subset focusing on common workflows. REST API has additional capabilities like real-time output streaming, webhooks, and AI endpoints."
+    },
+    "evidence": [
+      {"claim": "PhantomBuster API uses X-Phantombuster-Key-1 header", "url": "https://hub.phantombuster.com/docs/api", "quote": "Authentication is dead simple: put your API key in the X-Phantombuster-Key-1 HTTP header (or in the key query string parameter) of every request you make."},
+      {"claim": "API available on paid plans", "url": "https://support.phantombuster.com/hc/en-us/articles/4401916698130-How-to-Get-Started-with-the-PhantomBuster-API", "quote": "Yes. The PhantomBuster API is available on all paid plans."},
+      {"claim": "Official MCP server with OAuth", "url": "https://hub.phantombuster.com/docs/mcp-server", "quote": "The PhantomBuster MCP (Model Context Protocol) server gives AI assistants like ChatGPT, Claude, and Cursor a secure, standardized way to work with your PhantomBuster data and automations directly from a conversation."},
+      {"claim": "MCP uses different auth than REST", "url": "https://www.scalekit.com/blog/phantombuster-mcp-vs-api", "quote": "The auth model is inverted relative to most tools in this series. PhantomBuster MCP is OAuth with a per-user login and a workspace chosen at connect time. The REST API supports exactly one credential type: a workspace-scoped API key."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "PhantomBuster has official remote MCP server. REST uses API key, MCP uses OAuth. MCP is curated subset of REST capabilities.",
+    "fetched_urls": [
+      "https://hub.phantombuster.com/docs/api",
+      "https://hub.phantombuster.com/docs/mcp-server",
+      "https://support.phantombuster.com/hc/en-us/articles/4401916698130-How-to-Get-Started-with-the-PhantomBuster-API",
+      "https://www.scalekit.com/blog/phantombuster-mcp-vs-api"
+    ]
+  },
+  {
+    "app_id": "browse-ai",
+    "app_name": "Browse AI",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "No-code web scraping and data extraction platform that turns websites into APIs with robot automation and official MCP server.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Authenticate every request with your Browse AI API key, sent as a Bearer token in the Authorization header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Free tier available. API key can be generated from the dashboard."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering robot management, task execution, and data extraction. Turns websites into APIs through pre-built robots.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP server (browseai-dev) requires BrowseAI Dev API key for authentication.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Community MCP server available via npm package. Free tier with 100 premium queries/day."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official API available. Community MCP server exists. No official remote MCP server from Browse AI.",
+      "mcp_notes": "Community MCP server (browseai-dev) available via npm. Provides web search, page extraction, and research capabilities."
+    },
+    "evidence": [
+      {"claim": "Browse AI uses Bearer token auth", "url": "https://docs.browse.ai/api/", "quote": "Authenticate every request with your Browse AI API key, sent as a Bearer token in the Authorization header."},
+      {"claim": "Free tier available", "url": "https://docs.browse.ai/api/", "quote": "Generate your API key."},
+      {"claim": "Community MCP server exists", "url": "https://github.com/BrowseAI-HQ/BrowseAI-Dev/tree/main/apps/mcp", "quote": "MCP server with real-time web search, evidence extraction, and structured citations. Drop into Claude Desktop, Cursor, Windsurf, LangChain, CrewAI, or any agent pipeline."},
+      {"claim": "Free BAI key users get generous quota", "url": "https://github.com/BrowseAI-HQ/BrowseAI-Dev/tree/main/apps/mcp", "quote": "Free BAI key users get a generous daily quota (100 premium queries/day, or ~33 deep queries/day at 3x cost each)."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "medium",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Browse AI has official REST API. Community MCP server (browseai-dev) available. No official remote MCP server from Browse AI itself.",
+    "fetched_urls": [
+      "https://docs.browse.ai/api/",
+      "https://github.com/BrowseAI-HQ/BrowseAI-Dev/tree/main/apps/mcp",
+      "https://help.browse.ai/en/articles/12683249-api-guide-getting-started"
+    ]
+  }
+]

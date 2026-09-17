@@ -1,0 +1,482 @@
+[
+  {
+    "app_id": "active-campaign",
+    "app_name": "ActiveCampaign",
+    "category": "Marketing",
+    "one_liner": "Marketing automation, email marketing, and CRM platform for customer experience orchestration.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "All requests to the API are authenticated by providing your API key. The API key should be provided as an HTTP header named `Api-Token`."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Your API key can be found in your account on the Settings page under the 'Developer' tab. Each user in your ActiveCampaign account has their own unique API key."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers contacts, deals, accounts, lists, tags, custom fields & objects, ecommerce, campaigns, automations, segments, webhooks, tasks, calendars, site/event tracking, SMS, and WhatsApp. Also includes an Ecommerce GraphQL API.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "ActiveCampaign's remote MCP server uses OAuth authentication. No API key handling is required. All credentials are managed through the OAuth flow with ActiveCampaign.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Copy your unique Remote MCP URL from Settings -> Developer. Available for all plan tiers. No coding required to connect."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official remote MCP server with broad coverage. OAuth-based auth for MCP is separate from API key auth. Strong integration potential."
+    },
+    "evidence": [
+      {"claim": "API authentication uses Api-Token header", "url": "https://developers.activecampaign.com/reference/authentication", "quote": "All requests to the API are authenticated by providing your API key. The API key should be provided as an HTTP header named `Api-Token`."},
+      {"claim": "Official MCP server exists", "url": "https://developers.activecampaign.com/page/mcp", "quote": "ActiveCampaign's remote MCP server makes it easy for AI agents to understand, store, and use customer context across tools, channels, and workflows."},
+      {"claim": "MCP uses OAuth authentication", "url": "https://growthengineer.ai/mcp-servers/activecampaign", "quote": "Authentication happens via OAuth from the client (Claude Desktop, the Claude web app, or ChatGPT with Developer Mode), so there is no API key handling, npm install, or self-hosting required."},
+      {"claim": "No OAuth for REST API", "url": "https://apis.io/security/activecampaign/activecampaign-authentication/", "quote": "ActiveCampaign authenticates every API surface with one flat, unscoped API key sent in an Api-Token header. There is no OAuth, no OIDC, no scopes, no token expiry and no refresh."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official remote MCP server available. REST API uses API key only. MCP server uses OAuth. Community MCP servers also exist with more comprehensive tool coverage (~325 tools vs curated subset).",
+    "fetched_urls": [
+      "https://developers.activecampaign.com/reference/authentication",
+      "https://developers.activecampaign.com/page/mcp",
+      "https://help.activecampaign.com/hc/en-us/articles/22566179229596-Get-started-with-the-ActiveCampaign-MCP-Server",
+      "https://github.com/ohneben/ActiveCampaign-MCP"
+    ]
+  },
+  {
+    "app_id": "brevo",
+    "app_name": "Brevo",
+    "category": "Marketing",
+    "one_liner": "All-in-one marketing platform for email campaigns, SMS, WhatsApp, CRM, and transactional messaging.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "Use API key authentication for direct API access. Include your API key in the `api-key` header for each request. Use OAuth 2.0 when your application needs to act on behalf of a Brevo user."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Log in to your Brevo account and open the SMTP & API settings page. Under the API keys tab, click Generate a new API key."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers contacts, lists, campaigns, transactional emails, SMS, WhatsApp, CRM deals/companies/tasks, webhooks, ecommerce, account management, and more.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "The MCP server uses Bearer token authentication. All endpoints use the base URL https://mcp.brevo.com.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Connect to the main server for access to all features, or to individual servers for specific needs. MCP server available at https://mcp.brevo.com/v1/brevo/mcp."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with 27 modules. Both API key and OAuth 2.0 supported for REST API. Strong integration potential."
+    },
+    "evidence": [
+      {"claim": "API key authentication", "url": "https://developers.brevo.com/docs/api-key-authentication", "quote": "API keys authenticate your requests to the Brevo API. Generate an API key from your account settings and include it in the `api-key` header for all API requests."},
+      {"claim": "OAuth 2.0 supported", "url": "https://developers.brevo.com/docs/oauth.mdx", "quote": "Brevo OAuth 2.0 lets your application request access to a user's Brevo account with their consent."},
+      {"claim": "Official MCP server", "url": "https://developers.brevo.com/docs/mcp-protocol", "quote": "The Brevo MCP Server lets you use AI assistants to interact with your Brevo account using natural language."},
+      {"claim": "MCP server uses Bearer token", "url": "https://developers.brevo.com/docs/mcp-protocol", "quote": "Authorization: Bearer paste-your-mcp-token-here"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server with comprehensive module coverage. OAuth 2.0 is private only (within organization). Public OAuth support planned for future release.",
+    "fetched_urls": [
+      "https://developers.brevo.com/docs/authentication-schemes",
+      "https://developers.brevo.com/docs/mcp-protocol",
+      "https://developers.brevo.com/docs/oauth.mdx"
+    ]
+  },
+  {
+    "app_id": "convertkit",
+    "app_name": "Kit (ConvertKit)",
+    "category": "Marketing",
+    "one_liner": "Email marketing and creator commerce platform for newsletters, sequences, and subscriber management.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "We support two authentication mechanisms in the V4 API: OAuth 2.0 for apps available for all creators in the Kit App Store, and API keys for automating simple tools and integrations for your own account."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To use API Key authentication, you must first create a V4 API Key. To do this, visit the 'Developer' tab in your account settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers subscribers, tags, custom fields, sequences, broadcasts, forms, purchases, segments, webhooks, accounts, and email templates. V4 API with comprehensive coverage.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The Kit MCP uses OAuth authentication. When you connect Claude, ChatGPT, Copilot, or any MCP-compatible AI tool to Kit, you set your own permissions and can revoke access anytime.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Copy Kit's MCP server URL (https://app.kit.com/mcp) and paste it into your AI tool's connector settings. Works with Claude, ChatGPT, Gemini, Cursor, and more."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with 65+ tools. Both API key and OAuth 2.0 supported. API keys have lower rate limits (120/min vs 600/min for OAuth). Some endpoints require OAuth.",
+      "mcp_notes": "MCP requires OAuth authentication. API keys cannot be used with MCP."
+    },
+    "evidence": [
+      {"claim": "V4 API supports both API key and OAuth", "url": "https://developers.kit.com/api-reference/authentication", "quote": "We support two authentication mechanisms in the V4 API: OAuth 2.0 for apps available for all creators in the Kit App Store, and API keys for automating simple tools and integrations for your own account."},
+      {"claim": "Official MCP server", "url": "https://kit.com/ai/mcp", "quote": "Connect Claude, ChatGPT, Gemini, and more directly to Kit so every AI analysis and action is personal to your business, your audience, and your list."},
+      {"claim": "MCP uses OAuth", "url": "https://help.kit.com/en/articles/14827557-how-to-connect-the-kit-mcp-to-your-ai-tools", "quote": "Your AI tool opens a Kit sign-in page in your browser. Review the requested permissions and click Allow."},
+      {"claim": "API key restrictions for MCP", "url": "https://apis.io/security/convertkit/convertkit-authentication/", "quote": "oauth: required_for: Any app published to the Kit App Store, all bulk endpoints, purchase creation, and the Kit MCP"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server with broad tool coverage. OAuth required for MCP and bulk endpoints. API keys limited to personal automation. Rate limits: 120/min (API key) vs 600/min (OAuth).",
+    "fetched_urls": [
+      "https://developers.kit.com/api-reference/authentication",
+      "https://kit.com/ai/mcp",
+      "https://help.kit.com/en/articles/14827557-how-to-connect-the-kit-mcp-to-your-ai-tools",
+      "https://apis.io/security/convertkit/convertkit-authentication/"
+    ]
+  },
+  {
+    "app_id": "mailchimp",
+    "app_name": "Mailchimp",
+    "category": "Marketing",
+    "one_liner": "Email marketing and automation platform with audience management, campaigns, and e-commerce integrations.",
+    "auth": {
+      "methods": ["API_key", "OAuth2", "Basic_auth"],
+      "auth_notes": "You can authenticate requests using either your API key or an OAuth access token. You can either use HTTP Basic Authentication or Bearer Authentication."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Navigate to the API Keys section of your Mailchimp account. Click Create New Key and give it a descriptive name."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers audiences, members, campaigns, reports, automations, templates, e-commerce, landing pages, file manager, surveys, signup forms, and verified domains.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "Community MCP servers use API key authentication via Bearer token or Basic auth. The Transactional Messaging MCP uses Bearer token.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "No official MCP server from Mailchimp. Community-maintained servers available. Transactional Messaging MCP available at https://mandrillapp.com/mcp."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "No official MCP server from Mailchimp as of early 2025. Transactional Messaging MCP exists. Community MCP servers available with 53-280+ tools.",
+      "mcp_notes": "Only Transactional Messaging has official MCP. Marketing API MCP is community-only."
+    },
+    "evidence": [
+      {"claim": "API key and OAuth 2.0 supported", "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/", "quote": "You can authenticate requests using either your API key or an OAuth access token, depending on your use case."},
+      {"claim": "No official MCP server", "url": "https://www.mcpforge.tech/blog/mailchimp-mcp-server-setup-guide", "quote": "As of early 2025, Mailchimp (Intuit) has not released an official MCP Server. There is no MCP Server in the Mailchimp GitHub organization."},
+      {"claim": "Transactional MCP exists", "url": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp/", "quote": "Our MCP specifically allows you to interact with the Transactional Messaging API, give onboarding help regarding Transactional Messaging, and submit feedback."},
+      {"claim": "Community MCP servers available", "url": "https://github.com/damientilman/mailchimp-mcp-server", "quote": "The most complete Model Context Protocol (MCP) server for the Mailchimp Marketing API: 227 tools to query and manage your Mailchimp account."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "No official MCP for Marketing API. Only Transactional Messaging has official MCP. Community MCP servers available. OAuth tokens do not expire.",
+    "fetched_urls": [
+      "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+      "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+      "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp/",
+      "https://github.com/damientilman/mailchimp-mcp-server"
+    ]
+  },
+  {
+    "app_id": "klaviyo",
+    "app_name": "Klaviyo",
+    "category": "Marketing",
+    "one_liner": "Email and SMS marketing automation platform with advanced segmentation and e-commerce integrations.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "Klaviyo provides 3 methods of authentication including private key authentication and OAuth (used to call server-side APIs) and public key authentication (used to call client-side APIs)."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To manage API keys, you must have an Owner, Admin, or Manager role on your Klaviyo account. Navigate to your account's Settings page and select API keys."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers profiles, lists, segments, campaigns, flows, forms, events, metrics, images, templates, tags, subscriptions, push tokens, catalogs, coupons, and reporting.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The Klaviyo MCP server uses OAuth 2.0 authentication with dynamic client registration. Authentication method: OAuth (with dynamic client registration).",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Remote MCP server URL: https://mcp.klaviyo.com/mcp. Add as a custom connector in your AI tool and authenticate via OAuth."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with broad coverage. OAuth required for MCP. Private API keys for REST. Public keys for client-side only.",
+      "mcp_notes": "MCP requires OAuth authentication. Private API keys cannot be used with MCP."
+    },
+    "evidence": [
+      {"claim": "Three auth methods", "url": "https://developers.klaviyo.com/en/docs/authenticate_", "quote": "Klaviyo provides 3 methods of authentication including private key authentication and OAuth (used to call server-side APIs) and public key authentication (used to call client-side APIs)."},
+      {"claim": "Official MCP server", "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server", "quote": "The Klaviyo Model Context Protocol (MCP) server seamlessly integrates with Klaviyo's APIs, enabling AI clients to interact with your Klaviyo data."},
+      {"claim": "MCP uses OAuth", "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server", "quote": "Authentication method: OAuth (with dynamic client registration)"},
+      {"claim": "OAuth for tech partners", "url": "https://developers.klaviyo.com/en/docs/authenticate_", "quote": "If you are a tech partner integrating with Klaviyo, we recommend using OAuth to make authorized API calls."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server with broad coverage. OAuth required for MCP and App Marketplace. Private API keys for server-side REST. Public keys for client-side only.",
+    "fetched_urls": [
+      "https://developers.klaviyo.com/en/docs/authenticate_",
+      "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+      "https://developers.klaviyo.com/en/docs/set_up_oauth"
+    ]
+  },
+  {
+    "app_id": "iterable",
+    "app_name": "Iterable",
+    "category": "Marketing",
+    "one_liner": "Cross-channel marketing automation platform for email, push, SMS, in-app, and web messaging.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "To authenticate your request to Iterable's API, you can use a standard API key or a JWT-enabled key. Regular API keys: Include the key in an Api-Key or Api_Key header."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "To create API keys for an Iterable project, navigate to Integrations > API Keys in your Iterable project settings."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers users, templates, campaigns, journeys, lists, events, catalogs, channels, message types, and metadata tables. Supports US and EU data centers.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "The Iterable MCP server uses the same API key authentication as the REST API. Set ITERABLE_API_KEY environment variable.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official MCP server available from GitHub (Iterable/mcp-server). Self-hosted or via npm. Requires API key configuration."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with broad coverage. API key only auth (no OAuth). JWT-enabled keys for client-side security. Community MCP servers also available.",
+      "mcp_notes": "MCP uses same API key as REST API."
+    },
+    "evidence": [
+      {"claim": "API key authentication", "url": "https://support.iterable.com/hc/en-us/articles/360043464871-API-Keys", "quote": "Iterable's API can be used to interact with a project's users, templates, campaigns, journeys, and more. To authenticate with the API, you must use an API key."},
+      {"claim": "Official MCP server", "url": "https://github.com/Iterable/mcp-server/", "quote": "Talk to your Iterable data using natural language. Ask questions or give instructions like 'How many campaigns did we send last week?' and get instant answers without writing code."},
+      {"claim": "MCP uses API key", "url": "https://github.com/Iterable/mcp-server/", "quote": "ITERABLE_API_KEY: Your Iterable API key. Required if not using key manager"},
+      {"claim": "No OAuth support", "url": "https://apis.io/security/iterable/iterable-authentication/", "quote": "Iterable authenticates with project-scoped API keys sent in an Api-Key header. There is no OAuth or OpenID Connect surface."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server from Iterable GitHub. API key only authentication (no OAuth). JWT-enabled keys available for client-side security. Data center bound keys (USDC/EDC).",
+    "fetched_urls": [
+      "https://support.iterable.com/hc/en-us/articles/360043464871-API-Keys",
+      "https://github.com/Iterable/mcp-server/",
+      "https://apis.io/security/iterable/iterable-authentication/"
+    ]
+  },
+  {
+    "app_id": "customer-io",
+    "app_name": "Customer.io",
+    "category": "Marketing",
+    "one_liner": "Customer messaging automation platform for email, push, SMS, and in-app messaging based on behavior data.",
+    "auth": {
+      "methods": ["Basic_auth", "Bearer_token"],
+      "auth_notes": "The Tracking API uses HTTP basic authorization. The App API uses bearer authorization, and you can generate tokens supporting different scopes."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "You can find all of your API authentication information in your Account Settings. To access your credentials, you must be an Account Admin or Member with the account-level permission, 'Manage API credentials.'"
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Three APIs: Pipelines API (data ingestion), Track API (behavioral tracking), and App API (broadcasts, transactional messages, data retrieval). Comprehensive coverage.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Customer.io MCP uses OAuth authentication. When you connect, you select workspaces and permissions to grant access.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "mcp_access_notes": "You must be an account admin to enable Customer.io MCP for your account. After you enable it, you and other users can set up clients."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with broad coverage. Three different APIs with different auth methods. MCP uses OAuth. Admin approval required to enable MCP.",
+      "mcp_notes": "MCP requires admin approval to enable for the account."
+    },
+    "evidence": [
+      {"claim": "Multiple API auth methods", "url": "https://docs.customer.io/integrations/api/track/", "quote": "You can find all of your API authentication information in your Account Settings. Our Tracking API uses HTTP basic authorization. The App API uses bearer authorization."},
+      {"claim": "Official MCP server", "url": "https://docs.customer.io/ai/mcp/get-started/", "quote": "Customer.io MCP connects your Customer.io account to AI tools that support the Model Context Protocol. With the MCP server, you can do just about anything you can do in Customer.io via your AI tool of choice."},
+      {"claim": "MCP uses OAuth", "url": "https://docs.customer.io/ai/mcp/get-started/", "quote": "The first Customer.io tool call opens Customer.io OAuth in your browser. Complete OAuth. Choose the workspaces and permission scopes you want to grant, then allow access."},
+      {"claim": "Admin required to enable MCP", "url": "https://docs.customer.io/ai/mcp/get-started/", "quote": "You must be an account admin to enable Customer.io MCP for your account."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server. Three APIs: Pipelines (Basic auth), Track (Basic auth), App (Bearer auth). MCP uses OAuth. Admin approval required. Service account tokens also available for CLI.",
+    "fetched_urls": [
+      "https://docs.customer.io/integrations/api/track/",
+      "https://docs.customer.io/ai/mcp/get-started/",
+      "https://docs.customer.io/integrations/api/app/",
+      "https://docs.customer.io/accounts/settings/managing-credentials/"
+    ]
+  },
+  {
+    "app_id": "mixpanel",
+    "app_name": "Mixpanel",
+    "category": "Marketing",
+    "one_liner": "Product analytics platform for tracking user behavior, funnels, retention, and experiments.",
+    "auth": {
+      "methods": ["Basic_auth", "API_key"],
+      "auth_notes": "Most of our APIs require authentication for which we recommend using Service Accounts to authenticate. Service Account authentication is performed via HTTP Basic Auth. Most Ingestion API calls only require a Project Token."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Service accounts can be created in the Mixpanel admin panel. Project tokens are available in Project Settings under Access Keys."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers events, profiles, funnels, retention, cohorts, experiments, dashboards, and more. Both ingestion and analytics APIs available.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Mixpanel's MCP server supports OAuth via two well-known discovery endpoints following RFC 8414 and RFC 9728.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Hosted MCP server available at https://mcp.mixpanel.com/mcp (US), https://mcp-eu.mixpanel.com/mcp (EU), https://mcp-in.mixpanel.com/mcp (IN). Service account auth also available for non-interactive use."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with 50+ tools. OAuth and service account auth for MCP. REST API uses service accounts (Basic auth) or project tokens. Community MCP servers also available.",
+      "mcp_notes": "MCP supports OAuth and service account authentication."
+    },
+    "evidence": [
+      {"claim": "Service account auth", "url": "https://docs.mixpanel.com/reference/authentication", "quote": "Most of our APIs require authentication for which we recommend using Service Accounts to authenticate."},
+      {"claim": "Official MCP server", "url": "https://docs.mixpanel.com/docs/mcp", "quote": "Mixpanel provides a hosted Model Context Protocol (MCP) server that gives AI assistants direct access to your Mixpanel data."},
+      {"claim": "MCP supports OAuth", "url": "https://docs.mixpanel.com/docs/mcp", "quote": "Mixpanel's MCP server supports OAuth via two well-known discovery endpoints following RFC 8414 and RFC 9728."},
+      {"claim": "Service account auth for MCP", "url": "https://github.com/mixpanel/ai-plugins/blob/main/plugins/mixpanel/skills/install/references/mcp-setup.md", "quote": "Fallback for clients/environments where native HTTP + OAuth doesn't work — stdio via mcp-remote"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server with broad coverage. Service accounts recommended for REST API. MCP supports OAuth and service account auth. Regional MCP servers available. Project API secret deprecated (retirement March 2027).",
+    "fetched_urls": [
+      "https://docs.mixpanel.com/reference/authentication",
+      "https://docs.mixpanel.com/docs/mcp",
+      "https://github.com/mixpanel/ai-plugins"
+    ]
+  },
+  {
+    "app_id": "amplitude",
+    "app_name": "Amplitude",
+    "category": "Marketing",
+    "one_liner": "Product analytics platform for behavioral analytics, experiments, and feature flagging.",
+    "auth": {
+      "methods": ["Basic_auth", "API_key"],
+      "auth_notes": "Amplitude uses an API Key to identify which project to send ingested data to. A Secret Key authenticates you to server-side APIs that read or modify project data. Dashboard REST APIs use Basic auth with API key and Secret key."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Managers and Admins can generate, copy, and revoke API keys, and generate secret keys. Navigate to Settings > Projects to manage keys."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers events, user profiles, cohorts, experiments, feature flags, charts, dashboards, and notebooks. Multiple API surfaces for different products.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "The Amplitude MCP server uses OAuth 2.0 authentication and respects your existing Amplitude permissions. You'll only have access to the data and projects you can normally view in Amplitude.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "MCP server available at https://mcp.amplitude.com/mcp (US) and https://mcp.eu.amplitude.com/mcp (EU). Add as custom connector in AI tool and complete OAuth authentication."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with broad coverage. OAuth required for MCP. REST API uses API key + Secret key (Basic auth). Multiple product APIs.",
+      "mcp_notes": "MCP requires OAuth authentication."
+    },
+    "evidence": [
+      {"claim": "API key and Secret key auth", "url": "https://amplitude.com/docs/apis/authentication", "quote": "To find your Amplitude project's API key and secret key: In the Amplitude web app, select Settings in the lower-left navigation."},
+      {"claim": "Official MCP server", "url": "https://github.com/amplitude/mcp-server-guide", "quote": "The Amplitude MCP (Model Context Protocol) server enables teams to analyze product data, experiments, and user behavior through natural language conversations with AI."},
+      {"claim": "MCP uses OAuth", "url": "https://github.com/amplitude/mcp-server-guide", "quote": "The Amplitude MCP server uses OAuth 2.0 authentication and respects your existing Amplitude permissions."},
+      {"claim": "Secret key for server-side", "url": "https://amplitude.com/docs/apis/keys-and-tokens", "quote": "A Secret Key authenticates you to server-side APIs that read or modify project data. Projects can have multiple Secret Keys."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Official MCP server with broad coverage. OAuth for MCP. API key + Secret key for REST (Basic auth). Management API uses Bearer token. Experiment Management API uses separate Management API Key.",
+    "fetched_urls": [
+      "https://amplitude.com/docs/apis/authentication",
+      "https://github.com/amplitude/mcp-server-guide",
+      "https://amplitude.com/docs/apis/keys-and-tokens",
+      "https://github.com/amplitude/mcp-marketplace"
+    ]
+  }
+]

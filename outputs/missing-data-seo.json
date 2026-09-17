@@ -1,0 +1,276 @@
+[
+  {
+    "app_id": "dataforseo",
+    "app_name": "DataForSEO",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Comprehensive SEO and marketing data API platform providing SERP data, keyword analytics, backlinks, on-page audits, and business data across major search engines.",
+    "auth": {
+      "methods": ["basic_auth"],
+      "auth_notes": "DataForSEO is using the Basic Authentication, which makes it possible to call our APIs with almost any programming language, Postman app, REST API platforms, and all major frameworks."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create a free account with DataForSEO, then go to the API Access tab in the account dashboard to find your API login and password, which you'll need to authenticate and use the DataForSEO APIs."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Extensive API coverage including SERP API (Google, Bing, YouTube, Yahoo, Baidu, Naver, Seznam), Keywords Data API, Backlinks API, OnPage API, Business Data API, Merchant API, App Data API, Domain Analytics API, Content Analysis API, AI Optimization API, and DataForSEO Labs API with dozens of sub-endpoints.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["basic_auth", "oauth_2.0"],
+      "auth_notes": "OAuth 2.0 Protected Resource metadata (RFC 9728) is always exposed so MCP clients can discover the authorization server and authenticate with Bearer tokens. Credentials (DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD) are optional fallback only.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Connect any MCP-compatible client to that URL. See the Docker Hub repository for advanced configuration."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server published on npm (dataforseo-mcp-server) and GitHub (dataforseo/mcp-server-typescript). Fully documented with tools for docs browsing and authenticated API requests. Supports both stdio and HTTP transport."
+    },
+    "evidence": [
+      {
+        "claim": "DataForSEO uses REST technology",
+        "url": "https://docs.dataforseo.com/v3/",
+        "quote": "DataForSEO API is using the REST technology for interchanging data between your application and our service."
+      },
+      {
+        "claim": "Basic authentication required",
+        "url": "https://docs.dataforseo.com/v3/auth/",
+        "quote": "DataForSEO is using the Basic Authentication, which makes it possible to call our APIs with almost any programming language, Postman app, REST API platforms, and all major frameworks."
+      },
+      {
+        "claim": "Official MCP server exists",
+        "url": "https://dataforseo.com/model-context-protocol",
+        "quote": "Connect your AI application with the most capable source of SEO data"
+      },
+      {
+        "claim": "MCP server published on npm",
+        "url": "https://www.npmjs.com/package/dataforseo-mcp-server",
+        "quote": "CLI and MCP server for DataForSEO API — browse documentation and make authenticated API requests"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "DataForSEO has extensive REST API documentation with clear authentication instructions. Official MCP server available via npm package and GitHub repository. Supports both stdio and HTTP transport modes for MCP.",
+    "fetched_urls": [
+      "https://docs.dataforseo.com/v3/",
+      "https://docs.dataforseo.com/v3/auth/",
+      "https://dataforseo.com/model-context-protocol",
+      "https://www.npmjs.com/package/dataforseo-mcp-server"
+    ]
+  },
+  {
+    "app_id": "mrscraper",
+    "app_name": "MrScraper",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "AI-powered web scraping API platform for structured data extraction, search results, marketplace data, and web unblocking with natural language instructions.",
+    "auth": {
+      "methods": ["api_token"],
+      "auth_notes": "The MrScraper API uses API token authentication to secure all endpoints. Every request must include a valid API token in the HTTP request headers."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API tokens are managed directly from your MrScraper dashboard. Sign in to your MrScraper Dashboard, click your profile icon, select API Tokens, click New Token, enter a descriptive name and expiration date, then copy the generated token."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API with endpoints for web scraping, AI-powered extraction, listing pages, sitemaps, screenshots, markdown conversion, and result management. Includes Python and Node.js SDKs.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["oauth_2.1", "api_token"],
+      "auth_notes": "The hosted server publishes OAuth 2.1 protected-resource metadata and challenges unauthenticated clients to start browser sign-in. Access tokens are issued for the exact https://mcp.mrscraper.com/mcp resource and use scrape:read, scrape:write, and account:read scopes. API keys remain supported for clients without OAuth and carry full account authority.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Use the hosted Streamable HTTP endpoint for a managed connection, or run the published MCP package locally through Streamable HTTP or stdio."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with GitHub repository (mrscraper-com/mrscraper-mcp) and npm package (@mrscraper/mcp). Comprehensive documentation with 7 tools exposed: fetch, scrape, serp, status, rerun, results, result. Supports OAuth 2.1 and API key authentication."
+    },
+    "evidence": [
+      {
+        "claim": "REST API architecture",
+        "url": "https://docs.mrscraper.com/docs/api/overview",
+        "quote": "The MrScraper API provides a powerful and flexible way to programmatically scrape web pages and retrieve structured data. Built on REST principles, our API offers predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes."
+      },
+      {
+        "claim": "API token authentication",
+        "url": "https://docs.mrscraper.com/docs/api/authentication",
+        "quote": "The MrScraper API uses API token authentication to secure all endpoints. Every request must include a valid API token in the HTTP request headers."
+      },
+      {
+        "claim": "Official MCP server",
+        "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+        "quote": "MrScraper MCP is the official Model Context Protocol server for MrScraper."
+      },
+      {
+        "claim": "MCP OAuth authentication",
+        "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+        "quote": "The hosted server publishes OAuth 2.1 protected-resource metadata and challenges unauthenticated clients to start browser sign-in."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "MrScraper provides well-documented REST API with token-based auth. Official MCP server supports OAuth 2.1 for hosted mode and API key fallback for local/self-hosted deployments. 7 MCP tools available covering scraping, search, and result management.",
+    "fetched_urls": [
+      "https://docs.mrscraper.com/docs/api/overview",
+      "https://docs.mrscraper.com/docs/api/authentication",
+      "https://docs.mrscraper.com/docs/getting-started/mcp-server"
+    ]
+  },
+  {
+    "app_id": "firecrawl",
+    "app_name": "Firecrawl",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Web scraping and crawling API that converts websites into clean markdown, structured data, and AI-ready content with search, crawl, and extraction capabilities.",
+    "auth": {
+      "methods": ["bearer_token"],
+      "auth_notes": "For authentication, it's required to include an Authorization header. The header should contain Bearer fc-123456789, where fc-123456789 represents your API Key."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Scrape your first page now. No account or API key is required for this request. Add an API key when you need higher limits."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API with endpoints for scrape, crawl, map, search, extract (structured data), and agent features. Supports markdown, HTML, raw HTML, links, summary, images, and JSON output formats. Includes Python and Node.js SDKs.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["bearer_token", "oauth"],
+      "auth_notes": "Use /v2/mcp with a Firecrawl API key in an Authorization header for CI, servers, and scripts.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Firecrawl MCP gives AI clients access to live web data through the Model Context Protocol. It is available as a hosted service or as an open-source local server."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with GitHub repository (firecrawl/firecrawl-mcp-server). Supports both hosted remote server and self-hosted local instance. Comprehensive tool set including scrape, crawl, map, search, extract, interact, agent, monitor, research, and developer search tools."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer token authentication",
+        "url": "https://docs.firecrawl.dev/api-reference/introduction",
+        "quote": "For authentication, it's required to include an Authorization header. The header should contain Bearer fc-123456789, where fc-123456789 represents your API Key."
+      },
+      {
+        "claim": "No account required for basic use",
+        "url": "https://docs.firecrawl.dev/introduction",
+        "quote": "Scrape your first page now. No account or API key is required for this request."
+      },
+      {
+        "claim": "Official MCP server",
+        "url": "https://docs.firecrawl.dev/mcp-server",
+        "quote": "Firecrawl MCP gives AI clients access to live web data through the Model Context Protocol. It is available as a hosted service or as an open-source local server."
+      },
+      {
+        "claim": "MCP tools available",
+        "url": "https://github.com/firecrawl/firecrawl-mcp-server",
+        "quote": "A Model Context Protocol (MCP) server that brings Firecrawl to MCP-compatible AI agents — search, scrape, and interact with the live web for clean, agent-ready context."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Firecrawl has comprehensive REST API documentation with clear auth instructions. Official MCP server with extensive tool set. Free tier available without API key. Supports hosted and self-hosted MCP deployment options.",
+    "fetched_urls": [
+      "https://docs.firecrawl.dev/api-reference/introduction",
+      "https://docs.firecrawl.dev/introduction",
+      "https://docs.firecrawl.dev/mcp-server",
+      "https://github.com/firecrawl/firecrawl-mcp-server"
+    ]
+  },
+  {
+    "app_id": "bright-data",
+    "app_name": "Bright Data",
+    "category": "Data, SEO and Scraping",
+    "one_liner": "Enterprise web data platform with proxy networks, web unlocker, browser automation, and structured data collection APIs for scraping at scale.",
+    "auth": {
+      "methods": ["api_key", "proxy_username_password"],
+      "auth_notes": "Bright Data provides two primary methods for authentication: 1. API Access - Authenticate and interact with the Bright Data platform using an API key/token. 2. Native Access - Authenticate and interact with the Bright Data platform using proxy protocol username and password."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "An API key is a secure hashed token used to authenticate with Bright Data API. We create a default key for you upon account creation automatically."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API with extensive endpoints for web unlocker, SERP API, scraper API, browser API, datasets API, and platform-specific scrapers for Amazon, LinkedIn, Instagram, TikTok, YouTube, Reddit, and more. Includes Python and JavaScript SDKs with 1000+ scrapers.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["api_key"],
+      "auth_notes": "The environment variable API_TOKEN must exist when running the server.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "access_notes": "Free tier: 5,000 requests per month. No credit card required. Renews monthly. Two deployment options: a hosted remote server (one URL, no installation) or a local instance via npx @brightdata/mcp."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server with GitHub repository (brightdata/brightdata-mcp). Exposes 69 tools covering web search, page scraping, structured data extraction, browser automation, LLM response collection, and package registry data. Supports hosted and local deployment."
+    },
+    "evidence": [
+      {
+        "claim": "Dual authentication methods",
+        "url": "https://docs.brightdata.com/api-reference/authentication",
+        "quote": "Bright Data provides two primary methods for authentication: 1. API Access - Authenticate and interact with the Bright Data platform using an API key/token. 2. Native Access - Authenticate and interact with the Bright Data platform using proxy protocol username and password."
+      },
+      {
+        "claim": "API key created automatically",
+        "url": "https://docs.brightdata.com/api-reference/authentication",
+        "quote": "An API key is a secure hashed token used to authenticate with Bright Data API. We create a default key for you upon account creation automatically."
+      },
+      {
+        "claim": "Official MCP server",
+        "url": "https://github.com/brightdata/brightdata-mcp",
+        "quote": "A powerful Model Context Protocol (MCP) server that provides an all-in-one solution for public web access."
+      },
+      {
+        "claim": "69 MCP tools",
+        "url": "https://github.com/brightdata/brightdata-mcp",
+        "quote": "The Bright Data MCP server gives AI agents real-time access to public web data. It exposes 69 tools covering: Web search — Google, Bing, and Yandex results as structured data"
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Bright Data has comprehensive API documentation with dual authentication (API key and proxy credentials). Official MCP server with 69 tools and free tier of 5,000 requests/month. Supports both hosted and local deployment options.",
+    "fetched_urls": [
+      "https://docs.brightdata.com/api-reference/authentication",
+      "https://github.com/brightdata/brightdata-mcp",
+      "https://docs.brightdata.com/ai/mcp-server/overview"
+    ]
+  }
+]

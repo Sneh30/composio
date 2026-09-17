@@ -1,0 +1,134 @@
+[
+  {
+    "app_id": "smartsheet",
+    "app_name": "Smartsheet",
+    "category": "Productivity and Project Management",
+    "one_liner": "Cloud-based project management and collaboration platform with spreadsheet-like interface for managing work, tracking projects, and automating workflows.",
+    "auth": {
+      "methods": ["OAuth 2.0", "Personal Access Token"],
+      "auth_notes": "Smartsheet API requires authentication via OAuth 2.0 or Personal Access Token. The API is accessed through developer tools registration."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "Required plan: Business, Enterprise, or Advanced Work Management. Developer Agreement governs API use."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full REST API with OpenAPI specs covering Sheets, Cells, Folders, Reports, Users, and more. SDKs available for Java, Python, C#, and Node.js.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth 2.0", "Personal Access Token"],
+      "auth_notes": "The MCP server leverages the same REST API infrastructure, authentication model, and data structures you already work with. Connect your first MCP-compliant AI tool today.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "admin-approval-gated",
+      "access_notes": "Required plan: Business, Enterprise, or Advanced Work Management. MCP connectors available for ChatGPT, Microsoft 365 Copilot, Gemini Enterprise Plus, and Amazon Quick."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["Requires Business, Enterprise, or Advanced Work Management plan"],
+      "notes": "Official MCP server is available and well-documented. Authentication uses the same credentials as the REST API."
+    },
+    "evidence": [
+      {
+        "claim": "Smartsheet has an official MCP server",
+        "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+        "quote": "Unlock the power of AI by connecting Smartsheet with Claude, ChatGPT, and other AI clients through the Smartsheet MCP (Model Context Protocol) server."
+      },
+      {
+        "claim": "Authentication uses OAuth 2.0 or Personal Access Token",
+        "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+        "quote": "Valid Smartsheet API token, unless you're connecting an AI tool that supports Smartsheet's OAuth, such as ChatGPT (web or mobile), Claude AI, Claude Desktop, Gemini Enterprise Plus, or Microsoft 365 Copilot."
+      },
+      {
+        "claim": "MCP server requires Business, Enterprise, or Advanced Work Management plan",
+        "url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+        "quote": "To use the Smartsheet MCP Server, you'll need: A Smartsheet Business or Enterprise plan"
+      },
+      {
+        "claim": "MCP server uses the same REST API infrastructure",
+        "url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+        "quote": "The MCP Server routes requests through Smartsheet REST API, pulling structured data with rich metadata — row relationships, column types, cell history, comments — all respecting the authenticated user's permissions."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Smartsheet has an official, generally available MCP server. The server uses the same authentication model as the REST API (OAuth 2.0 or Personal Access Token). Requires Business, Enterprise, or Advanced Work Management plan.",
+    "fetched_urls": [
+      "https://developers.smartsheet.com/",
+      "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+      "https://developers.smartsheet.com/api/smartsheet/introduction",
+      "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+      "https://github.com/smartsheet-platform/smar-mcp"
+    ]
+  },
+  {
+    "app_id": "harvest",
+    "app_name": "Harvest",
+    "category": "Productivity and Project Management",
+    "one_liner": "Time tracking and project management tool for teams to log hours, track expenses, and generate invoices.",
+    "auth": {
+      "methods": ["Personal Access Token", "OAuth2"],
+      "auth_notes": "The V2 API requires an access token to authenticate requests. There are two options available to you: A Personal Access Token which is tied directly to you and is the quickest way to start playing around with the API. Implementing a full OAuth2 Authentication flow which allows other people to use your Harvest integrations."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Personal Access Tokens can be created from the Developers section of Harvest ID. No special plan requirements mentioned for API access."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Full REST API v2 covering Clients, Company Settings, Invoices, Estimates, Expenses, Tasks, Timesheets, Projects, Roles, Users, Reports, and Paid Time Off.",
+      "existing_mcp": false,
+      "mcp_source": "community"
+    },
+    "mcp_auth": null,
+    "mcp_access": null,
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "No official MCP server exists. Multiple community MCP servers are available on GitHub. Authentication uses Personal Access Token or OAuth2."
+    },
+    "evidence": [
+      {
+        "claim": "Harvest API supports Personal Access Token and OAuth2 authentication",
+        "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+        "quote": "The V2 API requires an access token to authenticate requests. There are two options available to you: A Personal Access Token which is tied directly to you and is the quickest way to start playing around with the API. Implementing a full OAuth2 Authentication flow which allows other people to use your Harvest integrations."
+      },
+      {
+        "claim": "Harvest has no official MCP server",
+        "url": "https://github.com/tgmclaughlin/harvest-mcp",
+        "quote": "MCP server for Harvest time-tracking"
+      },
+      {
+        "claim": "Multiple community MCP servers exist for Harvest",
+        "url": "https://github.com/ianaleck/harvest-mcp-server",
+        "quote": "Unofficial Model Context Protocol (MCP) server for seamless integration with the Harvest time tracking API"
+      },
+      {
+        "claim": "Personal Access Tokens can be created from Developer Tools",
+        "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+        "quote": "The API can be accessed by creating a Personal Access Token from the Developers section of Harvest ID."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "n/a"
+    },
+    "research_notes": "Harvest has a comprehensive REST API v2 but no official MCP server. Multiple community MCP servers exist on GitHub (tgmclaughlin/harvest-mcp, ianaleck/harvest-mcp-server, etc.). Authentication uses Personal Access Token or OAuth2.",
+    "fetched_urls": [
+      "https://help.getharvest.com/api-v2/",
+      "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "https://github.com/tgmclaughlin/harvest-mcp",
+      "https://github.com/ianaleck/harvest-mcp-server"
+    ]
+  }
+]

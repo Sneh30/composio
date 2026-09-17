@@ -1,0 +1,370 @@
+[
+  {
+    "app_id": "hubspot",
+    "app_name": "HubSpot",
+    "category": "CRM and Sales",
+    "one_liner": "Comprehensive CRM platform with marketing, sales, and service hubs, offering extensive API access and official MCP server support.",
+    "auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "auth_notes": "Private apps use Bearer token authentication. 'Private app access tokens are implemented on top of OAuth.' Public apps use OAuth 2.0 flow."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Super admin access required to create private apps. Free tier available with API limits."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Extensive REST API covering CRM objects (contacts, companies, deals), marketing, sales, service, CMS, and developer platform. Date-based versioning scheme.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "HubSpot MCP server supports OAuth 2.0. 'Apps built with the HubSpot MCP server follow the same distribution limits as other HubSpot apps. HubSpot MCP server supports OAuth 2.0.' Private app tokens also supported.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Admin needs to connect first to allow other users. 'For the HubSpot MCP server, you control what data the agent has access to through a HubSpot User-level App and its scopes. The admin of the HubSpot account needs to connect first, to allow other users in the account to connect thereafter.'"
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Excellent API coverage with official MCP server. Both remote (for CRM data) and local (for developer platform) MCP servers available. Well-documented with OAuth and private app token options."
+    },
+    "evidence": [
+      {"claim": "Official MCP server exists", "url": "https://developers.hubspot.com/ai-tools/mcp", "quote": "HubSpot offers two distinct MCP (Model Context Protocol) servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform."},
+      {"claim": "Private app Bearer token auth", "url": "https://developers.hubspot.com/docs/api/private-apps", "quote": "Private app access tokens are implemented on top of OAuth, so you can also make authenticated calls with your access token using one of HubSpot's client libraries."},
+      {"claim": "MCP server uses OAuth", "url": "https://developers.hubspot.com/ai-tools/mcp", "quote": "HubSpot MCP server supports OAuth 2.0. Later in 2025, we will align with MCP specification requirements for OAuth 2.1 support."},
+      {"claim": "REST API with date-based versioning", "url": "https://developers.hubspot.com/docs/api/overview", "quote": "The 2026-09 APIs use a date-based versioning scheme (e.g., /crm/2026-09/) that follows the previous 2026-03 API version."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "HubSpot has both official remote MCP server (for CRM data access) and local developer MCP server (for HubSpot CLI development). Private apps provide Bearer tokens, while public apps use OAuth 2.0. Rate limits vary by plan tier.",
+    "fetched_urls": [
+      "https://developers.hubspot.com/docs/api/overview",
+      "https://developers.hubspot.com/docs/api/private-apps",
+      "https://developers.hubspot.com/ai-tools/mcp",
+      "https://github.com/HubSpot/hubspot-api-nodejs"
+    ]
+  },
+  {
+    "app_id": "pipedrive",
+    "app_name": "Pipedrive",
+    "category": "CRM and Sales",
+    "one_liner": "Sales-focused CRM with RESTful API, offering API token and OAuth 2.0 authentication for marketplace and private integrations.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "API token provided in x-api-token header. OAuth 2.0 required for Marketplace apps. 'Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Free API access with every plan. 'Every Pipedrive plan comes with an API token that gives you access to our RESTful API for free.'"
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API covering deals, contacts, organizations, leads, activities, products, pipelines, and more. OpenAPI 3 spec available.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers use Pipedrive API token. 'Get your Pipedrive API token from Settings > Personal preferences > API.'",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "No official MCP server from Pipedrive. Multiple community implementations available on GitHub (GarethWright/PipeDrive-MCP-Server, nubiia-dev/mcp-pipedrive, WillDent/pipedrive-mcp-server)."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong API with free access on all plans. OAuth 2.0 for marketplace apps, API token for private integrations. Multiple community MCP servers available but no official one."
+    },
+    "evidence": [
+      {"claim": "Free API with all plans", "url": "https://pipedrive.com/en/features/crm-api", "quote": "Every Pipedrive plan comes with an API token that gives you access to our RESTful API for free."},
+      {"claim": "RESTful API with OpenAPI spec", "url": "https://developers.pipedrive.com/docs/api", "quote": "This reference helps you implement the RESTful Pipedrive API. This API uses a JSON format for output and is capable of handling CORS (Cross-Origin Resource Sharing) requests."},
+      {"claim": "OAuth 2.0 for Marketplace apps", "url": "https://pipedrive.readme.io/docs/marketplace-oauth-api", "quote": "Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace."},
+      {"claim": "API token in header", "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication", "quote": "The API token must be provided in the x-api-token header for all requests."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "No official MCP server from Pipedrive. Multiple community MCP servers exist on GitHub. API token authentication is straightforward with header-based approach. OAuth 2.0 required for marketplace distribution.",
+    "fetched_urls": [
+      "https://developers.pipedrive.com/docs/api",
+      "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+      "https://pipedrive.readme.io/docs/marketplace-oauth-api",
+      "https://pipedrive.com/en/features/crm-api"
+    ]
+  },
+  {
+    "app_id": "close",
+    "app_name": "Close",
+    "category": "CRM and Sales",
+    "one_liner": "Sales CRM for inside sales teams with API key and OAuth 2.0 authentication, plus official remote MCP server.",
+    "auth": {
+      "methods": ["Basic_auth", "OAuth2"],
+      "auth_notes": "API Keys use HTTP Basic Auth with API key as username and empty password. OAuth 2.0 for user-facing integrations. 'Use HTTP Basic Auth with your API key as the username and an empty password.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API keys are per-organization and can be created in Settings > Developer > API Keys. Free trial available."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering leads, contacts, opportunities, tasks, activities, custom objects, sequences, bulk actions, exports, and AI field enrichment. OpenAPI spec published.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Official Close remote MCP server uses OAuth. 'Yes. Close uses OAuth: the first time you connect, your MCP client opens a browser window to sign in and authorize access, then reuses the credentials for future sessions.'",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official remote MCP server at https://mcp.close.com/mcp. 'Close exposes a Streamable HTTP endpoint, the transport used by remote MCP servers and supported by all major MCP clients.'"
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Official MCP server available with OAuth authentication. Strong API with comprehensive CRM coverage. OpenAPI spec published for tooling integration."
+    },
+    "evidence": [
+      {"claim": "Official MCP server", "url": "https://mcp.so/servers/close", "quote": "Close is a CRM built for inside sales teams, combining leads, calls, email, and pipeline management. Its remote MCP server gives assistants direct access to CRM data so leads can be looked up, activity summarized, and records updated from conversation."},
+      {"claim": "OAuth for MCP", "url": "https://mcp.so/servers/close", "quote": "Does the Close MCP server require authentication? Yes. Close uses OAuth: the first time you connect, your MCP client opens a browser window to sign in and authorize access."},
+      {"claim": "REST API with Basic Auth", "url": "https://developer.close.com/api", "quote": "API Keys — Best for scripts, internal tools, and server-side integrations. Use HTTP Basic Auth with your API key as the username and an empty password."},
+      {"claim": "OpenAPI spec available", "url": "https://developer.close.com/api", "quote": "We publish an OpenAPI spec at: https://api.close.com/api/openapi.json"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Close has an official remote MCP server with OAuth authentication. API keys use Basic Auth (not Bearer token). OpenAPI spec published but marked as experimental. Strong CRM API covering leads, contacts, opportunities, and activities.",
+    "fetched_urls": [
+      "https://developer.close.com/api",
+      "https://mcp.so/servers/close",
+      "https://developer.close.com/api/overview/changelog"
+    ]
+  },
+  {
+    "app_id": "apollo-io",
+    "app_name": "Apollo.io",
+    "category": "CRM and Sales",
+    "one_liner": "B2B sales intelligence platform with people and organization data, offering API key and OAuth 2.0 authentication.",
+    "auth": {
+      "methods": ["API_key", "OAuth2"],
+      "auth_notes": "API key passed in x-api-key header. OAuth 2.0 for partners building on behalf of mutual users. 'You need to create an API key to access the Apollo API. Pass the key in the x-api-key header of every request.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API access restricted by plan. 'Your organization's API access is restricted by your current Apollo plan.' Free accounts must use work email for certain endpoints."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering people search, organization search, enrichment, sequences, contacts, accounts, deals, tasks, and more. OpenAPI 3 spec available.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers use Apollo API key. 'Get your API key from Apollo.io Settings > Integrations > API.'",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "No official MCP server from Apollo. Multiple community implementations available (agenteam-ai-2026/mcp-apollo, edwardchoh/apollo-io-mcp-server, laurenschristian/apollo-mcp)."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong B2B intelligence API with people and organization data. API key auth straightforward. No official MCP server but multiple community options. OpenAPI spec available for SDK generation."
+    },
+    "evidence": [
+      {"claim": "API key authentication", "url": "https://docs.apollo.io/reference/authentication", "quote": "For Apollo users: You need to create an API key to access the Apollo API. Pass the key in the x-api-key header of every request."},
+      {"claim": "OpenAPI spec available", "url": "https://docs.apollo.io/reference/openapi-specification", "quote": "The complete Apollo API is published as a machine-readable OpenAPI 3 specification — a single file describing every endpoint, parameter, and example request."},
+      {"claim": "OAuth 2.0 for partners", "url": "https://docs.apollo.io/reference/authentication", "quote": "For Apollo partners: To make API requests on behalf of an Apollo user, you need to implement the OAuth 2.0 authorization flow."},
+      {"claim": "Plan-based API access", "url": "https://docs.apollo.io/reference/apollo-api", "quote": "Most endpoints are available to all Apollo accounts. Free accounts must be registered with a work email address to use certain people and organization search, enrichment, and record-retrieval endpoints."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Apollo.io has strong B2B sales intelligence capabilities. API uses x-api-key header (not Bearer token). OAuth 2.0 available for partners. Multiple community MCP servers but no official one from Apollo. OpenAPI spec enables SDK generation.",
+    "fetched_urls": [
+      "https://docs.apollo.io/reference/authentication",
+      "https://docs.apollo.io/reference/openapi-specification",
+      "https://docs.apollo.io/reference/apollo-api",
+      "https://docs.apollo.io/docs/api-overview"
+    ]
+  },
+  {
+    "app_id": "clay",
+    "app_name": "Clay",
+    "category": "CRM and Sales",
+    "one_liner": "GTM data platform with 200+ data providers, offering API access and official MCP server for reps.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "API key passed in clay-api-key header. 'Requests authenticate with a Clay API key in the clay-api-key header.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API and CLI consume same credits as in-product work. 'API and CLI calls consume the same credits and actions as the equivalent work done in-product. There is no additional cost.'"
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API covering searches (companies/people), routines (Clay-managed functions, custom functions, workflows), tables (Enterprise only), audiences, and signals.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Clay MCP for reps uses API key. 'MCP for reps: Track job changes promotions or other signals.'",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official Clay MCP available for reps. 'Clay MCP: Give reps the best prospecting data in their AI tools. Bring data from 200+ providers and Ops-managed workflows into one place in the tools reps already use.'"
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Clay offers both API and CLI access with official MCP server. Data from 200+ providers. Tables primitive is Enterprise only. Workflows in Alpha stage. Good documentation at developers.clay.com."
+    },
+    "evidence": [
+      {"claim": "API key authentication", "url": "https://developers.clay.com/quickstart", "quote": "Use the Public API to call Clay from your own applications and services — backend jobs, internal tools, queues, and product features. Requests authenticate with a Clay API key in the clay-api-key header."},
+      {"claim": "Official MCP for reps", "url": "https://clay.com/mcp", "quote": "Clay MCP: Give reps the best prospecting data in their AI tools. Bring data from 200+ providers and Ops-managed workflows into one place in the tools reps already use."},
+      {"claim": "Same credits as in-product", "url": "https://university.clay.com/docs/clay-api-cli", "quote": "Does using the API or CLI cost extra credits? No. API and CLI calls consume the same credits and actions as the equivalent work done in-product."},
+      {"claim": "Developer platform overview", "url": "https://developers.clay.com/", "quote": "Use Clay from agents, terminals, backend services, internal tools, and custom apps. Clay used to live primarily in the Clay UI. Now Clay also works where your agents, developers, and business systems already are."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Clay has official MCP server and agent plugin for coding agents (Claude Code, Codex, Cursor). Tables primitive is Enterprise only. Workflows in Alpha. 200+ data providers in marketplace. API consumes same credits as UI.",
+    "fetched_urls": [
+      "https://developers.clay.com/",
+      "https://developers.clay.com/quickstart",
+      "https://clay.com/mcp",
+      "https://university.clay.com/docs/clay-api-cli"
+    ]
+  },
+  {
+    "app_id": "instantly",
+    "app_name": "Instantly",
+    "category": "CRM and Sales",
+    "one_liner": "Cold email outreach platform with API v2, CLI, and MCP support for AI assistants.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Bearer token authentication. 'Authenticate each request with your API key as a bearer token.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API key created in workspace. 'You need access to an Instantly workspace and an API v2 key. When you create a key, select only the scopes your integration requires.'"
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "REST API v2 covering email accounts, campaigns, leads, lists, webhooks, and sub-workspaces. Also offers CLI and SDK.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "Community MCP servers use Instantly API key as Bearer token. 'Base URL: https://api.instantly.ai/api/v2. Auth header: Authorization: Bearer <INSTANTLY_API_KEY>.'",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "No official MCP server from Instantly. Multiple community implementations available (PM-Labs/mcp-instantly, bcharleson/instantly-mcp, Yeti567/instantly-api)."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Strong cold email API with Bearer token auth. CLI and SDK also available. Multiple community MCP servers. OAuth 2.0 supported for connecting Google/Microsoft email accounts."
+    },
+    "evidence": [
+      {"claim": "Bearer token authentication", "url": "https://developer.instantly.ai/", "quote": "Authenticate each request with your API key as a bearer token. See [Authorization](/getting-started/authorization) for details."},
+      {"claim": "API v2 with CLI and MCP", "url": "https://developer.instantly.ai/", "quote": "Use the Instantly developer documentation to build integrations, automate workflows, and manage your workspace programmatically. ... Connect with MCP: Let AI assistants manage your workspace through natural language."},
+      {"claim": "Email account OAuth", "url": "https://developer.instantly.ai/", "quote": "Connect Google and Microsoft email accounts through OAuth."},
+      {"claim": "Base URL", "url": "https://developer.instantly.ai/", "quote": "Send API v2 requests to: https://api.instantly.ai/api/v2"}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Instantly has API v2 with Bearer token auth, CLI, and SDK. OAuth 2.0 for email account connections. Multiple community MCP servers but no official one. Community MCP servers support both stdio and HTTP transports.",
+    "fetched_urls": [
+      "https://developer.instantly.ai/",
+      "https://github.com/bcharleson/instantly-mcp",
+      "https://github.com/PM-Labs/mcp-instantly"
+    ]
+  },
+  {
+    "app_id": "smartlead",
+    "app_name": "Smartlead",
+    "category": "CRM and Sales",
+    "one_liner": "Cold email automation platform with API key authentication and official MCP server support.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "API key passed as query parameter. 'Authentication is done via API key passed as a query parameter on every request: ?api_key=YOUR_API_KEY. There is no OAuth or Bearer token system — every request must include the api_key query parameter.'"
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API access depends on subscription plan. 'API Access availability depends on your subscription plan. Contact support@smartlead.ai if you do not see the Activate API option.'"
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering campaigns, leads, email accounts, analytics, webhooks, and sequences. Two API versions: V1 (recommended) and Legacy.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Official Smartlead MCP server uses API key. 'Smartlead MCP Server: The Model Context Protocol (MCP) server provides a standardised interface that allows any compatible AI model or agent to access your Smartlead app and data in a simple and secure way.'",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "self-serve",
+      "mcp_access_notes": "Official Smartlead MCP server available via SSE. 'The Smartlead MCP integration works only via SSE (Server-Sent Events) for now. HTTPS transport is not supported.'"
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API key as query parameter (security concern)", "Rate limits not published"],
+      "notes": "API uses query parameter auth (unusual). Official MCP server available via SSE. Multiple community MCP servers. Rate limits vary by plan and are not published."
+    },
+    "evidence": [
+      {"claim": "API key as query parameter", "url": "https://api.smartlead.ai/introduction", "quote": "SmartLead API uses API keys for authentication. You can generate your API key from your dashboard settings. curl -X GET \"https://server.smartlead.ai/api/v1/campaigns/?api_key=YOUR_API_KEY\""},
+      {"claim": "Official MCP server", "url": "https://helpcenter.smartlead.ai/en/articles/300-smartlead-mcp-server", "quote": "The Model Context Protocol (MCP) server provides a standardised interface that allows any compatible AI model or agent to access your Smartlead app and data in a simple and secure way."},
+      {"claim": "SSE transport only", "url": "https://helpcenter.smartlead.ai/en/articles/300-smartlead-mcp-server", "quote": "The Smartlead MCP integration works only via SSE (Server-Sent Events) for now. HTTPS transport is not supported."},
+      {"claim": "Rate limits vary by plan", "url": "https://api.smartlead.ai/introduction", "quote": "Rate limits vary by subscription plan. Please contact customer support. If you exceed your rate limit, you'll receive a 429 status code."}
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "medium",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Smartlead uses query parameter authentication (not header-based), which is a security concern for logging. Official MCP server available via SSE transport. Rate limits not published and vary by plan. Multiple community MCP servers also available.",
+    "fetched_urls": [
+      "https://api.smartlead.ai/introduction",
+      "https://helpcenter.smartlead.ai/en/articles/300-smartlead-mcp-server",
+      "https://helpcenter.smartlead.ai/en/articles/125-full-api-documentation"
+    ]
+  }
+]

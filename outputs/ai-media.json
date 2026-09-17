@@ -1,0 +1,512 @@
+[
+  {
+    "app_id": "elevenlabs",
+    "app_name": "ElevenLabs",
+    "category": "AI and Media",
+    "one_liner": "AI voice synthesis platform offering text-to-speech, voice cloning, dubbing, and audio processing APIs.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "The ElevenLabs API uses API keys for authentication. Every request to the API must include your API key, used to authenticate your requests and track usage quota."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up at elevenlabs.io, navigate to your profile settings, and generate an API key from there."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "Covers text-to-speech, voice cloning, voice design, speech-to-text, sound effects, music generation, dubbing, audio isolation, and conversational AI agents.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "MCP server requires ELEVENLABS_API_KEY environment variable passed at startup.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server is open-source on GitHub, freely installable via uvx or pip."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Fully open API with broad surface, official MCP server, excellent SDK support (Python, Node.js). No blockers for integration."
+    },
+    "evidence": [
+      {
+        "claim": "API key authentication via xi-api-key header",
+        "url": "https://elevenlabs.io/docs/api-reference/authentication",
+        "quote": "All API requests should include your API key in an xi-api-key HTTP header."
+      },
+      {
+        "claim": "Official MCP server on GitHub",
+        "url": "https://github.com/elevenlabs/elevenlabs-mcp",
+        "quote": "Official ElevenLabs Model Context Protocol (MCP) server that enables interaction with powerful Text to Speech and audio processing APIs."
+      },
+      {
+        "claim": "MCP uses same API key as REST",
+        "url": "https://github.com/elevenlabs/elevenlabs-mcp/blob/main/README.md",
+        "quote": "You need an ElevenLabs account and an API key to unlock full access to the platform's features."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Comprehensive REST + WebSocket API with official MCP server. Free tier available with 10k credits/month. SOC 2 compliant with HIPAA options.",
+    "fetched_urls": [
+      "https://elevenlabs.io/docs/api-reference/authentication",
+      "https://github.com/elevenlabs/elevenlabs-mcp",
+      "https://elevenlabs.io/api"
+    ]
+  },
+  {
+    "app_id": "runway",
+    "app_name": "Runway",
+    "category": "AI and Media",
+    "one_liner": "AI generative media platform for video, image, and audio creation with frontier models.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "Authentication: Authorization: Bearer <RUNWAYML_API_SECRET>. Required on every request: X-Runway-Version: 2024-11-06."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Sign up for a Runway Developer account. API is available for Enterprise teams and above. MCP is available for all users."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Async task model for video/image generation, multi-model access (Gen-4, Seedance, Veo, ElevenLabs), Model Router, Recipes, and Workflows.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "No API key required for MCP. Just add the Runway MCP URL to your agent settings. Then sign in with your Runway app account.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Runway MCP is available for all users. Connect via runway.com/mcp. No separate API key is required – generations are tied to your existing Runway plan."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API access requires Enterprise plan or above for REST API"],
+      "notes": "REST API gated to Enterprise+, but MCP is available to all users via OAuth. Two separate MCP endpoints: one for media generation (mcp.runwayml.com/mcp) and one for developer portal (dev.runwayml.com/mcp)."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer token authentication",
+        "url": "https://docs.dev.runwayml.com/guides/setup/",
+        "quote": "When you make requests to the API, you'll need to include your API key in the headers."
+      },
+      {
+        "claim": "Official MCP server launched May 2026",
+        "url": "https://runway.com/news/company-news/mcp",
+        "quote": "Today we're launching Runway MCP (Model Context Protocol), an MCP server that connects Runway to all of the agents and coding tools you already work in."
+      },
+      {
+        "claim": "MCP uses OAuth not API key",
+        "url": "https://help.runwayml.com/hc/en-us/articles/51931843164691-Connecting-to-Runway-MCP",
+        "quote": "You don't need an API key. Just add the Runway MCP URL to your agent settings. Then sign in with your Runway app account."
+      },
+      {
+        "claim": "REST API requires Enterprise plan",
+        "url": "https://docs.dev.runwayml.com/guides/setup/",
+        "quote": "The Runway API is available for Enterprise teams and above, with comprehensive documentation at docs.dev.runwayml.com."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Two distinct MCP servers: media generation (mcp.runwayml.com) uses OAuth via Runway account, developer portal (dev.runwayml.com) also uses OAuth. REST API requires Bearer token and is Enterprise-gated.",
+    "fetched_urls": [
+      "https://docs.dev.runwayml.com/guides/setup/",
+      "https://runway.com/news/company-news/mcp",
+      "https://help.runwayml.com/hc/en-us/articles/51931843164691-Connecting-to-Runway-MCP",
+      "https://docs.dev.runwayml.com/guides/mcp/"
+    ]
+  },
+  {
+    "app_id": "midjourney",
+    "app_name": "Midjourney",
+    "category": "AI and Media",
+    "one_liner": "AI image generation platform with no official public API; programmatic access available through Enterprise dashboard.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "API key obtained from the Midjourney Enterprise dashboard. Include in the Authorization header as a Bearer token."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "No official public API exists in 2026. Midjourney does not offer an official public API key. Enterprise API access is available through the Midjourney Enterprise dashboard."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "narrow",
+      "breadth_notes": "Covers image generation (imagine), upscale, variations, describe, and blend via async job-based workflow with webhook support.",
+      "existing_mcp": false,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key", "unknown"],
+      "mcp_auth_notes": "Community MCP servers use various auth methods including browser cookies, third-party API keys, or Midjourney auth tokens. No official MCP server exists.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "unknown",
+      "mcp_access_notes": "No official MCP server. Community alternatives exist but use unofficial methods."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["No official public API", "No official MCP server", "API access requires Enterprise plan"],
+      "notes": "No official public API or API keys available. Programmatic access only through Enterprise dashboard or third-party managed APIs (Legnext, AceDataCloud). Community MCP servers exist but use unofficial methods."
+    },
+    "evidence": [
+      {
+        "claim": "No official public API in 2026",
+        "url": "https://legnext.ai/de/blog/how-to-get-midjourney-api-key",
+        "quote": "There is no official Midjourney API key in 2026 — Midjourney has never released a public API, and you cannot get a key from them directly."
+      },
+      {
+        "claim": "Enterprise API available via dashboard",
+        "url": "https://raw.githubusercontent.com/api-evangelist/midjourney/refs/heads/main/openapi/midjourney-image-generation-api-openapi.yml",
+        "quote": "Enterprise API access is available through the Midjourney Enterprise dashboard."
+      },
+      {
+        "claim": "OpenAPI spec exists but not publicly accessible",
+        "url": "https://github.com/api-evangelist/midjourney",
+        "quote": "This is an independent, third-party profile of a company's publicly available API surface, maintained by API Evangelist."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "No official public API or MCP server. OpenAPI spec exists for Enterprise API (api.midjourney.com). Third-party managed APIs (Legnext, AceDataCloud, PiAPI) provide alternative access. Community MCP servers use browser automation or third-party APIs.",
+    "fetched_urls": [
+      "https://legnext.ai/de/blog/how-to-get-midjourney-api-key",
+      "https://github.com/api-evangelist/midjourney",
+      "https://raw.githubusercontent.com/api-evangelist/midjourney/refs/heads/main/openapi/midjourney-image-generation-api-openapi.yml"
+    ]
+  },
+  {
+    "app_id": "stability-ai",
+    "app_name": "Stability AI",
+    "category": "AI and Media",
+    "one_liner": "AI image generation and editing platform offering Stable Diffusion models via REST and gRPC APIs.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "You will need your Stability API key in order to make requests to this API. Include this key in the Authorization header of your requests."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create an account at platform.stability.ai, then get an API key from the API Keys page. Free 25 credits on signup, then pay-as-you-go at $0.01 per credit."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "Covers image generation, editing (inpaint, outpaint, erase, search-and-replace), upscaling, ControlNet, 3D mesh generation, and background removal.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP servers require STABILITY_AI_API_KEY environment variable.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP servers are freely available on GitHub. No official MCP server from Stability AI."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Fully open API with broad surface, self-serve access, official SDKs (Python, gRPC). Community MCP servers available. No blockers for integration."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer token authentication via Authorization header",
+        "url": "https://platform.stability.ai/docs/getting-started",
+        "quote": "All APIs documented on this site use the same authentication mechanism: passing the API key in via the Authorization header."
+      },
+      {
+        "claim": "REST API with OpenAPI spec",
+        "url": "https://platform.stability.ai/docs/api-reference",
+        "quote": "Welcome to the Stability AI API! This guide will help you get started with the Stability AI API."
+      },
+      {
+        "claim": "Community MCP server exists",
+        "url": "https://github.com/tadasant/mcp-server-stability-ai",
+        "quote": "This is an MCP (MCP) Server integrating MCP Clients with Stability AI's latest & greatest Stable Diffusion image manipulation functionalities: generate, edit, upscale, and more."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Comprehensive REST + gRPC API with OpenAPI spec. Self-serve access with free credits. No official MCP server but well-maintained community alternatives exist.",
+    "fetched_urls": [
+      "https://platform.stability.ai/docs/getting-started",
+      "https://platform.stability.ai/docs/api-reference",
+      "https://github.com/tadasant/mcp-server-stability-ai"
+    ]
+  },
+  {
+    "app_id": "replicate",
+    "app_name": "Replicate",
+    "category": "AI and Media",
+    "one_liner": "Cloud platform for running ML models via API with a vast catalog of open-source and proprietary models.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "All API requests must include a valid API token in the Authorization request header. The token must be prefixed by Bearer, followed by a space and the token value."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Replicate creates a default API token when you create your account. You can create multiple API tokens for different purposes."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers predictions, models, collections, deployments, trainings, webhooks, and account management. Supports thousands of ML models.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2", "Bearer_token"],
+      "mcp_auth_notes": "Remote MCP server uses OAuth for authentication. Local MCP server uses REPLICATE_API_TOKEN environment variable.",
+      "same_credentials_as_rest_api": "unknown"
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official hosted MCP server at mcp.replicate.com. Local server also available via npm. Both are freely accessible."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Fully open API with broad surface, official MCP server (both hosted and local), excellent SDK support (Python, Node.js). No blockers for integration."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer token authentication",
+        "url": "https://replicate.com/docs/reference/http",
+        "quote": "All API requests must include a valid API token in the Authorization request header. The token must be prefixed by Bearer, followed by a space and the token value."
+      },
+      {
+        "claim": "Official MCP server",
+        "url": "https://mcp.replicate.com/",
+        "quote": "This is the official hosted MCP server for Replicate. Add this server to your favorite apps like Claude, Cursor, Codex, Gemini, and VS Code."
+      },
+      {
+        "claim": "OpenAPI spec available",
+        "url": "https://replicate.com/docs/reference/openapi",
+        "quote": "Replicate's public HTTP API documentation is available as a machine-readable OpenAPI schema in JSON format."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Excellent developer experience with official OpenAPI spec, official MCP server (hosted at mcp.replicate.com), and multiple SDKs. Pay-per-prediction pricing model.",
+    "fetched_urls": [
+      "https://replicate.com/docs/reference/http",
+      "https://mcp.replicate.com/",
+      "https://replicate.com/docs/reference/openapi"
+    ]
+  },
+  {
+    "app_id": "descript",
+    "app_name": "Descript",
+    "category": "AI and Media",
+    "one_liner": "AI-powered video and podcast editor with API for automated imports, AI edits, and publishing.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "The Descript API uses personal API tokens to authenticate requests. Tokens are scoped to a specific Drive and inherit your permissions on that Drive."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Create an API token in Descript Settings > API Tokens. Each token is tied to one drive. Treat your API token like a password."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Covers project creation, media import, AI editing (Underlord agent), publishing, export, and job management.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["Bearer_token"],
+      "mcp_auth_notes": "Community MCP server uses same API token as REST API, passed as environment variable.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP server available on GitHub. No official MCP server from Descript."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API access requires contacting Descript (not fully self-serve)"],
+      "notes": "REST API is available but documentation indicates it may require contacting Descript. Community MCP server exists. Rate limited to 1000 requests/hour/user."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer token authentication",
+        "url": "https://docs.descriptapi.com/",
+        "quote": "The Descript API uses personal API tokens to authenticate requests. Tokens are scoped to a specific Drive and inherit your permissions on that Drive."
+      },
+      {
+        "claim": "Community MCP server",
+        "url": "https://github.com/T-Campbell18/descript-mcp",
+        "quote": "MCP (Model Context Protocol) server for the Descript API. Enables AI assistants to import media, run AI edits, manage jobs, and more — all through natural language."
+      },
+      {
+        "claim": "Rate limiting",
+        "url": "https://docs.descriptapi.com/",
+        "quote": "This endpoint requires authentication via a token and is subject to rate limiting of 1000 requests per hour per user."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "medium",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "REST API with personal Bearer tokens. Community MCP server exists. API documentation suggests it may be partner-gated rather than fully self-serve. CLI also available (@descript/platform-cli).",
+    "fetched_urls": [
+      "https://docs.descriptapi.com/",
+      "https://github.com/T-Campbell18/descript-mcp",
+      "https://help.descript.com/api-and-mcp/api"
+    ]
+  },
+  {
+    "app_id": "otter-ai",
+    "app_name": "Otter.ai",
+    "category": "AI and Media",
+    "one_liner": "AI meeting transcription and intelligence platform with Public API for Enterprise and official MCP server.",
+    "auth": {
+      "methods": ["Bearer_token"],
+      "auth_notes": "All API requests require authentication using Bearer token authentication. Include your API key in the Authorization header for every request."
+    },
+    "access": {
+      "type": "admin-approval-gated",
+      "access_notes": "Otter's Public API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "Covers channels, conversations, transcripts, audio downloads, action items, insights, outlines, and workspace management. Webhooks for real-time events.",
+      "existing_mcp": true,
+      "mcp_source": "official"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth2"],
+      "mcp_auth_notes": "Otter runs a provider-hosted MCP server at mcp.otter.ai/mcp. Access is OAuth-authenticated with per-meeting permissions.",
+      "same_credentials_as_rest_api": false
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Official MCP server available for standard Otter accounts via OAuth. REST API requires Enterprise plan."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["REST API requires Enterprise plan"],
+      "notes": "REST API gated to Enterprise workspaces. Official MCP server available for standard accounts via OAuth. MCP is read-only (3 tools: search meetings, get transcript, get user info)."
+    },
+    "evidence": [
+      {
+        "claim": "Enterprise-only REST API",
+        "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "quote": "Otter's Public API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager."
+      },
+      {
+        "claim": "Official MCP server with OAuth",
+        "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        "quote": "Connect AI models to Otter using Model Context Protocol (MCP). Connecting Otter MCP to your AI applications enables secure, scalable access."
+      },
+      {
+        "claim": "MCP uses OAuth, different from REST API",
+        "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+        "quote": "The MCP server uses OAuth 2.1 with a browser consent step, minting a token scoped to what the user authorized. The API does not support OAuth at all; it uses a static Bearer key."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Two distinct programmatic surfaces: REST API (Enterprise-only, Bearer token, read/write) and MCP server (standard accounts, OAuth, read-only). MCP server URL: mcp.otter.ai/mcp. REST API supports webhooks for real-time events.",
+    "fetched_urls": [
+      "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+      "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "https://www.scalekit.com/blog/otter-mcp-vs-api"
+    ]
+  },
+  {
+    "app_id": "synthesia",
+    "app_name": "Synthesia",
+    "category": "AI and Media",
+    "one_liner": "AI video generation platform using digital avatars with REST API for automated video creation.",
+    "auth": {
+      "methods": ["API_key"],
+      "auth_notes": "Enter the copied API key in the Authorization header of any endpoint to have it available."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "API access is available for Creator and Enterprise plan users only. Create API key in Synthesia app under Account > Integrations > API Keys."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Covers video creation (from scratch or templates), video management, webhooks, stock avatars/voices, and dubbing. Async job-based workflow.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_key"],
+      "mcp_auth_notes": "Community MCP server uses SYNTHESIA_API_KEY environment variable, same as REST API.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "mcp_access_notes": "Community MCP server available on GitHub. No official MCP server from Synthesia."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["API access requires Creator plan or above"],
+      "notes": "REST API available for Creator+ plans. Community MCP server exists. Comprehensive OpenAPI spec available. Webhook support for async notifications."
+    },
+    "evidence": [
+      {
+        "claim": "API key in Authorization header",
+        "url": "https://docs.synthesia.io/reference/synthesia-api-quickstart",
+        "quote": "Enter the copied API key in the Authorization header of any endpoint to have it available."
+      },
+      {
+        "claim": "Creator plan required",
+        "url": "https://help.synthesia.io/en/articles/6341327-how-do-i-use-the-synthesia-api",
+        "quote": "API access is available for Creator plans or above. If you'd like to upgrade your plan, please use our How do I upgrade my plan? article."
+      },
+      {
+        "claim": "Community MCP server",
+        "url": "https://glama.ai/mcp/servers/keithazz/synthesia-mcp",
+        "quote": "An MCP server that exposes the Synthesia avatar video API to MCP clients such as Claude Desktop."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "REST API with comprehensive OpenAPI spec (v2.0.0). Self-serve for Creator+ plans. Community MCP server exists (keithazz/synthesia-mcp). Rate limits vary by plan tier (Creator: 60k req/day, Enterprise: 80k req/day).",
+    "fetched_urls": [
+      "https://docs.synthesia.io/reference/synthesia-api-quickstart",
+      "https://help.synthesia.io/en/articles/6341327-how-do-i-use-the-synthesia-api",
+      "https://glama.ai/mcp/servers/keithazz/synthesia-mcp"
+    ]
+  }
+]

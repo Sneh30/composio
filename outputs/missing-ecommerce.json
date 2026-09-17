@@ -1,0 +1,198 @@
+[
+  {
+    "app_id": "magento",
+    "app_name": "Magento (Adobe Commerce)",
+    "category": "Ecommerce",
+    "one_liner": "Open-source and enterprise ecommerce platform with REST and GraphQL APIs for catalog, orders, customers, and storefront management.",
+    "auth": {
+      "methods": ["OAuth_1.0a", "Bearer_Token", "Admin_Token", "Customer_Token", "Session"],
+      "auth_notes": "Adobe Commerce REST APIs support multiple authentication methods, including: Third-party applications authenticate with OAuth 1.0a. Mobile applications authenticate using tokens. Administrators and customers are authenticated with login credentials."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Adobe Commerce on Cloud, Adobe Commerce on-premises, and Magento Open Source all use the same REST API framework."
+    },
+    "api_surface": {
+      "type": "mixed",
+      "breadth": "broad",
+      "breadth_notes": "Comprehensive REST API and GraphQL API covering catalog, orders, customers, CMS, promotions, inventory, shipping, and more across admin, customer, and guest scopes.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["OAuth_1.0a_HMAC", "Admin_Bearer_Token", "Integration_Token"],
+      "auth_notes": "MCP servers authenticate via Magento Integration OAuth 1.0a credentials (Consumer Key, Consumer Secret, Access Token, Access Token Secret) or admin Bearer tokens.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Multiple community MCP servers available on GitHub with no special gating required."
+    },
+    "buildability_signal": {
+      "blockers_observed": [],
+      "notes": "Well-documented REST and GraphQL APIs. Multiple community MCP servers already exist. Self-serve access via Magento Integration creation in admin."
+    },
+    "evidence": [
+      {
+        "claim": "Adobe Commerce REST APIs support multiple authentication methods including OAuth 1.0a, tokens, and session-based auth.",
+        "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+        "quote": "Adobe Commerce REST APIs support multiple authentication methods, including: Third-party applications authenticate with OAuth 1.0a. Mobile applications authenticate using tokens. Administrators and customers are authenticated with login credentials."
+      },
+      {
+        "claim": "Multiple community MCP servers exist for Magento on GitHub.",
+        "url": "https://github.com/thomastx05/magento-mcp",
+        "quote": "MCP (Model Context Protocol) server for Adobe Commerce / Magento 2 administration. 30+ tools for catalog, promotions, CMS, diagnostics, and more."
+      },
+      {
+        "claim": "The REST API covers a wide range of endpoints for admin, customer, and guest users.",
+        "url": "https://developer.adobe.com/commerce/webapi/rest/",
+        "quote": "Adobe Commerce provides a wide range of REST API endpoints that allow you to perform actions on behalf of Commerce administrators, customers, and guest shoppers. Integrations are also supported."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Magento has broad REST + GraphQL API surface. Multiple community MCP servers exist (thomastx05, magenable, magemcp, FahadEjaz, yuriyakishin). No official Adobe MCP server. Auth is self-serve via Integration creation in Magento admin.",
+    "fetched_urls": [
+      "https://developer.adobe.com/commerce/webapi/rest/",
+      "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+      "https://github.com/thomastx05/magento-mcp",
+      "https://github.com/magendooro/magemcp",
+      "https://github.com/magenable/magento-adobe-commerce-mcp-server"
+    ]
+  },
+  {
+    "app_id": "ecwid",
+    "app_name": "Ecwid",
+    "category": "Ecommerce",
+    "one_liner": "Cloud-based ecommerce platform by Lightspeed with REST API for store management, orders, products, customers, and checkout customization.",
+    "auth": {
+      "methods": ["API_Token"],
+      "auth_notes": "Gaining API access requires you to have a store and a platform where you can configure permissions and generate access tokens. In Ecwid, we refer to this platform as an application. A private application that gives you access to store data through API is called a custom application."
+    },
+    "access": {
+      "type": "self-serve",
+      "access_notes": "Only stores on paid plans can access API. Custom apps are your private way of accessing Ecwid API. It can only work with the store where it's created, but it allows you to completely skip the need for authentication."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "moderate",
+      "breadth_notes": "REST API covering products, categories, orders, customers, discounts, checkout, payment, shipping, and webhooks. No GraphQL.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["API_Token"],
+      "auth_notes": "MCP servers use the same API token authentication as the REST API. Custom app tokens provide access to store data.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "open",
+      "access_notes": "Multiple community MCP servers available via Pipedream, usefulapi, Zapier, and viaSocket wrappers."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["paid_plan_required"],
+      "notes": "API access requires a paid Ecwid plan. Custom apps are self-serve in the admin dashboard. Community MCP servers exist but are mostly wrapper/proxy services rather than self-hosted."
+    },
+    "evidence": [
+      {
+        "claim": "API access requires a paid plan and is configured through custom apps in the admin.",
+        "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+        "quote": "Gaining API access requires you to have a store and a platform where you can configure permissions and generate access tokens. In Ecwid, we refer to this platform as an application."
+      },
+      {
+        "claim": "Custom apps allow direct API access without OAuth complexity.",
+        "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+        "quote": "A custom app is your private way of accessing Ecwid API. It can only work with the store where it's created, but it allows you to completely skip the need for authentication."
+      },
+      {
+        "claim": "Community MCP servers exist as hosted proxy services.",
+        "url": "https://mcp.pipedream.com/app/ecwid",
+        "quote": "ecwid MCP Server - Configure ecwid. Copy the MCP server URL."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "medium"
+    },
+    "research_notes": "Ecwid has a moderate REST API surface. No official MCP server. Community MCP servers are mostly hosted proxies (Pipedream, usefulapi, Zapier) rather than self-hosted implementations. API access gated to paid plans.",
+    "fetched_urls": [
+      "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+      "https://docs.ecwid.com/build-with-ecwid-apps.md",
+      "https://docs.ecwid.com/api-reference/rest-api/application.md",
+      "https://mcp.pipedream.com/app/ecwid",
+      "https://zapier.com/mcp/ecwid"
+    ]
+  },
+  {
+    "app_id": "amazon-selling-partner-api",
+    "app_name": "Amazon Selling Partner API",
+    "category": "Ecommerce",
+    "one_liner": "Amazon's REST-based API for sellers and vendors to access orders, shipments, payments, inventory, listings, and business operations data.",
+    "auth": {
+      "methods": ["OAuth_2.0_LWA", "Self_Authorization"],
+      "auth_notes": "Public applications: OAuth 2.0 through Login with Amazon (LWA). Private applications: Self-authorization through Seller Central, Vendor Central, or the Solution Provider Portal."
+    },
+    "access": {
+      "type": "partnership-gated",
+      "access_notes": "SP-API requires developer registration and application approval. Sellers must authorize your application. Private apps use self-authorization through Seller Central."
+    },
+    "api_surface": {
+      "type": "REST",
+      "breadth": "broad",
+      "breadth_notes": "Extremely broad REST API covering 49+ API domains including Orders, Catalog, Inventory, Pricing, Fulfillment, Reports, Feeds, Notifications, A+ Content, and more for both sellers and vendors.",
+      "existing_mcp": true,
+      "mcp_source": "community"
+    },
+    "mcp_auth": {
+      "methods": ["LWA_OAuth_2.0"],
+      "auth_notes": "MCP servers use LWA (Login with Amazon) OAuth 2.0 credentials: LWA Client ID, LWA Client Secret, and Refresh Token. No AWS credentials required as of October 2023.",
+      "same_credentials_as_rest_api": true
+    },
+    "mcp_access": {
+      "type": "partnership-gated",
+      "access_notes": "MCP servers require the same SP-API developer registration and seller authorization as direct API access."
+    },
+    "buildability_signal": {
+      "blockers_observed": ["developer_registration_required", "seller_authorization_required", "role_approval_for_pii"],
+      "notes": "Requires SP-API developer registration and application approval. Sellers must authorize the application. PII access requires additional restricted role approval. Multiple community MCP servers with 55+ tools available.",
+      "buildability_notes": "High barrier to entry due to registration and approval process, but extensive documentation and SDK support."
+    },
+    "evidence": [
+      {
+        "claim": "SP-API uses OAuth 2.0 via Login with Amazon for authorization.",
+        "url": "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
+        "quote": "Authorization method: OAuth 2.0 through Login with Amazon (LWA). Who authorizes the application: The selling partner."
+      },
+      {
+        "claim": "Developer registration is required before building SP-API applications.",
+        "url": "https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api",
+        "quote": "With SP-API, developers register once in their preferred region and Amazon store. After registering, selling partners can initiate an OAuth authorization workflow."
+      },
+      {
+        "claim": "Multiple community MCP servers exist with comprehensive tool coverage.",
+        "url": "https://github.com/christian-ramos/mcp-amazon-sp-api",
+        "quote": "MCP server that exposes the Amazon Selling Partner API to Claude Desktop and any other client that speaks the Model Context Protocol. It wraps the python-amazon-sp-api SDK and ships 55+ tools across 19 SP-API scopes."
+      }
+    ],
+    "confidence_per_field": {
+      "auth": "high",
+      "access": "high",
+      "api_surface": "high",
+      "mcp_auth": "high"
+    },
+    "research_notes": "Amazon SP-API has the broadest API surface of the three apps. No official MCP server. Multiple community implementations (ailumia, christian-ramos, mansournorouzi, trinknx). Access requires developer registration and approval, making it partnership-gated. LWA OAuth 2.0 only, no AWS credentials needed.",
+    "fetched_urls": [
+      "https://developer-docs.amazon.com/sp-api/",
+      "https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api",
+      "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
+      "https://github.com/christian-ramos/mcp-amazon-sp-api",
+      "https://github.com/ailumia/amazon-sp-api-mcp"
+    ]
+  }
+]
