@@ -1,0 +1,7 @@
+fc6a4fd Redesign case study: stat cards, scannable table, grouped chart, nav, typography polish
+dc129c5 Add agent prompts, process docs, backfill fetched_urls, restructure scratch files
+6a7a449 Fix dataset: remove stubs, add SFCC + GoHighLevel, rewrite validate.py
+03b0873 Update README with live URL and correct filenames
+d8d8300 Update live links in HTML + fix generate script output filename
+398fa71 Rename case-study.html to index.html for GitHub Pages
+c6f5be4 API Integration Research Agent — 100 apps, structured JSON, HTML case study
